@@ -38,18 +38,10 @@ game_online_multiplayer: Não
 game_players: 1 jogador
 game_multiplayer_details: Jogo para um jogador; não possui modos multiplayer local ou online.
 ---
+
+
 ## Sobre o projeto
 
 Este projeto tem como objetivo disponibilizar **Asterix & Obelix XXL 2** em português brasileiro, tornando a aventura mais acessível aos jogadores. O trabalho é voltado às versões de **Nintendo Switch e PC**.
 
 A página será atualizada conforme avançarem as etapas de preparação dos arquivos, tradução, revisão e testes.
-
-## Instruções importantes
-
-**Leia as instruções incluídas no arquivo de download antes de instalar ou utilizar os arquivos.** Elas podem conter requisitos, orientações de instalação e informações sobre as versões compatíveis.
-
-Confira também a plataforma indicada para cada arquivo e mantenha uma cópia de segurança dos arquivos originais quando necessário.
-
-## Progresso
-
-Os percentuais abaixo são valores iniciais e devem ser atualizados conforme o andamento real do projeto.
