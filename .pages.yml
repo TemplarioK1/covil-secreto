@@ -7,7 +7,7 @@ content:
   - name: projetos
     label: Projetos
     type: collection
-    path: projetos
+    path: _projetos
     format: yaml-frontmatter
     filename: "{primary}.md"
     view:
