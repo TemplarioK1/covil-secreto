@@ -19,7 +19,7 @@ progress_stages:
     percentage: 100
   - name: Revisão e correções
     percentage: 90
-  - name: Finalização e publicação
+  - name: Finalização
     percentage: 85
 game_developer: Balio Studio
 game_publisher: Microids
