@@ -227,7 +227,7 @@ content:
       - name: progress_stages
         label: Etapas e progresso
         type: object
-        description: As seis etapas sugeridas aparecem automaticamente em novos projetos. Ajuste os nomes e percentuais conforme o trabalho; você também pode adicionar ou remover etapas.
+        description: As cinco etapas de trabalho são editáveis. A etapa Finalização é calculada automaticamente pela média das cinco anteriores.
         list:
           default:
             - name: Preparação e análise dos arquivos
@@ -240,7 +240,7 @@ content:
               percentage: 0
             - name: Revisão e correções
               percentage: 0
-            - name: Finalização e publicação
+            - name: Finalização
               percentage: 0
           collapsible:
             collapsed: true
