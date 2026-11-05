@@ -98,8 +98,23 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% if page.progress_stages and page.progress_stages.size > 0 %}
 <h2>Progresso do projeto</h2>
 <div class="progress-list">
+{% assign final_total = 0 %}
+{% assign final_count = 0 %}
 {% for stage in page.progress_stages %}
+  {% unless stage.name == 'Finalização' or stage.name == 'Finalização e publicação' %}
+    {% assign final_total = final_total | plus: stage.percentage %}
+    {% assign final_count = final_count | plus: 1 %}
+  {% endunless %}
+{% endfor %}
+{% assign final_average = 0 %}
+{% if final_count > 0 %}{% assign final_average = final_total | divided_by: final_count | round %}{% endif %}
+{% for stage in page.progress_stages %}
+{% assign stage_name = stage.name %}
 {% assign progress_value = stage.percentage | default: 0 | plus: 0 %}
+{% if stage_name == 'Finalização e publicação' or stage_name == 'Finalização' %}
+  {% assign stage_name = 'Finalização' %}
+  {% assign progress_value = final_average %}
+{% endif %}
 {% assign progress_value = progress_value | at_least: 0 | at_most: 100 %}
 {% assign progress_class = 'progress-red' %}
 {% if progress_value >= 25 and progress_value < 50 %}{% assign progress_class = 'progress-orange' %}
@@ -108,10 +123,10 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% elsif progress_value >= 100 %}{% assign progress_class = 'progress-complete' %}{% endif %}
 <div class="progress-item {{ progress_class }}">
   <div class="progress-heading">
-    <strong>{{ stage.name | escape }}</strong>
+    <strong>{{ stage_name | escape }}</strong>
     <span class="progress-value">{{ progress_value }}%</span>
   </div>
-  <div class="progress-track" role="progressbar" aria-label="{{ stage.name | escape }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}">
+  <div class="progress-track" role="progressbar" aria-label="{{ stage_name | escape }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}">
     <span class="progress-fill" style="--progress: {{ progress_value | divided_by: 100.0 }};"></span>
   </div>
 </div>
