@@ -68,11 +68,21 @@ jobs:
 
       - name: Organizar imagens do projeto selecionado
         if: github.event_name == 'workflow_dispatch'
-        run: python scripts/optimize_project_media.py --project "${{ steps.project.outputs.path }}"
+        run: python scripts/optimize_project_media.py --project "${{ steps.project.outputs.path }}" --cleanup-orphans
 
       - name: Organizar imagens de todos os projetos
         if: github.event_name == 'push'
-        run: python scripts/optimize_project_media.py --all
+        env:
+          BEFORE_SHA: ${{ github.event.before }}
+          AFTER_SHA: ${{ github.sha }}
+        run: |
+          if [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ] && git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- _projetos/ | grep -q .; then
+            echo "Alteração em projeto detectada; executando limpeza de imagens sem referência."
+            python scripts/optimize_project_media.py --all --cleanup-orphans
+          else
+            echo "Nenhuma alteração nos dados dos projetos; pulando limpeza de imagens."
+            python scripts/optimize_project_media.py --all
+          fi
 
       - name: Salvar imagens otimizadas no GitHub
         run: |
