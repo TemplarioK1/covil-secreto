@@ -110,9 +110,9 @@ content:
           path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshots
-        label: Galeria antiga (mantida para projetos existentes)
+        label: Galeria de screenshots (até 4 imagens)
         type: image
-        hidden: true
+        description: Selecione até quatro imagens. Elas serão otimizadas pelo botão de processamento de mídia.
         options:
           media: images
           path: projetos
@@ -120,33 +120,81 @@ content:
             max: 4
           extensions: [jpg, jpeg, png, webp]
       - name: screenshot_1
-        label: Screenshot 1
+        label: Screenshot 1 (compatibilidade)
         type: image
+        hidden: true
         options:
           media: images
           path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshot_2
-        label: Screenshot 2
+        label: Screenshot 2 (compatibilidade)
         type: image
+        hidden: true
         options:
           media: images
           path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshot_3
-        label: Screenshot 3
+        label: Screenshot 3 (compatibilidade)
         type: image
+        hidden: true
         options:
           media: images
           path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshot_4
-        label: Screenshot 4
+        label: Screenshot 4 (compatibilidade)
         type: image
+        hidden: true
         options:
           media: images
           path: projetos
           extensions: [jpg, jpeg, png, webp]
+      - name: game_developer
+        label: Jogo original — Desenvolvedora
+        type: string
+      - name: game_publisher
+        label: Jogo original — Publisher / Distribuidora
+        type: string
+      - name: game_release_year
+        label: Jogo original — Ano de lançamento
+        type: string
+        description: "Ex.: 2018."
+      - name: game_genre
+        label: Jogo original — Gênero
+        type: string
+      - name: game_synopsis
+        label: Jogo original — Sinopse
+        type: text
+      - name: game_multiplayer
+        label: Jogo original — Possui multiplayer?
+        type: select
+        options:
+          values:
+            - Sim
+            - Não
+      - name: game_local_multiplayer
+        label: Jogo original — Multiplayer local?
+        type: select
+        options:
+          values:
+            - Sim
+            - Não
+      - name: game_online_multiplayer
+        label: Jogo original — Multiplayer online?
+        type: select
+        options:
+          values:
+            - Sim
+            - Não
+      - name: game_players
+        label: Jogo original — Quantidade de jogadores
+        type: string
+        description: "Ex.: 1 jogador, 1–4 jogadores, até 8 online."
+      - name: game_multiplayer_details
+        label: Jogo original — Detalhes do multiplayer
+        type: text
       - name: youtube
         label: Link do vídeo no YouTube
         type: string
@@ -200,69 +248,6 @@ content:
           - name: note
             label: Observação
             type: text
-      - name: version_history
-        label: Histórico de atualizações
-        type: object
-        description: Registre cada atualização com sua versão, data e resumo das mudanças. Adicione uma nova entrada sempre que publicar uma versão.
-        list:
-          collapsible:
-            collapsed: true
-            summary: "Versão {version} — {date}"
-        fields:
-          - name: version
-            label: Versão
-            type: string
-            required: true
-          - name: date
-            label: Data da atualização
-            type: date
-          - name: changes
-            label: O que mudou nesta versão
-            type: text
-      - name: game_developer
-        label: Jogo original — Desenvolvedora
-        type: string
-      - name: game_publisher
-        label: Jogo original — Publisher / Distribuidora
-        type: string
-      - name: game_release_year
-        label: Jogo original — Ano de lançamento
-        type: string
-        description: "Ex.: 2018."
-      - name: game_genre
-        label: Jogo original — Gênero
-        type: string
-      - name: game_synopsis
-        label: Jogo original — Sinopse
-        type: text
-      - name: game_multiplayer
-        label: Jogo original — Possui multiplayer?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: game_local_multiplayer
-        label: Jogo original — Multiplayer local?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: game_online_multiplayer
-        label: Jogo original — Multiplayer online?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: game_players
-        label: Jogo original — Quantidade de jogadores
-        type: string
-        description: "Ex.: 1 jogador, 1–4 jogadores, até 8 online."
-      - name: game_multiplayer_details
-        label: Jogo original — Detalhes do multiplayer
-        type: text
       - name: body
         label: Descrição e instruções
         type: rich-text
