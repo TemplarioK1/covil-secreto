@@ -10,24 +10,23 @@ date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl3-switch-port-pc/icone.webp
 cover: /media/images/projetos/asterix-xxl3-switch-port-pc/capa.webp
 screenshots:
-  - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-01.webp
-  - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-02.webp
-  - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-03.webp
-  - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-04.webp
+  - /media/images/2026110507375100-11aa966b116f8045d7a96d89a1c3fc19.jpg
+  - /media/images/2026110507361600-11aa966b116f8045d7a96d89a1c3fc19.jpg
+  - /media/images/2026110507373600-11aa966b116f8045d7a96d89a1c3fc19.jpg
+  - /media/images/2026110507364300-11aa966b116f8045d7a96d89a1c3fc19.jpg
 youtube: https://youtu.be/oOS3F29rIm8
 download: /downloads/projetos/asterix-xxl3-switch-port-pc/010081500ea1e000.zip
 progress_stages:
-- name: Preparação e análise dos arquivos
-  percentage: 100
-- name: Tradução de textos
-  percentage: 100
-- name: Tradução de sprites
-  percentage: 0
-- name: Testes no jogo
-  percentage: 100
-- name: Revisão e correções
-  percentage: 90
-progress_platform_groups: []
+  - name: Preparação e análise dos arquivos
+    percentage: 100
+  - name: Tradução de textos
+    percentage: 100
+  - name: Tradução de sprites
+    percentage: 0
+  - name: Testes no jogo
+    percentage: 100
+  - name: Revisão e correções
+    percentage: 90
 game_developer: OSome Studio
 game_publisher: Microids
 game_release_year: "2019"
