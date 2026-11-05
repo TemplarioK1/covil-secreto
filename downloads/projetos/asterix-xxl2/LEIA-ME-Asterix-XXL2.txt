@@ -1,0 +1,34 @@
+ASTERIX & OBELIX XXL 2 — INSTRUÇÕES DE INSTALAÇÃO
+
+O pacote está dividido em três pastas, destinadas a diferentes versões do jogo. Utilize somente a pasta correspondente à sua plataforma.
+
+1. PC — STEAM / EPIC GAMES
+
+1. Abra a pasta PC deste pacote.
+2. Copie todo o conteúdo para a raiz da pasta de instalação do jogo.
+3. Se solicitado, confirme a substituição dos arquivos.
+
+Pronto! Basta iniciar o jogo normalmente.
+
+Observação: a disponibilidade de uma versão do jogo na Epic Games Store não foi confirmada. O procedimento se aplica caso você possua uma instalação compatível por essa plataforma.
+
+2. NINTENDO SWITCH — ATMOSPHÈRE
+
+1. Abra a pasta Console deste pacote.
+2. Copie a pasta atmosphere para a raiz do cartão microSD.
+3. Se o sistema perguntar se deseja mesclar as pastas ou substituir arquivos, confirme.
+
+Pronto! Os arquivos já estão organizados para instalação pelo Atmosphère.
+
+3. EMULADORES
+
+1. Abra o emulador e localize o jogo na lista.
+2. Clique com o botão direito sobre o jogo.
+3. Selecione a opção que abre a pasta de mods ou modificações.
+4. Copie o conteúdo da pasta Emuladores deste pacote para o diretório aberto.
+
+A opção pode ter nomes diferentes dependendo do emulador, mas o procedimento é essencialmente o mesmo.
+
+Boa aventura na Gália!
+
+Covil Secreto — Traduções e projetos de jogos.
