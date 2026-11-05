@@ -33,8 +33,6 @@ progress_stages:
   percentage: 0
 - name: Revisão e correções
   percentage: 0
-- name: Finalização
-  percentage: 0
 ---
 ## Sobre o projeto
 
