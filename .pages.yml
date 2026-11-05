@@ -29,6 +29,16 @@ content:
         - platform
         - status
         - version
+    actions:
+      - name: organize-project-media
+        label: Organizar e otimizar imagens
+        scope: entry
+        workflow: process-project-media.yml
+        ref: current
+        confirm:
+          title: Processar imagens deste projeto?
+          message: As imagens serão redimensionadas, convertidas para WebP, organizadas por função e os caminhos serão atualizados.
+          button: Processar imagens
     fields:
       - name: title
         label: Nome do jogo
@@ -75,13 +85,42 @@ content:
           path: projetos/capas
           extensions: [jpg, jpeg, png, webp]
       - name: screenshots
-        label: Screenshots / galeria (até 4 imagens)
+        label: Galeria antiga (mantida para projetos existentes)
         type: image
+        hidden: true
         options:
           media: images
           path: projetos/screenshots
           multiple:
             max: 4
+          extensions: [jpg, jpeg, png, webp]
+      - name: screenshot_1
+        label: Screenshot 1
+        type: image
+        options:
+          media: images
+          path: projetos/screenshots
+          extensions: [jpg, jpeg, png, webp]
+      - name: screenshot_2
+        label: Screenshot 2
+        type: image
+        options:
+          media: images
+          path: projetos/screenshots
+          extensions: [jpg, jpeg, png, webp]
+      - name: screenshot_3
+        label: Screenshot 3
+        type: image
+        options:
+          media: images
+          path: projetos/screenshots
+          extensions: [jpg, jpeg, png, webp]
+      - name: screenshot_4
+        label: Screenshot 4
+        type: image
+        options:
+          media: images
+          path: projetos/screenshots
           extensions: [jpg, jpeg, png, webp]
       - name: youtube
         label: Link do vídeo no YouTube
