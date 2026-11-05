@@ -147,6 +147,30 @@ content:
           media: images
           path: projetos/screenshots
           extensions: [jpg, jpeg, png, webp]
+      - name: game_info
+        label: Informações sobre o jogo original
+        type: object
+        description: Dados de referência do jogo, exibidos em uma seção própria abaixo das screenshots. Preencha apenas o que souber.
+        fields:
+          - name: developer
+            label: Desenvolvedora
+            type: string
+          - name: publisher
+            label: Publisher / Distribuidora
+            type: string
+          - name: synopsis
+            label: Sinopse do jogo
+            type: text
+          - name: release_date
+            label: Data de lançamento original
+            type: date
+          - name: players
+            label: Quantidade de jogadores
+            type: string
+            description: Ex.: 1 jogador, 1–4 jogadores, cooperativo para 2 jogadores.
+          - name: genre
+            label: Gênero
+            type: string
       - name: youtube
         label: Link do vídeo no YouTube
         type: string
