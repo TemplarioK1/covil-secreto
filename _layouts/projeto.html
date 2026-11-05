@@ -64,7 +64,7 @@ h2{margin-top:45px;border-bottom:1px solid #302a3a;padding-bottom:12px}
 .progress-yellow .progress-fill{background:#e3c342}.progress-yellow .progress-value{color:#f0d96b}
 .progress-green .progress-fill{background:#55b878}.progress-green .progress-value{color:#78d99a}
 .progress-complete .progress-fill{background:#397fd6}.progress-complete .progress-value{color:#79b5ff}
-.progress-warning{margin:22px 0 0;padding:17px 19px;border:1px solid #805b2d;border-left:4px solid #ed963d;border-radius:9px;background:#2a2118;color:#ffe0b5;line-height:1.65}
+\n.progress-platform-title{grid-column:1/-1;margin:22px 0 -2px;font-size:18px;color:#d7c1ff}.progress-platform-group{margin-top:10px}.progress-final-list{margin-top:14px}.progress-final-item{grid-column:1/-1}\n.progress-warning{margin:22px 0 0;padding:17px 19px;border:1px solid #805b2d;border-left:4px solid #ed963d;border-radius:9px;background:#2a2118;color:#ffe0b5;line-height:1.65}
 .progress-warning strong{display:block;margin-bottom:5px;color:#ffc477}
 @keyframes progress-appear{from{transform:scaleX(0)}to{transform:scaleX(var(--progress))}}
 @media(prefers-reduced-motion:reduce){.progress-fill{animation:none}}
@@ -95,9 +95,12 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 
 {% if content != "" %}<section class="description">{{ content }}</section>{% endif %}
 
-{% if page.progress_stages and page.progress_stages.size > 0 %}
+{% assign progress_group_count = page.progress_platform_groups | size %}
+{% assign progress_main_count = page.progress_stages | size %}
+{% assign progress_has_any = false %}
+{% if progress_main_count > 0 or progress_group_count > 0 %}{% assign progress_has_any = true %}{% endif %}
+{% if progress_has_any %}
 <h2>Progresso do projeto</h2>
-<div class="progress-list">
 {% assign final_total = 0 %}
 {% assign final_count = 0 %}
 {% for stage in page.progress_stages %}
@@ -106,35 +109,76 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
     {% assign final_count = final_count | plus: 1 %}
   {% endunless %}
 {% endfor %}
+{% for group in page.progress_platform_groups %}
+  {% for stage in group.stages %}
+    {% unless stage.name == 'Finalização' or stage.name == 'Finalização e publicação' %}
+      {% assign final_total = final_total | plus: stage.percentage %}
+      {% assign final_count = final_count | plus: 1 %}
+    {% endunless %}
+  {% endfor %}
+{% endfor %}
 {% assign final_average = 0 %}
 {% if final_count > 0 %}{% assign final_average = final_total | divided_by: final_count | round %}{% endif %}
+{% assign show_platform_titles = false %}
+{% if progress_group_count > 0 %}{% assign show_platform_titles = true %}{% endif %}
+{% if page.progress_stages.size > 0 %}
+{% if show_platform_titles %}<h3 class="progress-platform-title">{{ page.platforms.first | default: page.platform }} / Geral</h3>{% endif %}
+<div class="progress-list">
 {% for stage in page.progress_stages %}
+{% unless stage.name == 'Finalização' or stage.name == 'Finalização e publicação' %}
 {% assign stage_name = stage.name %}
-{% assign progress_value = stage.percentage | default: 0 | plus: 0 %}
-{% if stage_name == 'Finalização e publicação' or stage_name == 'Finalização' %}
-  {% assign stage_name = 'Finalização' %}
-  {% assign progress_value = final_average %}
-{% endif %}
-{% assign progress_value = progress_value | at_least: 0 | at_most: 100 %}
+{% assign progress_value = stage.percentage | default: 0 | plus: 0 | at_least: 0 | at_most: 100 %}
 {% assign progress_class = 'progress-red' %}
 {% if progress_value >= 25 and progress_value < 50 %}{% assign progress_class = 'progress-orange' %}
 {% elsif progress_value >= 50 and progress_value < 75 %}{% assign progress_class = 'progress-yellow' %}
 {% elsif progress_value >= 75 and progress_value < 100 %}{% assign progress_class = 'progress-green' %}
 {% elsif progress_value >= 100 %}{% assign progress_class = 'progress-complete' %}{% endif %}
 <div class="progress-item {{ progress_class }}">
-  <div class="progress-heading">
-    <strong>{{ stage_name | escape }}</strong>
-    <span class="progress-value">{{ progress_value }}%</span>
-  </div>
-  <div class="progress-track" role="progressbar" aria-label="{{ stage_name | escape }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}">
-    <span class="progress-fill" style="--progress: {{ progress_value | divided_by: 100.0 }};"></span>
-  </div>
+<div class="progress-heading"><strong>{{ stage_name | escape }}</strong><span class="progress-value">{{ progress_value }}%</span></div>
+<div class="progress-track" role="progressbar" aria-label="{{ stage_name | escape }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}"><span class="progress-fill" style="--progress: {{ progress_value | divided_by: 100.0 }};"></span></div>
 </div>
+{% endunless %}
 {% endfor %}
 </div>
+{% endif %}
+{% for group in page.progress_platform_groups %}
+{% assign group_stage_count = group.stages | size %}
+{% if group_stage_count > 0 %}
+<h3 class="progress-platform-title">{{ group.platform | default: 'Outra plataforma' | escape }}</h3>
+<div class="progress-list progress-platform-group">
+{% for stage in group.stages %}
+{% unless stage.name == 'Finalização' or stage.name == 'Finalização e publicação' %}
+{% assign stage_name = stage.name %}
+{% assign progress_value = stage.percentage | default: 0 | plus: 0 | at_least: 0 | at_most: 100 %}
+{% assign progress_class = 'progress-red' %}
+{% if progress_value >= 25 and progress_value < 50 %}{% assign progress_class = 'progress-orange' %}
+{% elsif progress_value >= 50 and progress_value < 75 %}{% assign progress_class = 'progress-yellow' %}
+{% elsif progress_value >= 75 and progress_value < 100 %}{% assign progress_class = 'progress-green' %}
+{% elsif progress_value >= 100 %}{% assign progress_class = 'progress-complete' %}{% endif %}
+<div class="progress-item {{ progress_class }}">
+<div class="progress-heading"><strong>{{ stage_name | escape }}</strong><span class="progress-value">{{ progress_value }}%</span></div>
+<div class="progress-track" role="progressbar" aria-label="{{ stage_name | escape }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}"><span class="progress-fill" style="--progress: {{ progress_value | divided_by: 100.0 }};"></span></div>
+</div>
+{% endunless %}
+{% endfor %}
+</div>
+{% endif %}
+{% endfor %}
+<div class="progress-list progress-final-list">
+{% assign progress_value = final_average %}
+{% assign progress_class = 'progress-red' %}
+{% if progress_value >= 25 and progress_value < 50 %}{% assign progress_class = 'progress-orange' %}
+{% elsif progress_value >= 50 and progress_value < 75 %}{% assign progress_class = 'progress-yellow' %}
+{% elsif progress_value >= 75 and progress_value < 100 %}{% assign progress_class = 'progress-green' %}
+{% elsif progress_value >= 100 %}{% assign progress_class = 'progress-complete' %}{% endif %}
+<div class="progress-item {{ progress_class }} progress-final-item">
+<div class="progress-heading"><strong>Finalização</strong><span class="progress-value">{{ progress_value }}%</span></div>
+<div class="progress-track" role="progressbar" aria-label="Finalização" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}"><span class="progress-fill" style="--progress: {{ progress_value | divided_by: 100.0 }};"></span></div>
+</div>
+</div>
 <div class="progress-warning">
-  <strong>Importante: leia antes de baixar</strong>
-  Leia as instruções incluídas no arquivo de download antes de instalar ou utilizar o projeto. Elas contêm informações sobre instalação, requisitos e compatibilidade.
+<strong>Importante: leia antes de baixar</strong>
+Leia as instruções incluídas no arquivo de download antes de instalar ou utilizar o projeto. Elas contêm informações sobre instalação, requisitos e compatibilidade.
 </div>
 {% endif %}
 
