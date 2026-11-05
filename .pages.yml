@@ -151,6 +151,25 @@ content:
           media: images
           path: projetos
           extensions: [jpg, jpeg, png, webp]
+      - name: version_history
+        label: Histórico de atualizações
+        type: object
+        description: Registre cada atualização com sua versão, data e resumo das mudanças. Adicione uma nova entrada sempre que publicar uma versão.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "Versão {version} — {date}"
+        fields:
+          - name: version
+            label: Versão
+            type: string
+            required: true
+          - name: date
+            label: Data da atualização
+            type: date
+          - name: changes
+            label: O que mudou nesta versão
+            type: text
       - name: game_developer
         label: Jogo original — Desenvolvedora
         type: string
