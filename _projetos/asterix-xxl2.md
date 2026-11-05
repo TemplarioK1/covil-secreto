@@ -4,9 +4,7 @@ category: Tradução
 platforms:
   - Nintendo Switch
   - PC
-status: Em testes
 version: "1.0"
-date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl2/icone.webp
 cover: /media/images/projetos/asterix-xxl2/capa.webp
 progress_stages:
@@ -19,26 +17,27 @@ progress_stages:
   - name: Testes no jogo
     percentage: 80
   - name: Revisão e correções
-    percentage: 50
+    percentage: 95
 progress_platform_groups:
   - platform: PC
     stages:
       - name: Port
-        percentage: 0
+        percentage: 100
 game_developer: OSome Studio
 game_publisher: Microids
 game_release_year: "2018"
 game_genre: Ação e aventura; beat 'em up e plataforma 3D
-game_synopsis: Asterix e Obelix partem para Las Vegum, um enorme parque de
-  diversões construído por Júlio César, para investigar o desaparecimento do
-  druida Panoramix. Explore áreas temáticas inspiradas em Roma, enfrente legiões
-  romanas e descubra os planos do imperador.
+game_synopsis: >-
+  Asterix e Obelix partem para Las Vegum, um enorme parque de diversões construído por Júlio César, para
+  investigar o desaparecimento do druida Panoramix. Explore áreas temáticas inspiradas em Roma, enfrente
+  legiões romanas e descubra os planos do imperador.
 game_multiplayer: Sim
 game_local_multiplayer: Sim
 game_online_multiplayer: Não
 game_players: 2 jogador
 game_multiplayer_details: Jogo para até dois jogadores.
 ---
+
 # Asterix & Obelix XXL 2 Tradução PT-BR | Build 1.0
 
 Está disponível a tradução de **Asterix & Obelix XXL 2 para português brasileiro!**
