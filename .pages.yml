@@ -1,0 +1,57 @@
+media:
+  input: media
+  output: /media
+
+content:
+  - name: projetos
+    label: Projetos
+    type: collection
+    path: projetos
+    format: yaml-frontmatter
+    filename: "{primary}.md"
+    view:
+      primary: title
+      fields:
+        - title
+        - category
+        - status
+    fields:
+      - name: title
+        label: Nome do jogo
+        type: string
+        required: true
+
+      - name: category
+        label: Categoria
+        type: string
+        description: Tradução ou Port
+
+      - name: platform
+        label: Plataforma
+        type: string
+        description: PC, Android, PSP, PS Vita etc.
+
+      - name: status
+        label: Status do projeto
+        type: string
+        description: Concluído, Em andamento ou Cancelado
+
+      - name: version
+        label: Versão
+        type: string
+
+      - name: date
+        label: Data de publicação
+        type: date
+
+      - name: cover
+        label: Capa do jogo
+        type: image
+
+      - name: download
+        label: Link para download
+        type: string
+
+      - name: body
+        label: Descrição e instruções
+        type: rich-text
