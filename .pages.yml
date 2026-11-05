@@ -2,15 +2,16 @@ media:
   - name: images
     label: Imagens dos projetos
     input: media/images
-    output: /covil-secreto/media/images
+    output: /media/images
     categories: [image]
     extensions: [jpg, jpeg, png, webp, gif]
+    rename: safe
   - name: downloads
-    label: Arquivos para download
+    label: Downloads
     input: downloads
-    output: /covil-secreto/downloads
+    output: /downloads
     categories: [compressed]
-    extensions: [zip, 7z, rar]
+    extensions: [zip]
     rename: safe
 
 content:
