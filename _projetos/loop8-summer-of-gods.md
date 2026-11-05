@@ -5,21 +5,14 @@ platforms:
   - Nintendo Switch
   - PC
 status: Em andamento
+date: 2026-11-05
 icon: /media/images/projetos/loop8-summer-of-gods/icone.webp
 cover: /media/images/projetos/loop8-summer-of-gods/capa.webp
-game_developer: Marvelous / SIEG Games
-game_publisher: XSEED Games (América do Norte) / Marvelous (Europa)
-game_release_year: "2023"
-game_genre: RPG / aventura narrativa
-game_synopsis: >-
-  Nini retorna à Terra e passa o verão de 1983 na cidade rural de Ashihara, um dos últimos refúgios da
-  humanidade. Enquanto cria laços com os moradores, precisa enfrentar os Kegai, criaturas que ameaçam a
-  cidade. Suas escolhas influenciam as relações, os combates e os ciclos que o fazem reviver o mês de agosto.
-game_multiplayer: Não
-game_local_multiplayer: Não
-game_online_multiplayer: Não
-game_players: 1 jogador
-game_multiplayer_details: Experiência exclusivamente para um jogador.
+screenshots:
+  - /media/images/projetos/loop8-summer-of-gods/screenshot-01.webp
+  - /media/images/projetos/loop8-summer-of-gods/screenshot-02.webp
+  - /media/images/projetos/loop8-summer-of-gods/screenshot-03.webp
+youtube: https://youtu.be/crI-ztOnpAo
 progress_stages:
   - name: Preparação e análise dos arquivos
     percentage: 100
@@ -31,19 +24,26 @@ progress_stages:
     percentage: 10
   - name: Revisão e correções
     percentage: 30
-youtube: https://youtu.be/crI-ztOnpAo
-screenshots:
-  - /media/images/projetos/loop8-summer-of-gods/screenshot-01.webp
-  - /media/images/projetos/loop8-summer-of-gods/screenshot-02.webp
-  - /media/images/projetos/loop8-summer-of-gods/screenshot-03.webp
-  - /media/images/projetos/loop8-summer-of-gods/screenshot-04.webp
 progress_platform_groups:
   - platform: PC
     stages:
       - name: Port
         percentage: 0
+game_developer: Marvelous / SIEG Games
+game_publisher: XSEED Games (América do Norte) / Marvelous (Europa)
+game_release_year: "2023"
+game_genre: RPG / aventura narrativa
+game_synopsis: Nini retorna à Terra e passa o verão de 1983 na cidade rural de
+  Ashihara, um dos últimos refúgios da humanidade. Enquanto cria laços com os
+  moradores, precisa enfrentar os Kegai, criaturas que ameaçam a cidade. Suas
+  escolhas influenciam as relações, os combates e os ciclos que o fazem reviver
+  o mês de agosto.
+game_multiplayer: Não
+game_local_multiplayer: Não
+game_online_multiplayer: Não
+game_players: 1 jogador
+game_multiplayer_details: Experiência exclusivamente para um jogador.
 ---
-
 
 
 ## Sobre o projeto
