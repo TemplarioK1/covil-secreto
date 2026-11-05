@@ -1,6 +1,7 @@
+
 media:
   input: media
-  output: /media
+  output: /covil-secreto/media
 
 content:
   - name: projetos
@@ -14,6 +15,7 @@ content:
       fields:
         - title
         - category
+        - platform
         - status
     fields:
       - name: title
@@ -23,18 +25,24 @@ content:
 
       - name: category
         label: Categoria
-        type: string
-        description: Tradução ou Port
+        type: select
+        options:
+          values:
+            - Tradução
+            - Port
 
       - name: platform
         label: Plataforma
         type: string
-        description: PC, Android, PSP, PS Vita etc.
 
       - name: status
-        label: Status do projeto
-        type: string
-        description: Concluído, Em andamento ou Cancelado
+        label: Status
+        type: select
+        options:
+          values:
+            - Concluído
+            - Em andamento
+            - Cancelado
 
       - name: version
         label: Versão
@@ -48,8 +56,13 @@ content:
         label: Capa do jogo
         type: image
 
+      - name: screenshots
+        label: Imagens do projeto
+        type: image
+        list: true
+
       - name: download
-        label: Link para download
+        label: Link de download
         type: string
 
       - name: body
