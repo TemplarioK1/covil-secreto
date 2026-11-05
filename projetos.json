@@ -13,7 +13,9 @@
     "cover": {{ project.cover | default: "" | jsonify }},
     "url": {{ project.url | relative_url | jsonify }},
     "download": {{ project.download | default: "" | jsonify }},
-    "description": {{ project.content | default: "" | strip_html | strip_newlines | jsonify }}
+    "description": {{ project.content | default: "" | strip_html | strip_newlines | jsonify }},
+    "progress_stages": {{ project.progress_stages | default: empty | jsonify }},
+    "progress_platform_groups": {{ project.progress_platform_groups | default: empty | jsonify }}
   }{% unless forloop.last %},{% endunless %}
 {% endfor %}
 ]
