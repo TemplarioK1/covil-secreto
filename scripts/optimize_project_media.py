@@ -16,8 +16,8 @@ PENDING_DELETE: dict[Path, set[str]] = {}
 ROOT = Path(".")
 MEDIA_PREFIX = "/media/images/"
 LIMITS = {
-    "icon": ((640, 400), "icone", "icone.webp"),
-    "cover": ((1600, 900), "capa", "capa.webp"),
+    "icon": ((640, 400), "icone.webp"),
+    "cover": ((1600, 900), "capa.webp"),
 }
 SCREEN_FIELDS = ("screenshot_1", "screenshot_2", "screenshot_3", "screenshot_4")
 
@@ -108,10 +108,10 @@ def process(project_file: Path) -> bool:
     slug = project_file.stem
     changed = False
 
-    for field, (size, folder, filename) in LIMITS.items():
+    for field, (size, filename) in LIMITS.items():
         old = data.get(field)
         if old:
-            new = f"{MEDIA_PREFIX}projetos/{slug}/{folder}/{filename}"
+            new = f"{MEDIA_PREFIX}projetos/{slug}/{filename}"
             updated = process_reference(old, new, size, project_file)
             if updated != old:
                 data[field] = updated
@@ -121,7 +121,7 @@ def process(project_file: Path) -> bool:
     if isinstance(legacy, list):
         updated_list = []
         for index, old in enumerate(legacy, start=1):
-            new = f"{MEDIA_PREFIX}projetos/{slug}/screenshots/screenshot-{index:02d}.webp"
+            new = f"{MEDIA_PREFIX}projetos/{slug}/screenshot-{index:02d}.webp"
             updated = process_reference(old, new, (1280, 720), project_file)
             updated_list.append(updated)
             changed |= updated != old
