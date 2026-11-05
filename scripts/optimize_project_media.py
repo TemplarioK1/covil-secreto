@@ -243,6 +243,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--project")
     parser.add_argument("--all", action="store_true")
+    parser.add_argument("--cleanup-orphans", action="store_true", help="Remove imagens sem referência após processar os projetos.")
     args = parser.parse_args()
     if args.all:
         projects = sorted((ROOT / "_projetos").glob("*.md"))
@@ -257,9 +258,10 @@ def main():
     else:
         raise SystemExit("Use --project _projetos/arquivo.md ou --all.")
     cleanup_pending()
-    removed_images = cleanup_orphan_images()
-    for image in removed_images:
-        print(f"Imagem sem referência removida: {image}")
+    if args.cleanup_orphans:
+        removed_images = cleanup_orphan_images()
+        for image in removed_images:
+            print(f"Imagem sem referência removida: {image}")
     print("Imagens e anexos organizados; front matter atualizado." if changed else
           "Nenhuma mídia local pendente para processar.")
 
