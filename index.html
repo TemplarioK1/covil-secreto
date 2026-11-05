@@ -71,6 +71,10 @@ input, select {
   min-height:154px;padding:18px;display:flex;align-items:center;
   gap:18px;color:inherit;text-decoration:none;
 }
+.card-media {
+  width:104px;flex:0 0 104px;display:flex;flex-direction:column;
+  align-items:stretch;gap:9px;
+}
 .project-icon {
   width:104px;height:104px;flex:0 0 104px;object-fit:contain;
   border-radius:9px;background:#24202c;display:block;
@@ -80,27 +84,25 @@ input, select {
   display:flex;align-items:center;justify-content:center;
   color:var(--purple);font-size:35px;border-radius:9px;
 }
-.card-content {
-  min-width:0;min-height:114px;flex:1;
-  display:grid;grid-template-rows:44px 40px 18px;
-  align-content:center;row-gap:6px;
-}
-.card h3 {
-  margin:0;font-size:18px;line-height:1.25;
-  display:-webkit-box;-webkit-box-orient:vertical;
-  -webkit-line-clamp:2;line-clamp:2;overflow:hidden;
-  overflow-wrap:anywhere;
-}
+.card-content {min-width:0;min-height:104px;flex:1;display:flex;align-items:center}
+.card h3 {margin:0;font-size:18px;line-height:1.35;overflow-wrap:anywhere}
+.card-meta {min-width:0;flex:1;display:flex;flex-direction:column;gap:9px}
 .platforms {
   display:flex;gap:7px;flex-wrap:wrap;align-content:flex-start;
-  min-height:40px;max-height:40px;overflow:hidden;
+  min-height:0;max-height:72px;overflow:hidden;
 }
 .tag-small {
   font-size:11px;background:#30253d;color:#d1b9ff;
   padding:6px 9px;border-radius:5px;line-height:14px;
 }
-.progress-summary {display:flex;align-items:center;gap:8px;margin:0;min-width:0;height:18px}
-.progress-summary-track {height:6px;flex:1;min-width:35px;max-width:100px;background:#302a3a;border-radius:99px;overflow:hidden}
+.progress-summary {
+  display:flex;align-items:center;justify-content:center;gap:5px;
+  margin:0;width:100%;min-width:0;height:18px;
+}
+.progress-summary-track {
+  height:6px;flex:1;min-width:0;max-width:none;
+  background:#302a3a;border-radius:99px;overflow:hidden;
+}
 .progress-summary-fill {display:block;height:100%;width:var(--progress);border-radius:inherit}
 .progress-summary-value {font-size:12px;font-weight:bold;white-space:nowrap;font-variant-numeric:tabular-nums}
 .progress-summary.progress-red .progress-summary-fill {background:#e05252}
@@ -135,8 +137,10 @@ footer {
   nav {gap:14px}
   .hero {padding-top:60px}
   .card-link {min-height:142px;padding:14px;gap:14px}
-  .card-content {min-height:114px;grid-template-rows:44px 40px 18px}
+  .card-media {width:88px;flex-basis:88px;gap:8px}
   .project-icon,.no-cover {width:88px;height:88px;flex-basis:88px}
+  .card-content {min-height:88px}
+  .card h3 {font-size:17px}
 }
 </style>
 </head>
@@ -352,13 +356,17 @@ function render() {
     return `
       <article class="card">
         <a class="card-link" href="${escapeHTML(projectUrl)}">
-          ${image}
-          <div class="card-content">
-            <h3>${escapeHTML(p.title)}</h3>
-            <div class="platforms">
-              ${platforms.map(platform => `<span class="tag-small">${escapeHTML(platform)}</span>`).join("")}
-            </div>
+          <div class="card-media">
+            ${image}
             ${progressSummary}
+          </div>
+          <div class="card-content">
+            <div class="card-meta">
+              <h3>${escapeHTML(p.title)}</h3>
+              <div class="platforms">
+                ${platforms.map(platform => `<span class="tag-small">${escapeHTML(platform)}</span>`).join("")}
+              </div>
+            </div>
           </div>
         </a>
       </article>`;
