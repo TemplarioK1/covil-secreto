@@ -14,16 +14,17 @@ screenshots:
   - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-02.webp
 youtube: https://youtu.be/oOS3F29rIm8
 download: /downloads/projetos/asterix-xxl3-switch-port-pc/010081500ea1e000.zip
-game_developer: ""
-game_publisher: ""
-game_release_year: ""
-game_genre: ""
-game_synopsis: ""
-game_multiplayer: ""
-game_local_multiplayer: ""
-game_online_multiplayer: ""
-game_players: ""
-game_multiplayer_details: ""
+game_developer: "OSome Studio"
+game_publisher: "Microids"
+game_release_year: "2019"
+game_genre: "Aventura e beat 'em up"
+game_synopsis: >-
+  Asterix e Obelix embarcam em uma aventura para desvendar o mistério do Menir de Cristal. Explore diferentes regiões do Império Romano, enfrente inimigos, complete missões secundárias e use as várias formas do menir — pedra, gelo, fogo e ímã — para superar desafios.
+game_multiplayer: "Sim"
+game_local_multiplayer: "Sim"
+game_online_multiplayer: "Não"
+game_players: "1–2 jogadores (cooperativo local)"
+game_multiplayer_details: "Modo cooperativo para dois jogadores no mesmo console/tela. Não possui multiplayer online."
 ---
 ## Sobre o projeto
 
