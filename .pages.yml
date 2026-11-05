@@ -317,30 +317,24 @@ content:
         label: Jogo original — Sinopse
         type: text
       - name: game_multiplayer
-        label: Jogo original — Possui multiplayer?
+        label: Jogo original — Multiplayer
         type: select
         options:
           values:
-            - Sim
             - Não
-      - name: game_local_multiplayer
-        label: Jogo original — Multiplayer local?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: game_online_multiplayer
-        label: Jogo original — Multiplayer online?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
+            - Local
+            - Local/Online
+            - Online
       - name: game_players
         label: Jogo original — Quantidade de jogadores
-        type: string
-        description: "Ex.: 1 jogador, 1–4 jogadores, até 8 online."
-      - name: game_multiplayer_details
-        label: Jogo original — Detalhes do multiplayer
-        type: text
+        type: select
+        options:
+          values:
+            - "1"
+            - "2"
+            - "3"
+            - "4"
+            - "5"
+            - "6"
+            - "7"
+            - "8"
