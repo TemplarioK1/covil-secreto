@@ -1,21 +1,19 @@
 ---
-title: Asterix & Obelix XXL 3 — Tradução para Switch
+title: Asterix & Obelix XXL 3 - The Crystal Menhir
 category: Tradução
 platforms:
-- Nintendo Switch
-- PC
-status: Em andamento
-version: '1.0'
+  - Nintendo Switch
+  - PC
+status: Concluído
+version: "1.0"
 date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl3-switch-port-pc/icone.webp
 cover: /media/images/projetos/asterix-xxl3-switch-port-pc/capa.webp
 screenshots:
-- /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-01.webp
-- /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-02.webp
+  - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-01.webp
+  - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-02.webp
 youtube: https://youtu.be/oOS3F29rIm8
 download: /downloads/projetos/asterix-xxl3-switch-port-pc/010081500ea1e000.zip
-additional_downloads: []
-version_history: []
 ---
 ## Sobre o projeto
 
