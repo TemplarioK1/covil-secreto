@@ -235,7 +235,6 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 <img src="{{ screenshot_path | escape }}" alt="Screenshot de {{ page.title | escape }}" loading="lazy">
 {% endif %}
 {% endfor %}
-</div>
 {% if page.youtube %}
 {% assign youtube_url = page.youtube | strip %}
 {% assign youtube_id = '' %}
@@ -244,6 +243,7 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 <div class="gallery-video"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id | escape }}" title="Vídeo de {{ page.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
 {% endif %}
 {% endif %}
+</div>
 {% endif %}
 
 {% assign info = page %}
