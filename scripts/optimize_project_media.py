@@ -11,6 +11,8 @@ import shutil
 import yaml
 from PIL import Image, ImageOps
 
+PENDING_DELETE: dict[Path, set[str]] = {}
+
 ROOT = Path(".")
 MEDIA_PREFIX = "/media/images/"
 LIMITS = {
@@ -52,7 +54,11 @@ def optimize(source: Path, destination: Path, max_size: tuple[int, int]) -> None
     destination.parent.mkdir(parents=True, exist_ok=True)
     with Image.open(source) as original:
         if getattr(original, "is_animated", False):
-            raise ValueError(f"Imagem animada não suportada pelo otimizador: {source}")
+            # Preserve GIFs animados sem remover a animação.
+            destination = destination.with_suffix(source.suffix.lower())
+            destination.parent.mkdir(parents=True, exist_ok=True)
+            shutil.copy2(source, destination)
+            return
         image = ImageOps.exif_transpose(original)
         image.thumbnail(max_size, Image.Resampling.LANCZOS)
         if image.mode not in ("RGB", "RGBA"):
@@ -90,8 +96,9 @@ def process_reference(public_path: str, destination_public: str, max_size, curre
     if source.resolve() == destination.resolve():
         return destination_public
     optimize(source, destination, max_size)
-    if not is_used_elsewhere(public_path, current_project):
-        source.unlink(missing_ok=True)
+    if destination.suffix.lower() != ".webp":
+        destination_public = str(Path(destination_public).with_suffix(destination.suffix))
+    PENDING_DELETE.setdefault(source, set()).add(str(public_path).strip())
     return destination_public
 
 
@@ -138,8 +145,7 @@ def process(project_file: Path) -> bool:
             target_zip.parent.mkdir(parents=True, exist_ok=True)
             if source_zip.resolve() != target_zip.resolve():
                 shutil.copy2(source_zip, target_zip)
-                if not is_used_elsewhere(old_download, project_file):
-                    source_zip.unlink(missing_ok=True)
+                PENDING_DELETE.setdefault(source_zip.resolve(), set()).add(str(old_download).strip())
                 data["download"] = "/" + target_zip.as_posix()
                 changed = True
 
@@ -152,6 +158,19 @@ def process(project_file: Path) -> bool:
             encoding="utf-8",
         )
     return changed
+
+
+def cleanup_pending():
+    projects = list((ROOT / "_projetos").glob("*.md"))
+    for source, old_refs in PENDING_DELETE.items():
+        still_referenced = False
+        for candidate in projects:
+            content = candidate.read_text(encoding="utf-8")
+            if any(old_ref in content for old_ref in old_refs):
+                still_referenced = True
+                break
+        if not still_referenced:
+            source.unlink(missing_ok=True)
 
 
 def main():
@@ -171,6 +190,7 @@ def main():
         changed = process(project)
     else:
         raise SystemExit("Use --project _projetos/arquivo.md ou --all.")
+    cleanup_pending()
     print("Imagens e anexos organizados; front matter atualizado." if changed else
           "Nenhuma mídia local pendente para processar.")
 
