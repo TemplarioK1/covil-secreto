@@ -8,6 +8,7 @@ on:
       - "_projetos/**"
       - "media/images/**"
       - "scripts/**"
+      - ".github/workflows/**"
       - "downloads/**"
       - "index.html"
       - "projetos.json"
