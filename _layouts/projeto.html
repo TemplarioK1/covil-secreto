@@ -61,9 +61,9 @@ h2{margin-top:45px;border-bottom:1px solid #302a3a;padding-bottom:12px}
 .progress-fill{display:block;width:100%;height:100%;border-radius:inherit;transform:scaleX(var(--progress));transform-origin:left center;animation:progress-appear .8s ease-out both}
 .progress-red .progress-fill{background:#e05252}.progress-red .progress-value{color:#ff7777}
 .progress-orange .progress-fill{background:#ed963d}.progress-orange .progress-value{color:#ffb66b}
-.progress-blue .progress-fill{background:#5799e6}.progress-blue .progress-value{color:#82baff}
+.progress-yellow .progress-fill{background:#e3c342}.progress-yellow .progress-value{color:#f0d96b}
 .progress-green .progress-fill{background:#55b878}.progress-green .progress-value{color:#78d99a}
-.progress-complete .progress-fill{background:#21894b}.progress-complete .progress-value{color:#65df91}
+.progress-complete .progress-fill{background:#397fd6}.progress-complete .progress-value{color:#79b5ff}
 .progress-warning{margin:22px 0 0;padding:17px 19px;border:1px solid #805b2d;border-left:4px solid #ed963d;border-radius:9px;background:#2a2118;color:#ffe0b5;line-height:1.65}
 .progress-warning strong{display:block;margin-bottom:5px;color:#ffc477}
 @keyframes progress-appear{from{transform:scaleX(0)}to{transform:scaleX(var(--progress))}}
@@ -103,7 +103,7 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% assign progress_value = progress_value | at_least: 0 | at_most: 100 %}
 {% assign progress_class = 'progress-red' %}
 {% if progress_value >= 25 and progress_value < 50 %}{% assign progress_class = 'progress-orange' %}
-{% elsif progress_value >= 50 and progress_value < 75 %}{% assign progress_class = 'progress-blue' %}
+{% elsif progress_value >= 50 and progress_value < 75 %}{% assign progress_class = 'progress-yellow' %}
 {% elsif progress_value >= 75 and progress_value < 100 %}{% assign progress_class = 'progress-green' %}
 {% elsif progress_value >= 100 %}{% assign progress_class = 'progress-complete' %}{% endif %}
 <div class="progress-item {{ progress_class }}">
