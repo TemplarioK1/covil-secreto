@@ -39,11 +39,8 @@ game_synopsis: Asterix e Obelix embarcam em uma aventura para desvendar o misté
   do Menir de Cristal. Explore diferentes regiões do Império Romano, enfrente inimigos,
   complete missões secundárias e use as várias formas do menir — pedra, gelo, fogo
   e ímã — para superar desafios.
-game_multiplayer: Sim
-game_local_multiplayer: Sim
-game_online_multiplayer: Não
-game_players: 1–2 jogadores (cooperativo local)
-game_multiplayer_details: Modo cooperativo para dois jogadores no mesmo console/tela.
+game_multiplayer: Local
+game_players: "2"
   Não possui multiplayer online.
 ---
 ## Sobre o projeto
