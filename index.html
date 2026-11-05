@@ -158,10 +158,10 @@ footer {
 </head>
 
 <body>
-<header>
+<header id="topo">
   <a class="logo" href="#inicio" aria-label="Covil Secreto — início"><img src="/covil-secreto/Logo%20gamer%20neon%20Covil%20Secreto.png" alt="Covil Secreto"></a>
   <nav>
-    <a href="#inicio">Início</a>
+    <a href="#topo">Início</a>
     <a href="#projetos">Projetos</a>
     <a href="#sobre">Sobre</a>
   </nav>
@@ -196,7 +196,7 @@ footer {
     </div>
   </div>
 
-  <div id="catalog" class="grid">
+  <div id="catalog">
     <div class="loading">Carregando projetos do Covil Secreto...</div>
   </div>
 </section>
@@ -336,7 +336,7 @@ function render() {
     return;
   }
 
-  catalog.innerHTML = filtered.map(p => {
+  const renderCard = p => {
     const image = p.icon ? `
       <img class="project-icon"
       src="${escapeHTML(resolveImage(p.icon))}"
@@ -368,13 +368,9 @@ function render() {
     return `
       <article class="card">
         <a class="card-link" href="${escapeHTML(projectUrl)}">
-          <div class="card-media">
-            ${image}
-          </div>
+          <div class="card-media">${image}</div>
           <div class="card-content">
-            <div class="card-meta">
-              <h3>${escapeHTML(p.title)}</h3>
-            </div>
+            <div class="card-meta"><h3>${escapeHTML(p.title)}</h3></div>
           </div>
           <div class="card-details">
             ${progressSummary}
@@ -384,7 +380,20 @@ function render() {
           </div>
         </a>
       </article>`;
-  }).join("");
+  };
+
+  const translations = filtered.filter(p => String(p.category || "").toLowerCase() === "tradução");
+  const ports = filtered.filter(p => String(p.category || "").toLowerCase() === "port");
+
+  const renderGroup = (title, items, id) => items.length ? `
+    <section class="catalog-group" aria-labelledby="${id}">
+      <h2 class="catalog-group-title" id="${id}">${title}</h2>
+      <div class="grid">${items.map(renderCard).join("")}</div>
+    </section>` : "";
+
+  catalog.innerHTML =
+    renderGroup("Traduções", translations, "catalog-traducoes") +
+    renderGroup("Ports", ports, "catalog-ports");
 }
 
 document.querySelectorAll("[data-filter]").forEach(button => {
