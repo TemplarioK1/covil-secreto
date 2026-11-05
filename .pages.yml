@@ -52,10 +52,34 @@ content:
             - Tradução
             - Port
             - Projeto
-      - name: platform
+      - name: platforms
         label: Plataformas
+        type: select
+        description: Selecione todas as plataformas em que este projeto está disponível ou será lançado.
+        options:
+          multiple: true
+          values:
+            - Nintendo Switch 2
+            - Nintendo Switch
+            - PC
+            - PlayStation 5
+            - PlayStation 4
+            - PlayStation 3
+            - Xbox Series X|S
+            - Xbox One
+            - Xbox 360
+            - Wii U
+            - Wii
+            - Nintendo 3DS
+            - Nintendo DS
+            - PlayStation Vita
+            - PSP
+            - Android
+            - iOS
+      - name: platform
+        label: Plataforma antiga (compatibilidade)
         type: string
-        description: Informe todas as plataformas separadas por vírgula. Ex.: Nintendo Switch, PC
+        hidden: true
       - name: status
         label: Status
         type: select
@@ -128,12 +152,73 @@ content:
         type: string
         description: Cole o link completo do vídeo do YouTube (opcional).
       - name: download
-        label: Arquivo ZIP para download
+        label: Download principal (todas as plataformas)
         type: file
+        description: Arquivo principal compartilhado por todas as plataformas.
         options:
           media: downloads
           path: projetos
           extensions: [zip]
+      - name: additional_downloads
+        label: Downloads complementares
+        type: object
+        description: Adicione aqui arquivos específicos de uma plataforma ou complementos opcionais. Cada item pode ter sua própria observação.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{platform} — {file}"
+        fields:
+          - name: file
+            label: Arquivo complementar
+            type: file
+            options:
+              media: downloads
+              path: projetos
+              extensions: [zip]
+          - name: platform
+            label: Plataforma relacionada
+            type: select
+            options:
+              values:
+                - Nintendo Switch 2
+                - Nintendo Switch
+                - PC
+                - PlayStation 5
+                - PlayStation 4
+                - PlayStation 3
+                - Xbox Series X|S
+                - Xbox One
+                - Xbox 360
+                - Wii U
+                - Wii
+                - Nintendo 3DS
+                - Nintendo DS
+                - PlayStation Vita
+                - PSP
+                - Android
+                - iOS
+          - name: note
+            label: Observação
+            type: text
+      - name: version_history
+        label: Histórico de atualizações
+        type: object
+        description: Registre cada atualização com sua versão, data e resumo das mudanças. Adicione uma nova entrada sempre que publicar uma versão.
+        list:
+          collapsible:
+            collapsed: true
+            summary: "Versão {version} — {date}"
+        fields:
+          - name: version
+            label: Versão
+            type: string
+            required: true
+          - name: date
+            label: Data da atualização
+            type: date
+          - name: changes
+            label: O que mudou nesta versão
+            type: text
       - name: body
         label: Descrição e instruções
         type: rich-text
