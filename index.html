@@ -40,11 +40,12 @@ main {max-width:1100px;margin:auto;padding:15px 24px 90px}
 .section-title {margin:30px 0}
 .section-title p {color:var(--muted);font-size:14px}
 .controls {display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}
-input {
+input, select {
   background:var(--panel);border:1px solid var(--border);
   border-radius:8px;padding:13px;color:white;outline:none;
 }
 #search {flex:1;min-width:200px}
+#platform-filter {min-width:190px;cursor:pointer}
 .filters {display:flex;gap:8px;flex-wrap:wrap}
 .filters button {
   background:var(--panel);border:1px solid var(--border);
@@ -139,6 +140,9 @@ footer {
 
   <div class="controls">
     <input id="search" type="search" placeholder="Pesquisar jogo...">
+    <select id="platform-filter" aria-label="Filtrar por plataforma">
+      <option value="Todas">Todas as plataformas</option>
+    </select>
     <div class="filters">
       <button class="active" data-filter="Todos">Todos</button>
       <button data-filter="Tradução">Traduções</button>
@@ -176,6 +180,24 @@ const catalog = document.getElementById("catalog");
 const search = document.getElementById("search");
 let projects = [];
 let activeFilter = "Todos";
+let activePlatform = "Todas";
+const platformFilter = document.getElementById("platform-filter");
+
+function getProjectPlatforms(project) {
+  const value = project.platforms || project.platform || [];
+  if (Array.isArray(value)) return value.map(item => String(item).trim()).filter(Boolean);
+  return String(value).split(/[,;]+/).map(item => item.trim()).filter(Boolean);
+}
+
+function populatePlatformFilter() {
+  const allPlatforms = [...new Set(projects.flatMap(getProjectPlatforms))]
+    .sort((a, b) => a.localeCompare(b, "pt-BR"));
+  platformFilter.innerHTML = '<option value="Todas">Todas as plataformas</option>' +
+    allPlatforms.map(platform =>
+      '<option value="' + escapeHTML(platform) + '">' + escapeHTML(platform) + '</option>'
+    ).join("");
+  platformFilter.value = activePlatform;
+}
 
 function getField(text, name) {
   const match = text.match(
@@ -232,6 +254,7 @@ async function loadProjects() {
     }
 
     projects = data.filter(project => project && project.title);
+    populatePlatformFilter();
     render();
   } catch (error) {
     catalog.innerHTML = `
@@ -247,14 +270,15 @@ function render() {
   const term = search.value.toLowerCase();
 
   const filtered = projects.filter(p => {
+    const platforms = getProjectPlatforms(p);
     const matchesFilter = activeFilter === "Todos" ||
       String(p.category || "").toLowerCase() === activeFilter.toLowerCase();
-
+    const matchesPlatform = activePlatform === "Todas" || platforms.includes(activePlatform);
     const matchesSearch = (
-      String(p.title || "") + " " + String(p.platform || "") + " " + String(p.category || "")
+      String(p.title || "") + " " + platforms.join(" ") + " " + String(p.category || "")
     ).toLowerCase().includes(term);
 
-    return matchesFilter && matchesSearch;
+    return matchesFilter && matchesPlatform && matchesSearch;
   });
 
   if (!filtered.length) {
@@ -276,10 +300,7 @@ function render() {
     ` : `<div class="no-cover">🎮</div>`;
 
     const projectUrl = resolveImage(p.url) || "#";
-    const platforms = String(p.platform || "")
-      .split(/[,;]+/)
-      .map(platform => platform.trim())
-      .filter(Boolean);
+    const platforms = getProjectPlatforms(p);
 
     return `
       <article class="card">
@@ -304,6 +325,11 @@ document.querySelectorAll("[data-filter]").forEach(button => {
     );
     render();
   });
+});
+
+platformFilter.addEventListener("change", () => {
+  activePlatform = platformFilter.value;
+  render();
 });
 
 search.addEventListener("input", render);
