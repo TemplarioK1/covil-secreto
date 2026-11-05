@@ -21,7 +21,27 @@ game_local_multiplayer: Não
 game_online_multiplayer: Não
 game_players: 1 jogador
 game_multiplayer_details: Experiência exclusivamente para um jogador.
+
+progress_stages:
+- name: Preparação e análise dos arquivos
+  percentage: 0
+- name: Tradução e adaptação
+  percentage: 0
+- name: Revisão e correções
+  percentage: 0
+- name: Testes no jogo
+  percentage: 0
+- name: Finalização e publicação
+  percentage: 0
 ---
 ## Sobre o projeto
 
-Informações sobre a tradução e o projeto serão adicionadas em breve.
+Este projeto tem como objetivo disponibilizar **My Universe - Cooking Star Restaurant** em português brasileiro para **Nintendo Switch e PC**. A adaptação busca facilitar a compreensão dos menus, instruções, receitas e demais textos presentes na experiência de gerenciamento do restaurante.
+
+## Instruções importantes
+
+**Leia as instruções incluídas no arquivo de download antes de instalar ou utilizar os arquivos.** Confira a plataforma e a versão do jogo compatível e siga os procedimentos descritos no material.
+
+## Progresso
+
+As etapas abaixo organizam as fases de preparação, tradução, revisão e testes. Os percentuais são valores iniciais e devem ser atualizados conforme o andamento real.
