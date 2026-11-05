@@ -11,8 +11,10 @@ cover: /media/images/projetos/asterix-xxl2/capa.webp
 progress_stages:
   - name: Preparação e análise dos arquivos
     percentage: 100
-  - name: Tradução e adaptação
+  - name: Tradução de textos
     percentage: 100
+  - name: Tradução de sprites
+    percentage: 0
   - name: Testes no jogo
     percentage: 100
   - name: Revisão e correções
