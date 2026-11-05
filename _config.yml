@@ -1,0 +1,19 @@
+
+title: Covil Secreto
+description: Traduções, ports e projetos independentes.
+url: "https://templariok1.github.io"
+baseurl: "/covil-secreto"
+
+collections:
+  projetos:
+    output: true
+    permalink: /projetos/:name/
+
+defaults:
+  - scope:
+      path: ""
+      type: projetos
+    values:
+      layout: projeto
+
+markdown: kramdown
