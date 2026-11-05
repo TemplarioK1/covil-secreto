@@ -27,11 +27,8 @@ game_synopsis: Um estudante do ensino médio e seus amigos entram em uma
   competição para conquistar o coração das garotas. Misturando simulação de
   encontros e mecânicas de jogo de tabuleiro, os participantes disputam para ver
   quem consegue formar um casal primeiro.
-game_multiplayer: Sim
-game_local_multiplayer: Sim
-game_online_multiplayer: Não
-game_players: 1–4 jogadores
-game_multiplayer_details: Permite partidas com até quatro participantes, humanos
+game_multiplayer: Local
+game_players: "4"
   ou controlados pelo jogo, no mesmo console. Não possui multiplayer online.
 ---
 
