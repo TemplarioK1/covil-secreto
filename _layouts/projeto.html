@@ -52,6 +52,23 @@ h2{margin-top:45px;border-bottom:1px solid #302a3a;padding-bottom:12px}
 .history-item h3{margin:0 0 6px;font-size:17px}
 .history-item time{color:#aaa3b5;font-size:13px}
 .history-item p{color:#c1b9cd;line-height:1.65;margin:10px 0 0;white-space:pre-line}
+.progress-list{display:grid;gap:18px;margin-top:20px}
+.progress-item{background:#191820;border:1px solid #302a3a;border-radius:10px;padding:17px}
+.progress-heading{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-bottom:11px}
+.progress-heading strong{font-size:15px;line-height:1.4}
+.progress-value{font-size:14px;font-weight:bold;font-variant-numeric:tabular-nums;white-space:nowrap}
+.progress-track{height:11px;border-radius:999px;background:#302a3a;overflow:hidden}
+.progress-fill{display:block;width:100%;height:100%;border-radius:inherit;transform:scaleX(var(--progress));transform-origin:left center;animation:progress-appear .8s ease-out both}
+.progress-red .progress-fill{background:#e05252}.progress-red .progress-value{color:#ff7777}
+.progress-orange .progress-fill{background:#ed963d}.progress-orange .progress-value{color:#ffb66b}
+.progress-blue .progress-fill{background:#5799e6}.progress-blue .progress-value{color:#82baff}
+.progress-green .progress-fill{background:#55b878}.progress-green .progress-value{color:#78d99a}
+.progress-complete .progress-fill{background:#21894b}.progress-complete .progress-value{color:#65df91}
+.progress-warning{margin:22px 0 0;padding:17px 19px;border:1px solid #805b2d;border-left:4px solid #ed963d;border-radius:9px;background:#2a2118;color:#ffe0b5;line-height:1.65}
+.progress-warning strong{display:block;margin-bottom:5px;color:#ffc477}
+@keyframes progress-appear{from{transform:scaleX(0)}to{transform:scaleX(var(--progress))}}
+@media(prefers-reduced-motion:reduce){.progress-fill{animation:none}}
+@media(max-width:600px){.progress-item{padding:14px}.progress-heading strong{font-size:14px}}
 footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5;font-size:12px}
 </style>
 </head>
@@ -77,6 +94,34 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 </div>
 
 {% if content != "" %}<section class="description">{{ content }}</section>{% endif %}
+
+{% if page.progress_stages and page.progress_stages.size > 0 %}
+<h2>Progresso do projeto</h2>
+<div class="progress-list">
+{% for stage in page.progress_stages %}
+{% assign progress_value = stage.percentage | default: 0 | plus: 0 %}
+{% assign progress_value = progress_value | at_least: 0 | at_most: 100 %}
+{% assign progress_class = 'progress-red' %}
+{% if progress_value >= 25 and progress_value < 50 %}{% assign progress_class = 'progress-orange' %}
+{% elsif progress_value >= 50 and progress_value < 75 %}{% assign progress_class = 'progress-blue' %}
+{% elsif progress_value >= 75 and progress_value < 100 %}{% assign progress_class = 'progress-green' %}
+{% elsif progress_value >= 100 %}{% assign progress_class = 'progress-complete' %}{% endif %}
+<div class="progress-item {{ progress_class }}">
+  <div class="progress-heading">
+    <strong>{{ stage.name | escape }}</strong>
+    <span class="progress-value">{{ progress_value }}%</span>
+  </div>
+  <div class="progress-track" role="progressbar" aria-label="{{ stage.name | escape }}" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}">
+    <span class="progress-fill" style="--progress: {{ progress_value | divided_by: 100.0 }};"></span>
+  </div>
+</div>
+{% endfor %}
+</div>
+<div class="progress-warning">
+  <strong>Importante: leia antes de baixar</strong>
+  Leia as instruções incluídas no arquivo de download antes de instalar ou utilizar o projeto. Elas contêm informações sobre instalação, requisitos e compatibilidade.
+</div>
+{% endif %}
 
 {% assign new_screenshots = page.screenshot_1 | append: '|' | append: page.screenshot_2 | append: '|' | append: page.screenshot_3 | append: '|' | append: page.screenshot_4 | split: '|' %}
 {% if page.screenshots or page.screenshot_1 or page.screenshot_2 or page.screenshot_3 or page.screenshot_4 %}

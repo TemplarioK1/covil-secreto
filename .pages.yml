@@ -224,9 +224,53 @@ content:
           - name: note
             label: Observação
             type: text
+      - name: progress_stages
+        label: Etapas e progresso
+        type: object
+        description: Adicione, remova ou ajuste as etapas e informe o percentual concluído de cada uma.
+        default:
+          - name: Preparação e análise dos arquivos
+            percentage: 0
+          - name: Tradução e adaptação
+            percentage: 0
+          - name: Revisão e correções
+            percentage: 0
+          - name: Testes no jogo
+            percentage: 0
+          - name: Finalização e publicação
+            percentage: 0
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{name} — {percentage}%"
+        fields:
+          - name: name
+            label: Nome da etapa
+            type: string
+            required: true
+          - name: percentage
+            label: Progresso (%)
+            type: number
+            required: true
+            options:
+              min: 0
+              max: 100
+              step: 1
       - name: body
         label: Descrição e instruções
         type: rich-text
+        default: |
+          ## Sobre o projeto
+
+          Este projeto tem como objetivo disponibilizar uma versão adaptada de **[NOME DO JOGO]** para **[PLATAFORMA(S)]**. As informações específicas sobre o trabalho, seu andamento e eventuais particularidades serão atualizadas conforme o desenvolvimento avançar.
+
+          ## Instruções importantes
+
+          **LEIA AS INSTRUÇÕES INCLUÍDAS NO ARQUIVO DE DOWNLOAD ANTES DE INSTALAR OU UTILIZAR O PROJETO.**
+
+          O arquivo pode conter informações específicas sobre instalação, requisitos, compatibilidade e procedimentos necessários para o funcionamento correto.
+
+          Faça uma cópia de segurança dos arquivos originais quando necessário e confira se está utilizando a versão do jogo indicada nas instruções.
       - name: game_developer
         label: Jogo original — Desenvolvedora
         type: string
