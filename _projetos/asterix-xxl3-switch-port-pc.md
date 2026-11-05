@@ -11,7 +11,6 @@ icon: /media/images/projetos/asterix-xxl3-switch-port-pc/icone.webp
 cover: /media/images/projetos/asterix-xxl3-switch-port-pc/capa.webp
 screenshots:
   - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-01.webp
-  - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-02.webp
   - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-03.webp
   - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-04.webp
 youtube: https://youtu.be/oOS3F29rIm8
@@ -47,8 +46,6 @@ game_players: 1–2 jogadores (cooperativo local)
 game_multiplayer_details: Modo cooperativo para dois jogadores no mesmo
   console/tela. Não possui multiplayer online.
 ---
-
-
 ## Sobre o projeto
 
 Este projeto reúne o trabalho de **Asterix & Obelix XXL 3 - The Crystal Menhir** para duas plataformas: a tradução para **Nintendo Switch** e o desenvolvimento de um **port para PC**.
