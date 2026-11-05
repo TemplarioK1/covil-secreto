@@ -171,6 +171,7 @@ footer {
 const USER = "templariok1";
 const REPO = "covil-secreto";
 const BRANCH = "main";
+const PROJECTS_PATH = "_projetos";
 
 const catalog = document.getElementById("catalog");
 const search = document.getElementById("search");
@@ -193,8 +194,19 @@ function getBody(text) {
 
 function resolveImage(path) {
   if (!path) return "";
-  if (/^https?:\/\//i.test(path)) return path;
-  return new URL(path.replace(/^\/+/, ""), location.href).href;
+  const value = path.trim();
+
+  if (/^(https?:)?\/\//i.test(value) || value.startsWith("data:")) {
+    return value;
+  }
+
+  const normalized = value.replace(/^\/+/, "");
+  const siteBase = "/covil-secreto/";
+  const sitePath = normalized.startsWith("covil-secreto/")
+    ? "/" + normalized
+    : siteBase + normalized;
+
+  return new URL(sitePath, location.origin).href;
 }
 
 function escapeHTML(value) {
@@ -206,12 +218,25 @@ function escapeHTML(value) {
 
 async function loadProjects() {
   try {
-    const api = `https://api.github.com/repos/${USER}/${REPO}/contents/projetos?ref=${BRANCH}`;
-    const response = await fetch(api);
+    const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${PROJECTS_PATH}?ref=${BRANCH}`;
+    const response = await fetch(api, {
+      headers: { Accept: "application/vnd.github+json" }
+    });
 
-    if (!response.ok) throw new Error("Não foi possível acessar os projetos.");
+    if (!response.ok) {
+      if (response.status === 404) {
+        throw new Error(`A pasta ${PROJECTS_PATH} não foi encontrada no GitHub.`);
+      }
+      if (response.status === 403) {
+        throw new Error("O GitHub limitou temporariamente as consultas à API. Tente novamente mais tarde.");
+      }
+      throw new Error(`Falha ao consultar o GitHub (HTTP ${response.status}).`);
+    }
 
     const files = await response.json();
+    if (!Array.isArray(files)) {
+      throw new Error("O GitHub não retornou uma lista válida de projetos.");
+    }
     const markdownFiles = files.filter(file =>
       file.type === "file" && file.name.endsWith(".md")
     );
@@ -245,7 +270,7 @@ async function loadProjects() {
       <div class="empty">
         <strong>Não foi possível carregar o catálogo.</strong>
         ${escapeHTML(error.message)}
-        <p>Verifique se a pasta projetos está pública e tente novamente.</p>
+        <p>Verifique se a pasta _projetos está pública e tente novamente.</p>
       </div>`;
   }
 }
