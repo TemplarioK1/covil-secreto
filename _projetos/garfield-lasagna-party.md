@@ -38,14 +38,8 @@ game_players: 1–4 jogadores (multiplayer local)
 game_multiplayer_details: Até quatro jogadores no mesmo console. Os modos de jogo multiplayer são locais; não há modo online.
 ---
 
+
+
 ## Sobre o projeto
 
 Este projeto tem como objetivo disponibilizar **Garfield Lasagna Party** em português brasileiro para **Nintendo Switch e PC**. A proposta é adaptar os textos do jogo para facilitar a compreensão dos modos, desafios e minijogos, preservando a experiência original.
-
-## Instruções importantes
-
-**Leia as instruções incluídas no arquivo de download antes de instalar ou utilizar os arquivos.** Confira os requisitos, a plataforma e a versão compatível do jogo. Quando necessário, faça uma cópia de segurança dos arquivos originais.
-
-## Progresso
-
-As etapas abaixo mostram as fases previstas para o trabalho. Os percentuais são valores iniciais e devem ser atualizados conforme o desenvolvimento avançar.
