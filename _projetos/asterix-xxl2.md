@@ -5,7 +5,7 @@ platforms:
   - Nintendo Switch
   - PC
 status: Em andamento
-date: "2026-11-05"
+date: "2026-01-01"
 icon: /media/images/projetos/asterix-xxl2/icone.webp
 cover: /media/images/projetos/asterix-xxl2/capa.webp
 progress_stages:
