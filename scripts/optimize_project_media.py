@@ -48,7 +48,7 @@ def repo_path(public_path: str) -> Path | None:
     return path
 
 
-def optimize(source: Path, destination: Path, max_size: tuple[int, int]) -> None:
+def optimize(source: Path, destination: Path, max_size: tuple[int, int]) -> Path:
     if not source.is_file():
         raise FileNotFoundError(f"Imagem referenciada não encontrada: {source}")
     destination.parent.mkdir(parents=True, exist_ok=True)
@@ -58,12 +58,13 @@ def optimize(source: Path, destination: Path, max_size: tuple[int, int]) -> None
             destination = destination.with_suffix(source.suffix.lower())
             destination.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(source, destination)
-            return
+            return destination
         image = ImageOps.exif_transpose(original)
         image.thumbnail(max_size, Image.Resampling.LANCZOS)
         if image.mode not in ("RGB", "RGBA"):
             image = image.convert("RGBA" if "transparency" in image.info else "RGB")
         image.save(destination, "WEBP", quality=84, method=6)
+    return destination
 
 
 def download_repo_path(public_path: str) -> Path | None:
@@ -95,7 +96,7 @@ def process_reference(public_path: str, destination_public: str, max_size, curre
         raise ValueError(f"Destino inválido: {destination_public}")
     if source.resolve() == destination.resolve():
         return destination_public
-    optimize(source, destination, max_size)
+    destination = optimize(source, destination, max_size)
     if destination.suffix.lower() != ".webp":
         destination_public = str(Path(destination_public).with_suffix(destination.suffix))
     PENDING_DELETE.setdefault(source, set()).add(str(public_path).strip())
