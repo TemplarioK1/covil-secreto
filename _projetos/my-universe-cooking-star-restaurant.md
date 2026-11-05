@@ -16,10 +16,7 @@ game_synopsis: >-
   receitas, prepare mais de 30 pratos por meio de minijogos, coordene o atendimento e aprenda com chefs
   especializados em diferentes culinárias para desenvolver seu estabelecimento.
 game_multiplayer: Não
-game_local_multiplayer: Não
-game_online_multiplayer: Não
-game_players: 1 jogador
-game_multiplayer_details: Experiência exclusivamente para um jogador.
+game_players: "1"
 progress_stages:
   - name: Preparação e análise dos arquivos
     percentage: 80
