@@ -41,6 +41,10 @@ version_history:
     changes: Versão 1.0 = Troca apenas de textos nada de texturas ainda
 download: /downloads/projetos/asterix-xxl2/Asterix---Obelix-XXL-2.zip
 youtube: https://youtu.be/FK4O9KoUykU
+screenshots:
+  - /media/images/projetos/asterix-xxl2/screenshot-01.jpg
+  - /media/images/projetos/asterix-xxl2/screenshot-02.jpg
+  - /media/images/projetos/asterix-xxl2/screenshot-03.jpg
 ---
 
 # Asterix & Obelix XXL 2 Tradução PT-BR | Build 1.0
