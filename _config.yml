@@ -8,8 +8,6 @@ collections:
   projetos:
     output: true
     permalink: /projetos/:name/
-  informacoes_jogos:
-    output: false
 
 defaults:
   - scope:
