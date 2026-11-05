@@ -34,14 +34,8 @@ game_players: 1–4 jogadores
 game_multiplayer_details: Permite partidas com até quatro participantes, humanos
   ou controlados pelo jogo, no mesmo console. Não possui multiplayer online.
 ---
+
+
 ## Sobre o projeto
 
 Este projeto tem como objetivo disponibilizar **Getter Love!! Panda Love Unit**, clássico do **Nintendo 64**, em português. O trabalho busca tornar os diálogos, menus e demais conteúdos mais acessíveis, respeitando as características da versão original.
-
-## Instruções importantes
-
-**Leia as instruções incluídas no arquivo de download antes de aplicar ou utilizar os arquivos.** Confira os requisitos e a versão do jogo indicada. Faça uma cópia de segurança dos arquivos originais antes de qualquer modificação, quando aplicável.
-
-## Progresso
-
-As etapas abaixo organizam o trabalho de preparação, tradução, revisão e testes. Os percentuais são valores iniciais e devem ser atualizados conforme o andamento real.
