@@ -8,6 +8,7 @@ collections:
   projetos:
     output: true
     permalink: /projetos/:name/
+    sort_by: title
 
 defaults:
   - scope:
