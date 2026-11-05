@@ -41,7 +41,6 @@ game_synopsis: Asterix e Obelix embarcam em uma aventura para desvendar o misté
   e ímã — para superar desafios.
 game_multiplayer: Local
 game_players: "2"
-  Não possui multiplayer online.
 ---
 ## Sobre o projeto
 
