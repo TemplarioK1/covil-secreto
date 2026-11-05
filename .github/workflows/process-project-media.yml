@@ -7,6 +7,7 @@ on:
     paths:
       - "_projetos/**"
       - "media/images/**"
+      - "scripts/**"
       - "downloads/**"
       - "index.html"
       - "projetos.json"
