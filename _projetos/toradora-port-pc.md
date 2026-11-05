@@ -23,19 +23,24 @@ game_multiplayer_details: Jogo original para um jogador, lançado no PSP. O proj
   do Covil Secreto é um port para PC.
 
 progress_stages:
-- name: Preparação e análise dos arquivos
+- name: Análise e preparação
+  percentage: 0
+- name: Extração e adaptação de arquivos
+  percentage: 0
+- name: Adaptação e programação
   percentage: 0
 - name: Tradução de textos
   percentage: 0
-- name: Tradução de sprites
+- name: Tradução de sprites e imagens
   percentage: 0
-- name: Testes no jogo
+- name: Compatibilidade e desempenho
+  percentage: 0
+- name: Testes in-game
   percentage: 0
 - name: Revisão e correções
   percentage: 0
 progress_platform_groups: []
 ---
-
 
 ## Sobre o projeto
 
