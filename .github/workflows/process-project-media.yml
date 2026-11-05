@@ -62,7 +62,7 @@ jobs:
           if not path.startswith("_projetos/") or not path.endswith(".md") or "/" in path[len("_projetos/"):]:
               raise SystemExit(f"Caminho de projeto inválido recebido do CMS: {path!r}")
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-              output.write(f"path={path}\\n")
+              output.write(f"path={path}\n")
           PY
 
       - name: Organizar imagens do projeto selecionado
