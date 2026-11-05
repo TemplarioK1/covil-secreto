@@ -25,7 +25,9 @@ game_multiplayer_details: Permite partidas com até quatro participantes, humano
 progress_stages:
 - name: Preparação e análise dos arquivos
   percentage: 0
-- name: Tradução e adaptação
+- name: Tradução de textos
+  percentage: 0
+- name: Tradução de sprites
   percentage: 0
 - name: Testes no jogo
   percentage: 0
