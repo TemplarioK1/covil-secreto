@@ -4,7 +4,8 @@ category: Tradução
 platforms:
   - Nintendo Switch
   - PC
-status: Em andamento
+status: Em testes
+version: "1.0"
 date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl2/icone.webp
 cover: /media/images/projetos/asterix-xxl2/capa.webp
@@ -32,16 +33,42 @@ game_synopsis: Asterix e Obelix partem para Las Vegum, um enorme parque de
   diversões construído por Júlio César, para investigar o desaparecimento do
   druida Panoramix. Explore áreas temáticas inspiradas em Roma, enfrente legiões
   romanas e descubra os planos do imperador.
-game_multiplayer: Não
-game_local_multiplayer: Não
+game_multiplayer: Sim
+game_local_multiplayer: Sim
 game_online_multiplayer: Não
-game_players: 1 jogador
-game_multiplayer_details: Jogo para um jogador; não possui modos multiplayer local ou online.
+game_players: 2 jogador
+game_multiplayer_details: Jogo para até dois jogadores.
 ---
+# Asterix & Obelix XXL 2 Tradução PT-BR | Build 1.0
 
+Está disponível a tradução de **Asterix & Obelix XXL 2 para português brasileiro!**
 
-## Sobre o projeto
+A Build 1.0 traz os textos do jogo traduzidos para PT-BR, com versões para **PC e Nintendo Switch**, permitindo jogar tanto no console quanto em emuladores compatíveis.
 
-Este projeto tem como objetivo disponibilizar **Asterix & Obelix XXL 2** em português brasileiro, tornando a aventura mais acessível aos jogadores. O trabalho é voltado às versões de **Nintendo Switch e PC**.
+### Plataformas disponíveis
 
-A página será atualizada conforme avançarem as etapas de preparação dos arquivos, tradução, revisão e testes.
+- **PC:** versão para computador.
+- **Nintendo Switch:** versão para console e emuladores.
+
+### Instruções de instalação
+
+O arquivo ZIP contém os arquivos da tradução e um **tutorial com as instruções de instalação**. Leia-o antes de aplicar a tradução.
+
+### Sobre esta versão
+
+Esta build tem como foco a tradução dos textos do jogo. Ainda existem etapas que poderão ser trabalhadas em atualizações futuras.
+
+**O que falta?**
+
+A tradução das texturas ainda não foi realizada. Elementos visuais que contenham textos, como imagens e placas, poderão continuar no idioma original. Essa etapa está prevista para uma atualização futura.
+
+### Informações
+
+- **Versão:** 1.0
+- **Idioma:** Português Brasileiro (PT-BR)
+- **Plataformas:** PC e Nintendo Switch
+- **Compatibilidade:** Console e emuladores
+- **Conteúdo:** Tradução de textos
+- **Texturas:** Previstas para atualização futura
+
+Bom jogo e divirta-se com Asterix e Obelix em português!
