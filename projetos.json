@@ -9,7 +9,9 @@
     "status": {{ project.status | default: "" | jsonify }},
     "version": {{ project.version | default: "" | jsonify }},
     "date": {{ project.date | default: "" | jsonify }},
+    "icon": {{ project.icon | default: "" | jsonify }},
     "cover": {{ project.cover | default: "" | jsonify }},
+    "url": {{ project.url | relative_url | jsonify }},
     "download": {{ project.download | default: "" | jsonify }},
     "description": {{ project.content | default: "" | strip_html | strip_newlines | jsonify }}
   }{% unless forloop.last %},{% endunless %}
