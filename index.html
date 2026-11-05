@@ -219,7 +219,8 @@ function escapeHTML(value) {
 async function loadProjects() {
   try {
     const response = await fetch("/covil-secreto/projetos.json", {
-      cache: "no-store"
+      cache: "no-store",
+      headers: { "Accept": "application/json" }
     });
 
     if (!response.ok) {
@@ -248,10 +249,10 @@ function render() {
 
   const filtered = projects.filter(p => {
     const matchesFilter = activeFilter === "Todos" ||
-      p.category.toLowerCase() === activeFilter.toLowerCase();
+      String(p.category || "").toLowerCase() === activeFilter.toLowerCase();
 
     const matchesSearch = (
-      p.title + " " + p.platform + " " + p.category
+      String(p.title || "") + " " + String(p.platform || "") + " " + String(p.category || "")
     ).toLowerCase().includes(term);
 
     return matchesFilter && matchesSearch;
@@ -267,7 +268,8 @@ function render() {
   }
 
   catalog.innerHTML = filtered.map(p => {
-    const cardImage = p.icon || p.cover;\n    const image = cardImage ? `
+    const cardImage = p.icon || p.cover;
+    const image = cardImage ? `
       <img class="cover"
       src="${escapeHTML(resolveImage(cardImage))}"
       alt="${escapeHTML(p.title)}"
@@ -275,15 +277,17 @@ function render() {
       onerror="this.outerHTML='<div class=&quot;no-cover&quot;>🎮</div>'">
     ` : `<div class="no-cover">🎮</div>`;
 
-    const download = p.download && /^https?:\/\//i.test(p.download)
-      ? `<a class="download" href="${escapeHTML(p.download)}" target="_blank" rel="noopener noreferrer">↓ Baixar projeto</a>`
+    const downloadUrl = resolveImage(p.download);
+    const download = downloadUrl
+      ? `<a class="download" href="${escapeHTML(downloadUrl)}" target="_blank" rel="noopener noreferrer">↓ Baixar projeto</a>`
       : "";
+    const projectUrl = resolveImage(p.url);
 
     return `
       <article class="card">
         ${image}
         <div class="card-content">
-          <h3>${escapeHTML(p.title)}</h3>
+          <h3><a class="project-link" href="${escapeHTML(projectUrl || "#")}" style="color:inherit;text-decoration:none">${escapeHTML(p.title)}</a></h3>
           <div class="meta">
             <span class="tag-small">${escapeHTML(p.category)}</span>
             <span class="tag-small">${escapeHTML(p.status)}</span>
