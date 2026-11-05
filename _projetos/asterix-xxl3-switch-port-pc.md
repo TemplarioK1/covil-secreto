@@ -14,17 +14,16 @@ screenshots:
   - /media/images/projetos/asterix-xxl3-switch-port-pc/screenshot-02.webp
 youtube: https://youtu.be/oOS3F29rIm8
 download: /downloads/projetos/asterix-xxl3-switch-port-pc/010081500ea1e000.zip
-game_info:
-  developer: ""
-  publisher: ""
-  release_year: ""
-  genre: ""
-  synopsis: ""
-  multiplayer: ""
-  local_multiplayer: ""
-  online_multiplayer: ""
-  players: ""
-  multiplayer_details: ""
+game_developer: ""
+game_publisher: ""
+game_release_year: ""
+game_genre: ""
+game_synopsis: ""
+game_multiplayer: ""
+game_local_multiplayer: ""
+game_online_multiplayer: ""
+game_players: ""
+game_multiplayer_details: ""
 ---
 ## Sobre o projeto
 
