@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
@@ -29,23 +28,17 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 </style>
 </head>
 <body>
-<header>
-<a class="logo" href="{{ '/' | relative_url }}">COVIL <span>SECRETO</span></a>
-</header>
-
+<header><a class="logo" href="{{ '/' | relative_url }}">COVIL <span>SECRETO</span></a></header>
 <main>
 <a class="back" href="{{ '/' | relative_url }}">← Voltar ao catálogo</a>
 
 {% if page.cover %}
 {% assign cover_path = page.cover %}
-{% unless cover_path contains '/covil-secreto/' %}
-{% assign cover_path = cover_path | prepend: '/covil-secreto' %}
-{% endunless %}
+{% unless cover_path contains '://' %}{% assign cover_path = cover_path | relative_url %}{% endunless %}
 <img class="cover" src="{{ cover_path | escape }}" alt="{{ page.title | escape }}">
 {% endif %}
 
 <h1>{{ page.title | escape }}</h1>
-
 <div class="meta">
 {% if page.category %}<span class="tag">{{ page.category | escape }}</span>{% endif %}
 {% if page.platform %}<span class="tag">{{ page.platform | escape }}</span>{% endif %}
@@ -53,32 +46,26 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% if page.version %}<span class="tag">Versão {{ page.version | escape }}</span>{% endif %}
 </div>
 
-{% if content != "" %}
-<section class="description">
-{{ content }}
-</section>
-{% endif %}
+{% if content != "" %}<section class="description">{{ content }}</section>{% endif %}
 
 {% if page.screenshots %}
-<h2>Imagens do projeto</h2>
+<h2>Screenshots</h2>
 <div class="gallery">
 {% for screenshot in page.screenshots %}
 {% assign screenshot_path = screenshot %}
-{% unless screenshot_path contains '/covil-secreto/' %}
-{% assign screenshot_path = screenshot_path | prepend: '/covil-secreto' %}
-{% endunless %}
-<img src="{{ screenshot_path | escape }}" alt="Imagem de {{ page.title | escape }}" loading="lazy">
+{% unless screenshot_path contains '://' %}{% assign screenshot_path = screenshot_path | relative_url %}{% endunless %}
+<img src="{{ screenshot_path | escape }}" alt="Screenshot de {{ page.title | escape }}" loading="lazy">
 {% endfor %}
 </div>
 {% endif %}
 
 {% if page.download %}
+{% assign download_path = page.download %}
+{% unless download_path contains '://' %}{% assign download_path = download_path | relative_url %}{% endunless %}
 <h2>Download</h2>
-<a class="download" href="{{ page.download | escape }}" target="_blank" rel="noopener noreferrer">↓ Baixar projeto</a>
+<a class="download" href="{{ download_path | escape }}" download>↓ Baixar{% if page.version %} versão {{ page.version | escape }}{% endif %}</a>
 {% endif %}
-
 </main>
-
 <footer>COVIL SECRETO © 2026</footer>
 </body>
 </html>
