@@ -19,7 +19,7 @@ progress_stages:
     percentage: 100
   - name: Revisão e correções
     percentage: 50
-  - name: Finalização e publicação
+  - name: Finalização
     percentage: 40
 game_developer: OSome Studio
 game_publisher: Microids
