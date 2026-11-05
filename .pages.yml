@@ -219,76 +219,56 @@ content:
           - name: changes
             label: O que mudou nesta versão
             type: text
+      - name: game_info
+        label: Informações do jogo original
+        type: object
+        description: Dados complementares sobre o jogo original. Preencha apenas o que souber; esta seção é independente da descrição da tradução ou do port.
+        fields:
+          - name: developer
+            label: Desenvolvedora
+            type: string
+          - name: publisher
+            label: Publisher / Distribuidora
+            type: string
+          - name: release_year
+            label: Ano de lançamento
+            type: string
+            description: Ex.: 2018.
+          - name: genre
+            label: Gênero
+            type: string
+          - name: synopsis
+            label: Sinopse do jogo
+            type: text
+          - name: multiplayer
+            label: Possui multiplayer?
+            type: select
+            options:
+              values:
+                - Sim
+                - Não
+          - name: local_multiplayer
+            label: Multiplayer local?
+            type: select
+            options:
+              values:
+                - Sim
+                - Não
+          - name: online_multiplayer
+            label: Multiplayer online?
+            type: select
+            options:
+              values:
+                - Sim
+                - Não
+          - name: players
+            label: Quantidade de jogadores
+            type: string
+            description: Ex.: 1 jogador, 1–4 jogadores, até 8 online.
+          - name: multiplayer_details
+            label: Detalhes do multiplayer
+            type: text
+            description: Ex.: cooperativo, competitivo, tela dividida, jogo em equipe.
       - name: body
         label: Descrição e instruções
         type: rich-text
-
-  - name: informacoes_jogos
-    label: Informações dos jogos
-    type: collection
-    path: _informacoes_jogos
-    format: yaml-frontmatter
-    filename: "{primary}.md"
-    view:
-      primary: title
-      fields:
-        - title
-        - developer
-        - release_year
-        - genre
-    description: Edite aqui os dados do jogo original, separados das informações da tradução ou port. Cada ficha já está vinculada ao projeto correspondente.
-    fields:
-      - name: title
-        label: Jogo
-        type: string
-        required: true
-      - name: project_slug
-        label: Projeto vinculado (não alterar)
-        type: string
-        hidden: true
-        required: true
-      - name: developer
-        label: Desenvolvedora
-        type: string
-      - name: publisher
-        label: Publisher / Distribuidora
-        type: string
-      - name: release_year
-        label: Ano de lançamento
-        type: string
-        description: Ex.: 2018.
-      - name: genre
-        label: Gênero
-        type: string
-      - name: synopsis
-        label: Sinopse do jogo
-        type: text
-      - name: multiplayer
-        label: Possui multiplayer?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: local_multiplayer
-        label: Multiplayer local?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: online_multiplayer
-        label: Multiplayer online?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: players
-        label: Quantidade de jogadores
-        type: string
-        description: Ex.: 1 jogador, 1–4 jogadores, até 8 online.
-      - name: multiplayer_details
-        label: Detalhes do multiplayer
-        type: text
-        description: Ex.: cooperativo, competitivo, tela dividida, jogo em equipe.
