@@ -264,13 +264,6 @@ content:
 
           Este projeto tem como objetivo disponibilizar uma versão adaptada de **[NOME DO JOGO]** para **[PLATAFORMA(S)]**. As informações específicas sobre o trabalho, seu andamento e eventuais particularidades serão atualizadas conforme o desenvolvimento avançar.
 
-          ## Instruções importantes
-
-          **LEIA AS INSTRUÇÕES INCLUÍDAS NO ARQUIVO DE DOWNLOAD ANTES DE INSTALAR OU UTILIZAR O PROJETO.**
-
-          O arquivo pode conter informações específicas sobre instalação, requisitos, compatibilidade e procedimentos necessários para o funcionamento correto.
-
-          Faça uma cópia de segurança dos arquivos originais quando necessário e confira se está utilizando a versão do jogo indicada nas instruções.
       - name: game_developer
         label: Jogo original — Desenvolvedora
         type: string
