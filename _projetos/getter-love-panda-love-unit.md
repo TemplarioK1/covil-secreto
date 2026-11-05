@@ -18,8 +18,6 @@ progress_stages:
     percentage: 5
   - name: Revisão e correções
     percentage: 0
-  - name: Finalização
-    percentage: 0
 game_developer: Hudson Soft
 game_publisher: Hudson Soft
 game_release_year: "1998"
