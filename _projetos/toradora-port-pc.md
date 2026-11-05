@@ -25,7 +25,9 @@ game_multiplayer_details: Jogo original para um jogador, lançado no PSP. O proj
 progress_stages:
 - name: Preparação e análise dos arquivos
   percentage: 0
-- name: Tradução e adaptação
+- name: Tradução de textos
+  percentage: 0
+- name: Tradução de sprites
   percentage: 0
 - name: Testes no jogo
   percentage: 0
