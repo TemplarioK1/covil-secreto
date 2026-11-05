@@ -272,16 +272,6 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 </div>
 {% endif %}
 
-{% if page.youtube %}
-{% assign youtube_url = page.youtube | strip %}
-{% assign youtube_id = '' %}
-{% if youtube_url contains 'youtu.be/' %}{% assign youtube_id = youtube_url | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first %}{% elsif youtube_url contains 'v=' %}{% assign youtube_id = youtube_url | split: 'v=' | last | split: '&' | first %}{% elsif youtube_url contains '/embed/' %}{% assign youtube_id = youtube_url | split: '/embed/' | last | split: '?' | first %}{% elsif youtube_url contains '/shorts/' %}{% assign youtube_id = youtube_url | split: '/shorts/' | last | split: '?' | first %}{% endif %}
-{% if youtube_id != '' %}
-<h2>Vídeo de apresentação</h2>
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id | escape }}" title="Vídeo de {{ page.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-{% endif %}
-{% endif %}
-
 {% if page.version_history %}
 <h2>Histórico de atualizações</h2>
 <div class="history">
