@@ -89,23 +89,23 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 
 {% assign info = page.game_info %}
 {% assign has_game_info = false %}
-{% if info.developer or info.publisher or info.synopsis or info.release_year or info.release_date or info.players or info.genre or info.multiplayer or info.local_multiplayer or info.online_multiplayer or info.multiplayer_details %}
+{% if info.developer != blank or info.publisher != blank or info.synopsis != blank or info.release_year != blank or info.release_date != blank or info.players != blank or info.genre != blank or info.multiplayer != blank or info.local_multiplayer != blank or info.online_multiplayer != blank or info.multiplayer_details != blank %}
 {% assign has_game_info = true %}
 {% endif %}
 {% if has_game_info %}
 <h2>Sobre o jogo</h2>
 <div class="game-info">
-{% if info.synopsis %}<p class="game-synopsis">{{ info.synopsis | escape | newline_to_br }}</p>{% endif %}
+{% if info.synopsis != blank %}<p class="game-synopsis">{{ info.synopsis | escape | newline_to_br }}</p>{% endif %}
 <div class="game-facts">
-{% if info.developer %}<div class="game-fact"><span>Desenvolvedora</span><strong>{{ info.developer | escape }}</strong></div>{% endif %}
-{% if info.publisher %}<div class="game-fact"><span>Publisher / Distribuidora</span><strong>{{ info.publisher | escape }}</strong></div>{% endif %}
-{% if info.release_year %}<div class="game-fact"><span>Ano de lançamento</span><strong>{{ info.release_year | escape }}</strong></div>{% elsif info.release_date %}<div class="game-fact"><span>Lançamento original</span><strong>{{ info.release_date | date: "%Y" }}</strong></div>{% endif %}
-{% if info.genre %}<div class="game-fact"><span>Gênero</span><strong>{{ info.genre | escape }}</strong></div>{% endif %}
-{% if info.multiplayer %}<div class="game-fact"><span>Multiplayer</span><strong>{{ info.multiplayer | escape }}</strong></div>{% endif %}
-{% if info.local_multiplayer %}<div class="game-fact"><span>Multiplayer local</span><strong>{{ info.local_multiplayer | escape }}</strong></div>{% endif %}
-{% if info.online_multiplayer %}<div class="game-fact"><span>Multiplayer online</span><strong>{{ info.online_multiplayer | escape }}</strong></div>{% endif %}
-{% if info.players %}<div class="game-fact"><span>Quantidade de jogadores</span><strong>{{ info.players | escape }}</strong></div>{% endif %}
-{% if info.multiplayer_details %}<div class="game-fact"><span>Detalhes do multiplayer</span><strong>{{ info.multiplayer_details | escape | newline_to_br }}</strong></div>{% endif %}
+{% if info.developer != blank %}<div class="game-fact"><span>Desenvolvedora</span><strong>{{ info.developer | escape }}</strong></div>{% endif %}
+{% if info.publisher != blank %}<div class="game-fact"><span>Publisher / Distribuidora</span><strong>{{ info.publisher | escape }}</strong></div>{% endif %}
+{% if info.release_year != blank %}<div class="game-fact"><span>Ano de lançamento</span><strong>{{ info.release_year | escape }}</strong></div>{% elsif info.release_date != blank %}<div class="game-fact"><span>Lançamento original</span><strong>{{ info.release_date | date: "%Y" }}</strong></div>{% endif %}
+{% if info.genre != blank %}<div class="game-fact"><span>Gênero</span><strong>{{ info.genre | escape }}</strong></div>{% endif %}
+{% if info.multiplayer != blank %}<div class="game-fact"><span>Multiplayer</span><strong>{{ info.multiplayer | escape }}</strong></div>{% endif %}
+{% if info.local_multiplayer != blank %}<div class="game-fact"><span>Multiplayer local</span><strong>{{ info.local_multiplayer | escape }}</strong></div>{% endif %}
+{% if info.online_multiplayer != blank %}<div class="game-fact"><span>Multiplayer online</span><strong>{{ info.online_multiplayer | escape }}</strong></div>{% endif %}
+{% if info.players != blank %}<div class="game-fact"><span>Quantidade de jogadores</span><strong>{{ info.players | escape }}</strong></div>{% endif %}
+{% if info.multiplayer_details != blank %}<div class="game-fact"><span>Detalhes do multiplayer</span><strong>{{ info.multiplayer_details | escape | newline_to_br }}</strong></div>{% endif %}
 </div>
 </div>
 {% endif %}
