@@ -227,19 +227,19 @@ content:
       - name: progress_stages
         label: Etapas e progresso
         type: object
-        description: As cinco etapas sugeridas já aparecem automaticamente em novos projetos. Ajuste os nomes e percentuais conforme o trabalho; você também pode adicionar ou remover etapas.
-        default:
-          - name: Preparação e análise dos arquivos
-            percentage: 0
-          - name: Tradução e adaptação
-            percentage: 0
-          - name: Revisão e correções
-            percentage: 0
-          - name: Testes no jogo
-            percentage: 0
-          - name: Finalização e publicação
-            percentage: 0
+        description: As cinco etapas sugeridas aparecem automaticamente em novos projetos. Ajuste os nomes e percentuais conforme o trabalho; você também pode adicionar ou remover etapas.
         list:
+          default:
+            - name: Preparação e análise dos arquivos
+              percentage: 0
+            - name: Tradução e adaptação
+              percentage: 0
+            - name: Revisão e correções
+              percentage: 0
+            - name: Testes no jogo
+              percentage: 0
+            - name: Finalização e publicação
+              percentage: 0
           collapsible:
             collapsed: true
             summary: "{name} — {percentage}%"
