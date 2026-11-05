@@ -50,16 +50,6 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 
 {% if content != "" %}<section class="description">{{ content }}</section>{% endif %}
 
-{% if page.youtube %}
-{% assign youtube_url = page.youtube | strip %}
-{% assign youtube_id = '' %}
-{% if youtube_url contains 'youtu.be/' %}{% assign youtube_id = youtube_url | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first %}{% elsif youtube_url contains 'v=' %}{% assign youtube_id = youtube_url | split: 'v=' | last | split: '&' | first %}{% elsif youtube_url contains '/embed/' %}{% assign youtube_id = youtube_url | split: '/embed/' | last | split: '?' | first %}{% elsif youtube_url contains '/shorts/' %}{% assign youtube_id = youtube_url | split: '/shorts/' | last | split: '?' | first %}{% endif %}
-{% if youtube_id != '' %}
-<h2>Vídeo de apresentação</h2>
-<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id | escape }}" title="Vídeo de {{ page.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
-{% endif %}
-{% endif %}
-
 {% assign new_screenshots = page.screenshot_1 | append: '|' | append: page.screenshot_2 | append: '|' | append: page.screenshot_3 | append: '|' | append: page.screenshot_4 | split: '|' %}
 {% if page.screenshots or page.screenshot_1 or page.screenshot_2 or page.screenshot_3 or page.screenshot_4 %}
 <h2>Screenshots</h2>
@@ -77,6 +67,16 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% endif %}
 {% endfor %}
 </div>
+{% endif %}
+
+{% if page.youtube %}
+{% assign youtube_url = page.youtube | strip %}
+{% assign youtube_id = '' %}
+{% if youtube_url contains 'youtu.be/' %}{% assign youtube_id = youtube_url | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first %}{% elsif youtube_url contains 'v=' %}{% assign youtube_id = youtube_url | split: 'v=' | last | split: '&' | first %}{% elsif youtube_url contains '/embed/' %}{% assign youtube_id = youtube_url | split: '/embed/' | last | split: '?' | first %}{% elsif youtube_url contains '/shorts/' %}{% assign youtube_id = youtube_url | split: '/shorts/' | last | split: '?' | first %}{% endif %}
+{% if youtube_id != '' %}
+<h2>Vídeo de apresentação</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id | escape }}" title="Vídeo de {{ page.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+{% endif %}
 {% endif %}
 
 {% if page.download %}
