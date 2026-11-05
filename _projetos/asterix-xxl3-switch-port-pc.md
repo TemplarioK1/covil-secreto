@@ -4,7 +4,7 @@ category: Tradução
 platforms:
   - Nintendo Switch
   - PC
-status: Concluído
+status: Em andamento
 version: "1.0"
 date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl3-switch-port-pc/icone.webp
@@ -21,7 +21,7 @@ Tradução de **Asterix & Obelix XXL 3** para Nintendo Switch.
 
 Também está em andamento um **port para PC**.
 
-**Versão informada:** 1.0  
-**Status:** em andamento.
+**Versão da tradução para Switch:** 1.0  
+**Status:** tradução para Switch disponível; port para PC em andamento.
 
 Mais informações e arquivos serão adicionados conforme o desenvolvimento avançar.
