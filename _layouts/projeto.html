@@ -26,6 +26,16 @@ h2{margin-top:45px;border-bottom:1px solid #302a3a;padding-bottom:12px}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .download{display:inline-block;background:#8255cf;color:white;padding:15px 25px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:20px}
 .download:hover{background:#986ee0}
+.download-list{display:grid;gap:14px;margin-top:18px}
+.download-item{background:#191820;border:1px solid #302a3a;border-radius:10px;padding:18px}
+.download-item h3{margin:0 0 8px;font-size:17px}
+.download-item p{color:#c1b9cd;line-height:1.6;margin:8px 0}
+.download-item .download{margin-top:8px}
+.history{display:grid;gap:14px;margin-top:20px}
+.history-item{border-left:3px solid #8255cf;background:#191820;padding:16px 18px;border-radius:0 9px 9px 0}
+.history-item h3{margin:0 0 6px;font-size:17px}
+.history-item time{color:#aaa3b5;font-size:13px}
+.history-item p{color:#c1b9cd;line-height:1.65;margin:10px 0 0;white-space:pre-line}
 footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5;font-size:12px}
 </style>
 </head>
@@ -43,7 +53,9 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 <h1>{{ page.title | escape }}</h1>
 <div class="meta">
 {% if page.category %}<span class="tag">{{ page.category | escape }}</span>{% endif %}
-{% if page.platform %}<span class="tag">{{ page.platform | escape }}</span>{% endif %}
+{% if page.platforms %}
+{% for platform in page.platforms %}<span class="tag">{{ platform | escape }}</span>{% endfor %}
+{% elsif page.platform %}<span class="tag">{{ page.platform | escape }}</span>{% endif %}
 {% if page.status %}<span class="tag">{{ page.status | escape }}</span>{% endif %}
 {% if page.version %}<span class="tag">Versão {{ page.version | escape }}</span>{% endif %}
 </div>
@@ -79,11 +91,42 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% endif %}
 {% endif %}
 
+{% if page.download or page.additional_downloads %}
+<h2>Download</h2>
 {% if page.download %}
 {% assign download_path = page.download %}
 {% unless download_path contains '://' %}{% assign download_path = download_path | relative_url %}{% endunless %}
-<h2>Download</h2>
-<a class="download" href="{{ download_path | escape }}" download>↓ Baixar{% if page.version %} versão {{ page.version | escape }}{% endif %}</a>
+<a class="download" href="{{ download_path | escape }}" download>↓ Download principal{% if page.version %} — versão {{ page.version | escape }}{% endif %}</a>
+{% endif %}
+{% if page.additional_downloads %}
+<div class="download-list">
+{% for item in page.additional_downloads %}
+{% if item.file %}
+{% assign extra_download_path = item.file %}
+{% unless extra_download_path contains '://' %}{% assign extra_download_path = extra_download_path | relative_url %}{% endunless %}
+<div class="download-item">
+<h3>Download complementar{% if item.platform %} — {{ item.platform | escape }}{% endif %}</h3>
+{% if item.note %}<p>{{ item.note | escape | newline_to_br }}</p>{% endif %}
+<a class="download" href="{{ extra_download_path | escape }}" download>↓ Baixar arquivo</a>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+{% endif %}
+{% endif %}
+
+{% if page.version_history %}
+<h2>Histórico de atualizações</h2>
+<div class="history">
+{% for update in page.version_history reversed %}
+<div class="history-item">
+<h3>Versão {{ update.version | escape }}</h3>
+{% if update.date %}<time datetime="{{ update.date | date: '%Y-%m-%d' }}">{{ update.date | date: "%d/%m/%Y" }}</time>{% endif %}
+{% if update.changes %}<p>{{ update.changes | escape | newline_to_br }}</p>{% endif %}
+</div>
+{% endfor %}
+</div>
+{% endif %}</a>
 {% endif %}
 </main>
 <footer>COVIL SECRETO © 2026</footer>
