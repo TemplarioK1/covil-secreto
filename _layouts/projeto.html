@@ -239,14 +239,20 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 {% endif %}
 {% endif %}
 
-{% if page.download or page.additional_downloads %}
 <h2>Download</h2>
+{% assign has_any_download = false %}
 {% if page.download %}
+{% assign has_any_download = true %}
 {% assign download_path = page.download %}
 {% unless download_path contains '://' %}{% assign download_path = download_path | relative_url %}{% endunless %}
 <a class="download" href="{{ download_path | escape }}" download>↓ Download principal{% if page.version %} — versão {{ page.version | escape }}{% endif %}</a>
 {% endif %}
-{% if page.additional_downloads %}
+{% assign extra_download_count = 0 %}
+{% for item in page.additional_downloads %}
+{% if item.file %}{% assign extra_download_count = extra_download_count | plus: 1 %}{% endif %}
+{% endfor %}
+{% if extra_download_count > 0 %}
+{% assign has_any_download = true %}
 <div class="download-list">
 {% for item in page.additional_downloads %}
 {% if item.file %}
@@ -261,7 +267,9 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 {% endfor %}
 </div>
 {% endif %}
-{% endif %}
+{% unless has_any_download %}
+<p class="description">Download ainda não disponível.</p>
+{% endunless %}
 
 {% if page.version_history %}
 <h2>Histórico de atualizações</h2>
