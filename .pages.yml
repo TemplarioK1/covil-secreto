@@ -100,14 +100,14 @@ content:
         type: image
         options:
           media: images
-          path: projetos/icones
+          path: projetos
           extensions: [png, jpg, jpeg, webp]
       - name: cover
         label: Imagem de título / capa da página
         type: image
         options:
           media: images
-          path: projetos/capas
+          path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshots
         label: Galeria antiga (mantida para projetos existentes)
@@ -115,7 +115,7 @@ content:
         hidden: true
         options:
           media: images
-          path: projetos/screenshots
+          path: projetos
           multiple:
             max: 4
           extensions: [jpg, jpeg, png, webp]
@@ -124,28 +124,28 @@ content:
         type: image
         options:
           media: images
-          path: projetos/screenshots
+          path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshot_2
         label: Screenshot 2
         type: image
         options:
           media: images
-          path: projetos/screenshots
+          path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshot_3
         label: Screenshot 3
         type: image
         options:
           media: images
-          path: projetos/screenshots
+          path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: screenshot_4
         label: Screenshot 4
         type: image
         options:
           media: images
-          path: projetos/screenshots
+          path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: game_info
         label: Informações sobre o jogo original
