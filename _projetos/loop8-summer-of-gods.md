@@ -37,6 +37,11 @@ screenshots:
   - /media/images/projetos/loop8-summer-of-gods/screenshot-02.webp
   - /media/images/projetos/loop8-summer-of-gods/screenshot-03.webp
   - /media/images/projetos/loop8-summer-of-gods/screenshot-04.webp
+progress_platform_groups:
+  - platform: PC
+    stages:
+      - name: Port
+        percentage: 0
 ---
 
 ## Sobre o projeto
