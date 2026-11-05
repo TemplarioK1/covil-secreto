@@ -75,14 +75,13 @@ content:
           path: projetos/capas
           extensions: [jpg, jpeg, png, webp]
       - name: screenshots
-        label: Screenshots / galeria
+        label: Screenshots / galeria (até 4 imagens)
         type: image
-        list: true
         options:
           media: images
           path: projetos/screenshots
           multiple:
-            max: 20
+            max: 4
           extensions: [jpg, jpeg, png, webp]
       - name: download
         label: Arquivo ZIP para download
