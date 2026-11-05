@@ -5,8 +5,8 @@ platforms:
   - Nintendo Switch
   - PC
 status: Em andamento
-version: "1.0"
-date: "2026-11-05"
+version: "69"
+date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl3-switch-port-pc/icone.webp
 cover: /media/images/projetos/asterix-xxl3-switch-port-pc/capa.webp
 screenshots:
@@ -27,26 +27,26 @@ progress_stages:
     percentage: 100
   - name: Revisão e correções
     percentage: 90
-game_developer: OSome Studio
-game_publisher: Microids
-game_release_year: "2019"
-game_genre: Aventura e beat 'em up
-game_synopsis: >-
-  Asterix e Obelix embarcam em uma aventura para desvendar o mistério do Menir de Cristal. Explore diferentes
-  regiões do Império Romano, enfrente inimigos, complete missões secundárias e use as várias formas do menir —
-  pedra, gelo, fogo e ímã — para superar desafios.
-game_multiplayer: Sim
-game_local_multiplayer: Sim
-game_online_multiplayer: Não
-game_players: 1–2 jogadores (cooperativo local)
-game_multiplayer_details: Modo cooperativo para dois jogadores no mesmo console/tela. Não possui multiplayer online.
 progress_platform_groups:
   - platform: PC
     stages:
       - name: Port
         percentage: 30
+game_developer: OSome Studio
+game_publisher: Microids
+game_release_year: "2019"
+game_genre: Aventura e beat 'em up
+game_synopsis: Asterix e Obelix embarcam em uma aventura para desvendar o
+  mistério do Menir de Cristal. Explore diferentes regiões do Império Romano,
+  enfrente inimigos, complete missões secundárias e use as várias formas do
+  menir — pedra, gelo, fogo e ímã — para superar desafios.
+game_multiplayer: Sim
+game_local_multiplayer: Sim
+game_online_multiplayer: Não
+game_players: 1–2 jogadores (cooperativo local)
+game_multiplayer_details: Modo cooperativo para dois jogadores no mesmo
+  console/tela. Não possui multiplayer online.
 ---
-
 ## Sobre o projeto
 
 Este projeto reúne o trabalho de **Asterix & Obelix XXL 3 - The Crystal Menhir** para duas plataformas: a tradução para **Nintendo Switch** e o desenvolvimento de um **port para PC**.
