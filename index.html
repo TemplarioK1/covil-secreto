@@ -27,8 +27,9 @@ header {
   display:flex;justify-content:space-between;
   align-items:center;gap:20px;flex-wrap:wrap;
 }
-.logo {font-size:21px;font-weight:bold;letter-spacing:2px}
-.logo span,h1 span {color:var(--purple)}
+.logo {display:flex;align-items:center;flex:0 0 auto;text-decoration:none;line-height:0}
+.logo img {display:block;width:min(300px,38vw);height:auto;max-height:88px;object-fit:contain}
+h1 span {color:var(--purple)}
 nav {display:flex;gap:22px;flex-wrap:wrap}
 nav a {color:var(--muted);text-decoration:none;font-size:14px}
 nav a:hover {color:var(--purple)}
@@ -103,7 +104,9 @@ footer {
 }
 @media(max-width:520px) {
   .grid {grid-template-columns:1fr}
-  header {padding:20px}
+  header {padding:16px 20px;gap:14px}
+  .logo img {width:min(230px,70vw);max-height:68px}
+  nav {gap:14px}
   .hero {padding-top:60px}
   .card-link {min-height:118px;padding:14px;gap:14px}
   .project-icon,.no-cover {width:88px;height:88px;flex-basis:88px}
@@ -113,7 +116,7 @@ footer {
 
 <body>
 <header>
-  <a class="logo" href="#">COVIL <span>SECRETO</span></a>
+  <a class="logo" href="#inicio" aria-label="Covil Secreto — início"><img src="/covil-secreto/media/images/logo-covil-secreto.webp" alt="Covil Secreto"></a>
   <nav>
     <a href="#inicio">Início</a>
     <a href="#projetos">Projetos</a>
