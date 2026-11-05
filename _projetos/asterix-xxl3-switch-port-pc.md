@@ -1,7 +1,7 @@
 ---
 title: Asterix & Obelix XXL 3 — Tradução para Switch
 category: Tradução
-platform: Nintendo Switch
+platform: Nintendo Switch, PC
 status: Em andamento
 version: '1.0'
 date: 2026-11-05
