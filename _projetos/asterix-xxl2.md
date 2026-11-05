@@ -5,7 +5,7 @@ platforms:
   - Nintendo Switch
   - PC
 status: Em andamento
-date: "2026-01-01"
+date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl2/icone.webp
 cover: /media/images/projetos/asterix-xxl2/capa.webp
 progress_stages:
@@ -28,17 +28,16 @@ game_developer: OSome Studio
 game_publisher: Microids
 game_release_year: "2018"
 game_genre: Ação e aventura; beat 'em up e plataforma 3D
-game_synopsis: >-
-  Asterix e Obelix partem para Las Vegum, um enorme parque de diversões construído por Júlio César, para
-  investigar o desaparecimento do druida Panoramix. Explore áreas temáticas inspiradas em Roma, enfrente
-  legiões romanas e descubra os planos do imperador.
+game_synopsis: Asterix e Obelix partem para Las Vegum, um enorme parque de
+  diversões construído por Júlio César, para investigar o desaparecimento do
+  druida Panoramix. Explore áreas temáticas inspiradas em Roma, enfrente legiões
+  romanas e descubra os planos do imperador.
 game_multiplayer: Não
 game_local_multiplayer: Não
 game_online_multiplayer: Não
 game_players: 1 jogador
 game_multiplayer_details: Jogo para um jogador; não possui modos multiplayer local ou online.
 ---
-
 ## Sobre o projeto
 
 Este projeto tem como objetivo disponibilizar **Asterix & Obelix XXL 2** em português brasileiro, tornando a aventura mais acessível aos jogadores. O trabalho é voltado às versões de **Nintendo Switch e PC**.
