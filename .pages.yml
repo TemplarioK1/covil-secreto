@@ -225,9 +225,10 @@ content:
             label: Observação
             type: text
       - name: progress_stages
+        hidden: true
         label: Etapas e progresso
         type: object
-        description: As cinco etapas de trabalho são editáveis. A etapa Finalização é calculada automaticamente pela média das cinco anteriores.
+        description: Etapas principais do grupo Geral. Gerencie o progresso e os grupos por plataforma pelo painel administrativo do Covil Secreto.
         list:
           default:
             - name: Preparação e análise dos arquivos
@@ -258,6 +259,39 @@ content:
               min: 0
               max: 100
               step: 1
+      - name: progress_platform_groups
+        label: Grupos de progresso por plataforma
+        type: object
+        hidden: true
+        list:
+          collapsible:
+            collapsed: true
+            summary: "{platform}"
+        fields:
+          - name: platform
+            label: Plataforma
+            type: string
+            required: true
+          - name: stages
+            label: Indicadores desta plataforma
+            type: object
+            list:
+              collapsible:
+                collapsed: true
+                summary: "{name} — {percentage}%"
+            fields:
+              - name: name
+                label: Nome do indicador
+                type: string
+                required: true
+              - name: percentage
+                label: Progresso (%)
+                type: number
+                required: true
+                options:
+                  min: 0
+                  max: 100
+                  step: 1
       - name: body
         label: Descrição e instruções
         type: rich-text
