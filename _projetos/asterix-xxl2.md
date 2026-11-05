@@ -39,10 +39,6 @@ version_history:
   - version: "1.0"
     date: "2026-11-05"
     changes: Versão 1.0 = Troca apenas de textos nada de texturas ainda
-additional_downloads:
-  - file: ""
-    platform: ""
-    note: Versão 1.0
 download: /downloads/projetos/asterix-xxl2/Asterix---Obelix-XXL-2.zip
 ---
 
