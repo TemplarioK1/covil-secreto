@@ -201,6 +201,44 @@ def cleanup_pending():
             source.unlink(missing_ok=True)
 
 
+
+IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".webp", ".gif", ".avif", ".bmp", ".tif", ".tiff", ".svg"}
+TEXT_EXTENSIONS = {
+    ".md", ".html", ".htm", ".css", ".js", ".json", ".yml", ".yaml",
+    ".xml", ".txt", ".liquid", ".scss", ".sass", ".ts", ".tsx", ".jsx",
+}
+
+
+def cleanup_orphan_images():
+    """Remove imagens sem referência em arquivos textuais do repositório."""
+    media_root = ROOT / "media" / "images"
+    if not media_root.exists():
+        return []
+
+    references = []
+    ignored = {".git", "_site", ".jekyll-cache", "__pycache__"}
+    for candidate in ROOT.rglob("*"):
+        if not candidate.is_file() or ignored.intersection(candidate.parts):
+            continue
+        if candidate.suffix.lower() not in TEXT_EXTENSIONS:
+            continue
+        try:
+            references.append(candidate.read_text(encoding="utf-8"))
+        except (UnicodeDecodeError, OSError):
+            continue
+
+    removed = []
+    for image_path in media_root.rglob("*"):
+        if not image_path.is_file() or image_path.suffix.lower() not in IMAGE_EXTENSIONS:
+            continue
+        relative = image_path.as_posix()
+        if any(relative in item or ("/" + relative) in item for item in references):
+            continue
+        image_path.unlink()
+        removed.append(relative)
+    return removed
+
+
 def main():
     parser = argparse.ArgumentParser()
     parser.add_argument("--project")
@@ -219,6 +257,9 @@ def main():
     else:
         raise SystemExit("Use --project _projetos/arquivo.md ou --all.")
     cleanup_pending()
+    removed_images = cleanup_orphan_images()
+    for image in removed_images:
+        print(f"Imagem sem referência removida: {image}")
     print("Imagens e anexos organizados; front matter atualizado." if changed else
           "Nenhuma mídia local pendente para processar.")
 
