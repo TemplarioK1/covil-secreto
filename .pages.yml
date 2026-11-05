@@ -180,7 +180,7 @@ content:
       - name: download
         label: Download principal (todas as plataformas)
         type: file
-        description: Arquivo principal compartilhado por todas as plataformas.
+        description: "Arquivo principal compartilhado por todas as plataformas. O Pages CMS envia inicialmente para downloads/projetos; depois, o arquivo será organizado na pasta downloads/projetos/<slug-do-projeto>/ e o caminho deste campo será atualizado."
         options:
           media: downloads
           path: projetos
@@ -188,7 +188,7 @@ content:
       - name: additional_downloads
         label: Downloads complementares
         type: object
-        description: Adicione aqui arquivos específicos de uma plataforma ou complementos opcionais. Cada item pode ter sua própria observação.
+        description: "Adicione arquivos específicos de uma plataforma ou complementos opcionais. O Pages CMS envia inicialmente para downloads/projetos; os arquivos serão organizados em downloads/projetos/<slug-do-projeto>/ e os caminhos serão atualizados."
         list:
           collapsible:
             collapsed: true
