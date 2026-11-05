@@ -46,6 +46,8 @@ A Build 1.0 traz os textos do jogo traduzidos para PT-BR, com versões para **PC
 - **PC:** versão para computador.
 - **Nintendo Switch:** versão para console e emuladores.
 
+> **Atenção à versão do Nintendo Switch:** a versão de console desta tradução foi preparada tendo como referência o jogo com Title ID `010050400BD38000`, identificado em algumas bases como versão americana (USA). No entanto, listas de títulos também associam esse mesmo Title ID às regiões EUR e USA. Antes de instalar, confira o Title ID da sua cópia e verifique se ela utiliza a mesma edição/estrutura de arquivos. Caso o jogo tenha sido regionalizado ou utilize outro identificador, a compatibilidade da tradução não é garantida.
+
 ### Instruções de instalação
 
 O arquivo ZIP contém os arquivos da tradução e um **tutorial com as instruções de instalação**. Leia-o antes de aplicar a tradução.
