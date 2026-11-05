@@ -120,7 +120,10 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% assign final_average = 0 %}
 {% if final_count > 0 %}{% assign final_average = final_total | divided_by: final_count | round %}{% endif %}
 {% assign show_platform_titles = false %}
-{% if progress_group_count > 0 %}{% assign show_platform_titles = true %}{% endif %}
+{% for group in page.progress_platform_groups %}
+  {% assign active_group_size = group.stages | size %}
+  {% if active_group_size > 0 %}{% assign show_platform_titles = true %}{% endif %}
+{% endfor %}
 {% if page.progress_stages.size > 0 %}
 {% if show_platform_titles %}<h3 class="progress-platform-title">{{ page.platforms.first | default: page.platform }} / Geral</h3>{% endif %}
 <div class="progress-list">
