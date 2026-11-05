@@ -28,7 +28,7 @@ header {
   align-items:center;gap:20px;flex-wrap:wrap;
 }
 .logo {display:flex;align-items:center;flex:0 0 auto;text-decoration:none;line-height:0}
-.logo img {display:block;width:min(300px,38vw);height:auto;max-height:88px;object-fit:contain}
+.logo img {display:block;width:min(300px,38vw);height:auto;max-height:none;object-fit:contain;flex-shrink:0}
 h1 span {color:var(--purple)}
 nav {display:flex;gap:22px;flex-wrap:wrap}
 nav a {color:var(--muted);text-decoration:none;font-size:14px}
@@ -105,7 +105,7 @@ footer {
 @media(max-width:520px) {
   .grid {grid-template-columns:1fr}
   header {padding:16px 20px;gap:14px}
-  .logo img {width:min(230px,70vw);max-height:68px}
+  .logo img {width:min(230px,70vw);height:auto;max-height:none}
   nav {gap:14px}
   .hero {padding-top:60px}
   .card-link {min-height:118px;padding:14px;gap:14px}
