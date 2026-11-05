@@ -37,7 +37,7 @@ content:
         ref: current
         confirm:
           title: Processar imagens deste projeto?
-          message: As imagens serão redimensionadas, convertidas para WebP, organizadas por função e os caminhos serão atualizados.
+          message: As imagens serão redimensionadas, convertidas para WebP, reunidas na pasta deste projeto e os caminhos serão atualizados.
           button: Processar imagens
     fields:
       - name: title
@@ -53,8 +53,9 @@ content:
             - Port
             - Projeto
       - name: platform
-        label: Plataforma
+        label: Plataformas
         type: string
+        description: Informe todas as plataformas separadas por vírgula. Ex.: Nintendo Switch, PC
       - name: status
         label: Status
         type: select
