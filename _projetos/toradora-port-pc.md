@@ -15,10 +15,7 @@ game_synopsis: >-
   convive com os personagens da escola e da cidade. As escolhas do jogador conduzem a diferentes
   acontecimentos e finais, em uma narrativa própria do jogo.
 game_multiplayer: Não
-game_local_multiplayer: Não
-game_online_multiplayer: Não
-game_players: 1 jogador
-game_multiplayer_details: Jogo original para um jogador, lançado no PSP. O projeto do Covil Secreto é um port para PC.
+game_players: "1"
 progress_stages:
   - name: Análise e preparação
     percentage: 80
