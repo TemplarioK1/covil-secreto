@@ -5,7 +5,7 @@
   {
     "title": {{ project.title | default: "" | jsonify }},
     "category": {{ project.category | default: "" | jsonify }},
-    "platform": {{ project.platform | default: "" | jsonify }},
+    "platforms": {{ project.platforms | default: project.platform | default: empty | jsonify }},
     "status": {{ project.status | default: "" | jsonify }},
     "version": {{ project.version | default: "" | jsonify }},
     "date": {{ project.date | default: "" | jsonify }},
