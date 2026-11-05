@@ -31,11 +31,8 @@ game_synopsis: >-
   Asterix e Obelix partem para Las Vegum, um enorme parque de diversões construído por Júlio César, para
   investigar o desaparecimento do druida Panoramix. Explore áreas temáticas inspiradas em Roma, enfrente
   legiões romanas e descubra os planos do imperador.
-game_multiplayer: Sim
-game_local_multiplayer: Sim
-game_online_multiplayer: Não
-game_players: 2 jogador
-game_multiplayer_details: Jogo para até dois jogadores.
+game_multiplayer: Local
+game_players: "2"
 ---
 
 # Asterix & Obelix XXL 2 Tradução PT-BR | Build 1.0
