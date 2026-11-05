@@ -21,7 +21,27 @@ game_local_multiplayer: Não
 game_online_multiplayer: Não
 game_players: 1 jogador
 game_multiplayer_details: Experiência exclusivamente para um jogador.
+
+progress_stages:
+- name: Preparação e análise dos arquivos
+  percentage: 0
+- name: Tradução e adaptação
+  percentage: 0
+- name: Revisão e correções
+  percentage: 0
+- name: Testes no jogo
+  percentage: 0
+- name: Finalização e publicação
+  percentage: 0
 ---
 ## Sobre o projeto
 
-Informações sobre a tradução e o projeto serão adicionadas em breve.
+Este projeto tem como objetivo disponibilizar **Loop8: Summer of Gods** em português brasileiro para **Nintendo Switch e PC**. O trabalho busca adaptar os textos e elementos narrativos para que a história, os diálogos e os acontecimentos de Ashihara possam ser acompanhados com mais facilidade.
+
+## Instruções importantes
+
+**Leia as instruções incluídas no arquivo de download antes de instalar ou utilizar os arquivos.** Verifique a plataforma e a versão do jogo compatível, além dos requisitos e procedimentos indicados.
+
+## Progresso
+
+As etapas abaixo representam as fases de preparação, tradução, revisão e testes. Os percentuais são valores iniciais e devem ser atualizados conforme o desenvolvimento avançar.
