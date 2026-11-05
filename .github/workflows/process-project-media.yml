@@ -76,7 +76,7 @@ jobs:
           BEFORE_SHA: ${{ github.event.before }}
           AFTER_SHA: ${{ github.sha }}
         run: |
-          if [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ] && git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- _projetos/ | grep -q .; then
+          if [ "$BEFORE_SHA" != "0000000000000000000000000000000000000000" ] && git diff --name-only "$BEFORE_SHA" "$AFTER_SHA" -- _projetos/ scripts/ .github/workflows/ | grep -q .; then
             echo "Alteração em projeto detectada; executando limpeza de imagens sem referência."
             python scripts/optimize_project_media.py --all --cleanup-orphans
           else
