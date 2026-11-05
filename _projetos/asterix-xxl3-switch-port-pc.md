@@ -7,6 +7,9 @@ version: "1.0"
 date: 2026-11-05
 icon: /media/images/i.jpg
 cover: /media/images/b.jpg
+screenshots:
+  - /media/images/s1.jpg
+  - /media/images/s2.jpg
 download: /downloads/010081500ea1e000.zip
 ---
 ## Sobre o projeto
