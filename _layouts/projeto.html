@@ -22,6 +22,8 @@ h1{font-size:clamp(32px,6vw,52px);margin:25px 0 15px}
 h2{margin-top:45px;border-bottom:1px solid #302a3a;padding-bottom:12px}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
 .gallery img{width:100%;border-radius:10px}
+.video{position:relative;width:100%;aspect-ratio:16/9;margin-top:20px;border-radius:12px;overflow:hidden;background:#24202c}
+.video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .download{display:inline-block;background:#8255cf;color:white;padding:15px 25px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:20px}
 .download:hover{background:#986ee0}
 footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5;font-size:12px}
@@ -47,6 +49,16 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 </div>
 
 {% if content != "" %}<section class="description">{{ content }}</section>{% endif %}
+
+{% if page.youtube %}
+{% assign youtube_url = page.youtube | strip %}
+{% assign youtube_id = '' %}
+{% if youtube_url contains 'youtu.be/' %}{% assign youtube_id = youtube_url | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first %}{% elsif youtube_url contains 'v=' %}{% assign youtube_id = youtube_url | split: 'v=' | last | split: '&' | first %}{% elsif youtube_url contains '/embed/' %}{% assign youtube_id = youtube_url | split: '/embed/' | last | split: '?' | first %}{% elsif youtube_url contains '/shorts/' %}{% assign youtube_id = youtube_url | split: '/shorts/' | last | split: '?' | first %}{% endif %}
+{% if youtube_id != '' %}
+<h2>Vídeo de apresentação</h2>
+<div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id | escape }}" title="Vídeo de {{ page.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
+{% endif %}
+{% endif %}
 
 {% if page.screenshots %}
 <h2>Screenshots</h2>
