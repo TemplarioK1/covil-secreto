@@ -22,6 +22,12 @@ h1{font-size:clamp(32px,6vw,52px);margin:25px 0 15px}
 h2{margin-top:45px;border-bottom:1px solid #302a3a;padding-bottom:12px}
 .gallery{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:15px}
 .gallery img{width:100%;border-radius:10px}
+.game-info{margin-top:20px;background:#191820;border:1px solid #302a3a;border-radius:12px;padding:22px}
+.game-synopsis{color:#c1b9cd;line-height:1.8;margin:0 0 20px;white-space:pre-line}
+.game-facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px}
+.game-fact{display:flex;flex-direction:column;gap:7px;padding:13px;background:#24202c;border-radius:8px}
+.game-fact span{font-size:12px;color:#aaa3b5}
+.game-fact strong{font-size:14px;line-height:1.5;color:#f4efff}
 .video{position:relative;width:100%;aspect-ratio:16/9;margin-top:20px;border-radius:12px;overflow:hidden;background:#24202c}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .download{display:inline-block;background:#8255cf;color:white;padding:15px 25px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:20px}
@@ -81,6 +87,21 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 </div>
 {% endif %}
 
+{% assign info = page.game_info %}
+{% if info and (info.developer or info.publisher or info.synopsis or info.release_date or info.players or info.genre) %}
+<h2>Sobre o jogo</h2>
+<div class="game-info">
+{% if info.synopsis %}<p class="game-synopsis">{{ info.synopsis | escape | newline_to_br }}</p>{% endif %}
+<div class="game-facts">
+{% if info.developer %}<div class="game-fact"><span>Desenvolvedora</span><strong>{{ info.developer | escape }}</strong></div>{% endif %}
+{% if info.publisher %}<div class="game-fact"><span>Publisher / Distribuidora</span><strong>{{ info.publisher | escape }}</strong></div>{% endif %}
+{% if info.release_date %}<div class="game-fact"><span>Lançamento original</span><strong>{{ info.release_date | date: "%d/%m/%Y" }}</strong></div>{% endif %}
+{% if info.players %}<div class="game-fact"><span>Jogadores</span><strong>{{ info.players | escape }}</strong></div>{% endif %}
+{% if info.genre %}<div class="game-fact"><span>Gênero</span><strong>{{ info.genre | escape }}</strong></div>{% endif %}
+</div>
+</div>
+{% endif %}
+
 {% if page.youtube %}
 {% assign youtube_url = page.youtube | strip %}
 {% assign youtube_id = '' %}
@@ -126,7 +147,6 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 </div>
 {% endfor %}
 </div>
-{% endif %}</a>
 {% endif %}
 </main>
 <footer>COVIL SECRETO © 2026</footer>
