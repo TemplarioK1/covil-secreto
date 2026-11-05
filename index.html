@@ -179,11 +179,12 @@ let activeFilter = "Todos";
 
 function getField(text, name) {
   const match = text.match(
-    new RegExp("^" + name + ":\\\\s*(.*)$", "m")
+    new RegExp("^" + name + ":\\s*(.*)$", "m")
   );
   if (!match) return "";
   return match[1].trim().replace(/^["']|["']$/g, "");
 }
+
 
 function getBody(text) {
   const match = text.match(/^---\s*[\s\S]*?\n---\s*([\s\S]*)$/);
