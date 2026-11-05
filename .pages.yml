@@ -1,47 +1,3 @@
-      - name: game_developer
-        label: Jogo original — Desenvolvedora
-        type: string
-      - name: game_publisher
-        label: Jogo original — Publisher / Distribuidora
-        type: string
-      - name: game_release_year
-        label: Jogo original — Ano de lançamento
-        type: string
-        description: "Ex.: 2018."
-      - name: game_genre
-        label: Jogo original — Gênero
-        type: string
-      - name: game_synopsis
-        label: Jogo original — Sinopse
-        type: text
-      - name: game_multiplayer
-        label: Jogo original — Possui multiplayer?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: game_local_multiplayer
-        label: Jogo original — Multiplayer local?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: game_online_multiplayer
-        label: Jogo original — Multiplayer online?
-        type: select
-        options:
-          values:
-            - Sim
-            - Não
-      - name: game_players
-        label: Jogo original — Quantidade de jogadores
-        type: string
-        description: "Ex.: 1 jogador, 1–4 jogadores, até 8 online."
-      - name: game_multiplayer_details
-        label: Jogo original — Detalhes do multiplayer
-        type: text
 media:
   - name: images
     label: Imagens dos projetos
@@ -270,3 +226,47 @@ content:
       - name: body
         label: Descrição e instruções
         type: rich-text
+      - name: game_developer
+        label: Jogo original — Desenvolvedora
+        type: string
+      - name: game_publisher
+        label: Jogo original — Publisher / Distribuidora
+        type: string
+      - name: game_release_year
+        label: Jogo original — Ano de lançamento
+        type: string
+        description: "Ex.: 2018."
+      - name: game_genre
+        label: Jogo original — Gênero
+        type: string
+      - name: game_synopsis
+        label: Jogo original — Sinopse
+        type: text
+      - name: game_multiplayer
+        label: Jogo original — Possui multiplayer?
+        type: select
+        options:
+          values:
+            - Sim
+            - Não
+      - name: game_local_multiplayer
+        label: Jogo original — Multiplayer local?
+        type: select
+        options:
+          values:
+            - Sim
+            - Não
+      - name: game_online_multiplayer
+        label: Jogo original — Multiplayer online?
+        type: select
+        options:
+          values:
+            - Sim
+            - Não
+      - name: game_players
+        label: Jogo original — Quantidade de jogadores
+        type: string
+        description: "Ex.: 1 jogador, 1–4 jogadores, até 8 online."
+      - name: game_multiplayer_details
+        label: Jogo original — Detalhes do multiplayer
+        type: text
