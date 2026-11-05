@@ -38,7 +38,7 @@ h2{margin-top:45px;border-bottom:1px solid #302a3a;padding-bottom:12px}
 .game-fact{display:flex;flex-direction:column;gap:7px;padding:13px;background:#24202c;border-radius:8px}
 .game-fact span{font-size:12px;color:#aaa3b5}
 .game-fact strong{font-size:14px;line-height:1.5;color:#f4efff}
-.video{position:relative;width:100%;aspect-ratio:16/9;margin-top:20px;border-radius:12px;overflow:hidden;background:#24202c}
+.video{position:relative;width:100%;min-width:0;aspect-ratio:16/9;margin:0;border-radius:10px;overflow:hidden;background:#24202c}.gallery-video{min-width:0}.gallery-video .video{height:100%}
 .video iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
 .download{display:inline-block;background:#8255cf;color:white;padding:15px 25px;border-radius:8px;text-decoration:none;font-weight:bold;margin-top:20px}
 .download:hover{background:#986ee0}
@@ -187,9 +187,41 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 </div>
 {% endif %}
 
+<h2>Download</h2>
+{% assign has_any_download = false %}
+{% if page.download %}
+{% assign has_any_download = true %}
+{% assign download_path = page.download %}
+{% unless download_path contains '://' %}{% assign download_path = download_path | relative_url %}{% endunless %}
+<a class="download" href="{{ download_path | escape }}" download>↓ Download principal{% if page.version %} — versão {{ page.version | escape }}{% endif %}</a>
+{% endif %}
+{% assign extra_download_count = 0 %}
+{% for item in page.additional_downloads %}
+{% if item.file %}{% assign extra_download_count = extra_download_count | plus: 1 %}{% endif %}
+{% endfor %}
+{% if extra_download_count > 0 %}
+{% assign has_any_download = true %}
+<div class="download-list">
+{% for item in page.additional_downloads %}
+{% if item.file %}
+{% assign extra_download_path = item.file %}
+{% unless extra_download_path contains '://' %}{% assign extra_download_path = extra_download_path | relative_url %}{% endunless %}
+<div class="download-item">
+<h3>Download complementar{% if item.platform %} — {{ item.platform | escape }}{% endif %}</h3>
+{% if item.note %}<p>{{ item.note | escape | newline_to_br }}</p>{% endif %}
+<a class="download" href="{{ extra_download_path | escape }}" download>↓ Baixar arquivo</a>
+</div>
+{% endif %}
+{% endfor %}
+</div>
+{% endif %}
+{% unless has_any_download %}
+<p class="description">Download ainda não disponível.</p>
+{% endunless %}
+
 {% assign new_screenshots = page.screenshot_1 | append: '|' | append: page.screenshot_2 | append: '|' | append: page.screenshot_3 | append: '|' | append: page.screenshot_4 | split: '|' %}
-{% if page.screenshots or page.screenshot_1 or page.screenshot_2 or page.screenshot_3 or page.screenshot_4 %}
-<h2>Screenshots</h2>
+{% if page.screenshots or page.screenshot_1 or page.screenshot_2 or page.screenshot_3 or page.screenshot_4 or page.youtube %}
+<h2>Galeria</h2>
 <div class="gallery">
 {% for screenshot in page.screenshots %}
 {% assign screenshot_path = screenshot %}
@@ -204,6 +236,14 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 {% endif %}
 {% endfor %}
 </div>
+{% if page.youtube %}
+{% assign youtube_url = page.youtube | strip %}
+{% assign youtube_id = '' %}
+{% if youtube_url contains 'youtu.be/' %}{% assign youtube_id = youtube_url | split: 'youtu.be/' | last | split: '?' | first | split: '&' | first %}{% elsif youtube_url contains 'v=' %}{% assign youtube_id = youtube_url | split: 'v=' | last | split: '&' | first %}{% elsif youtube_url contains '/embed/' %}{% assign youtube_id = youtube_url | split: '/embed/' | last | split: '?' | first %}{% elsif youtube_url contains '/shorts/' %}{% assign youtube_id = youtube_url | split: '/shorts/' | last | split: '?' | first %}{% endif %}
+{% if youtube_id != '' %}
+<div class="gallery-video"><div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id | escape }}" title="Vídeo de {{ page.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div></div>
+{% endif %}
+{% endif %}
 {% endif %}
 
 {% assign info = page %}
@@ -238,38 +278,6 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 <div class="video"><iframe src="https://www.youtube-nocookie.com/embed/{{ youtube_id | escape }}" title="Vídeo de {{ page.title | escape }}" loading="lazy" referrerpolicy="strict-origin-when-cross-origin" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe></div>
 {% endif %}
 {% endif %}
-
-<h2>Download</h2>
-{% assign has_any_download = false %}
-{% if page.download %}
-{% assign has_any_download = true %}
-{% assign download_path = page.download %}
-{% unless download_path contains '://' %}{% assign download_path = download_path | relative_url %}{% endunless %}
-<a class="download" href="{{ download_path | escape }}" download>↓ Download principal{% if page.version %} — versão {{ page.version | escape }}{% endif %}</a>
-{% endif %}
-{% assign extra_download_count = 0 %}
-{% for item in page.additional_downloads %}
-{% if item.file %}{% assign extra_download_count = extra_download_count | plus: 1 %}{% endif %}
-{% endfor %}
-{% if extra_download_count > 0 %}
-{% assign has_any_download = true %}
-<div class="download-list">
-{% for item in page.additional_downloads %}
-{% if item.file %}
-{% assign extra_download_path = item.file %}
-{% unless extra_download_path contains '://' %}{% assign extra_download_path = extra_download_path | relative_url %}{% endunless %}
-<div class="download-item">
-<h3>Download complementar{% if item.platform %} — {{ item.platform | escape }}{% endif %}</h3>
-{% if item.note %}<p>{{ item.note | escape | newline_to_br }}</p>{% endif %}
-<a class="download" href="{{ extra_download_path | escape }}" download>↓ Baixar arquivo</a>
-</div>
-{% endif %}
-{% endfor %}
-</div>
-{% endif %}
-{% unless has_any_download %}
-<p class="description">Download ainda não disponível.</p>
-{% endunless %}
 
 {% if page.version_history %}
 <h2>Histórico de atualizações</h2>
