@@ -120,7 +120,7 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
   {% endfor %}
 {% endfor %}
 {% assign final_average = 0 %}
-{% if final_count > 0 %}{% assign final_average = final_total | divided_by: final_count | round %}{% endif %}
+{% if final_count > 0 %}{% assign final_average = final_total | times: 1.0 | divided_by: final_count | round %}{% endif %}
 {% assign show_platform_titles = false %}
 {% for group in page.progress_platform_groups %}
   {% assign active_group_size = group.stages | size %}
