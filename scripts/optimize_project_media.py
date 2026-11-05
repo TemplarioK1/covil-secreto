@@ -156,14 +156,23 @@ def process(project_file: Path) -> bool:
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument("--project", required=True)
+    parser.add_argument("--project")
+    parser.add_argument("--all", action="store_true")
     args = parser.parse_args()
-    project = Path(args.project)
-    if not project.is_file() or project.parent != Path("_projetos"):
-        raise SystemExit("Informe o caminho de um projeto dentro de _projetos/.")
-    changed = process(project)
-    print("Imagens processadas e front matter atualizado." if changed else
-          "Nenhuma imagem local pendente para processar.")
+    if args.all:
+        projects = sorted((ROOT / "_projetos").glob("*.md"))
+        changed = False
+        for project in projects:
+            changed = process(project) or changed
+    elif args.project:
+        project = Path(args.project)
+        if not project.is_file() or project.parent != Path("_projetos"):
+            raise SystemExit("Informe o caminho de um projeto dentro de _projetos/.")
+        changed = process(project)
+    else:
+        raise SystemExit("Use --project _projetos/arquivo.md ou --all.")
+    print("Imagens e anexos organizados; front matter atualizado." if changed else
+          "Nenhuma mídia local pendente para processar.")
 
 
 if __name__ == "__main__":
