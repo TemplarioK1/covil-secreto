@@ -81,10 +81,9 @@ function splitMarkdown(raw){const m=raw.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*
 function color(v){return v>=100?"#397fd6":v>=75?"#55b878":v>=50?"#e3c342":v>=25?"#ed963d":"#e05252"}
 function isFinalStage(s){return /^(finalização|finalização e publicação)$/i.test(String(s.name||"").trim())}
 function averageProgress(){const list=stages.filter(s=>!isFinalStage(s));return list.length?Math.round(list.reduce((a,s)=>a+(Number(s.percentage)||0),0)/list.length):0}
-function normalizeFinalStage(){stages=stages.filter(s=>!isFinalStage(s));stages.push({name:"Finalização",percentage:averageProgress()})}
 function isFinalStage(s){return /^(finalização|finalização e publicação)$/i.test(String(s.name||"").trim())}
 function averageProgress(){const editable=stages.filter(s=>!isFinalStage(s));return editable.length?Math.round(editable.reduce((sum,s)=>sum+(Number(s.percentage)||0),0)/editable.length):0}
-function normalizeFinalStage(){let final=stages.find(isFinalStage);stages=stages.filter(s=>!isFinalStage(s));stages.push({name:"Finalização",percentage:averageProgress()})}
+function normalizeFinalStage(){stages=stages.filter(s=>!isFinalStage(s));stages.push({name:"Finalização",percentage:averageProgress()})}
 async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){let e=await r.json().catch(()=>({message:r.statusText}));throw Error(e.message||"Erro HTTP "+r.status)}return r.status===204?null:r.json()}
 async function connect(){token=$("#token").value.trim();if(!token)return connection("Informe o token para conectar.","error");try{await api(API+"/repos/"+OWNER+"/"+REPO);$("#disconnect").disabled=false;$("#project").disabled=false;$("#reload").disabled=false;connection("Conectado ao repositório "+OWNER+"/"+REPO+".","ok");await loadList()}catch(e){token="";connection("Falha na conexão: "+e.message,"error")}}
 async function loadList(){try{const data=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/_projetos?ref="+BRANCH);files=data.filter(x=>x.type==="file"&&x.name.endsWith(".md"));$("#project").innerHTML='<option value="">Selecione um projeto…</option>'+files.map(f=>'<option value="'+f.path+'">'+f.name.replace(/\.md$/,"")+'</option>').join("");}catch(e){connection("Não foi possível listar projetos: "+e.message,"error")}}
