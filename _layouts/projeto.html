@@ -60,13 +60,21 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% endif %}
 {% endif %}
 
-{% if page.screenshots %}
+{% assign new_screenshots = page.screenshot_1 | append: '|' | append: page.screenshot_2 | append: '|' | append: page.screenshot_3 | append: '|' | append: page.screenshot_4 | split: '|' %}
+{% if page.screenshots or page.screenshot_1 or page.screenshot_2 or page.screenshot_3 or page.screenshot_4 %}
 <h2>Screenshots</h2>
 <div class="gallery">
 {% for screenshot in page.screenshots %}
 {% assign screenshot_path = screenshot %}
 {% unless screenshot_path contains '://' %}{% assign screenshot_path = screenshot_path | relative_url %}{% endunless %}
 <img src="{{ screenshot_path | escape }}" alt="Screenshot de {{ page.title | escape }}" loading="lazy">
+{% endfor %}
+{% for screenshot in new_screenshots %}
+{% if screenshot != '' %}
+{% assign screenshot_path = screenshot %}
+{% unless screenshot_path contains '://' %}{% assign screenshot_path = screenshot_path | relative_url %}{% endunless %}
+<img src="{{ screenshot_path | escape }}" alt="Screenshot de {{ page.title | escape }}" loading="lazy">
+{% endif %}
 {% endfor %}
 </div>
 {% endif %}
