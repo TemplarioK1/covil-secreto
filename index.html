@@ -218,59 +218,27 @@ function escapeHTML(value) {
 
 async function loadProjects() {
   try {
-    const api = `https://api.github.com/repos/${USER}/${REPO}/contents/${PROJECTS_PATH}?ref=${BRANCH}`;
-    const response = await fetch(api, {
-      headers: { Accept: "application/vnd.github+json" }
+    const response = await fetch("/covil-secreto/projetos.json", {
+      cache: "no-store"
     });
 
     if (!response.ok) {
-      if (response.status === 404) {
-        throw new Error(`A pasta ${PROJECTS_PATH} não foi encontrada no GitHub.`);
-      }
-      if (response.status === 403) {
-        throw new Error("O GitHub limitou temporariamente as consultas à API. Tente novamente mais tarde.");
-      }
-      throw new Error(`Falha ao consultar o GitHub (HTTP ${response.status}).`);
+      throw new Error(`Não foi possível carregar o catálogo (HTTP ${response.status}).`);
     }
 
-    const files = await response.json();
-    if (!Array.isArray(files)) {
-      throw new Error("O GitHub não retornou uma lista válida de projetos.");
+    const data = await response.json();
+    if (!Array.isArray(data)) {
+      throw new Error("O arquivo de catálogo não contém uma lista válida.");
     }
-    const markdownFiles = files.filter(file =>
-      file.type === "file" && file.name.endsWith(".md")
-    );
 
-    const results = await Promise.all(
-      markdownFiles.map(async file => {
-        const res = await fetch(file.download_url);
-        if (!res.ok) return null;
-
-        const text = await res.text();
-        const body = getBody(text);
-
-        return {
-          title: getField(text, "title"),
-          category: getField(text, "category"),
-          platform: getField(text, "platform"),
-          status: getField(text, "status"),
-          version: getField(text, "version"),
-          date: getField(text, "date"),
-          cover: getField(text, "cover"),
-          download: getField(text, "download"),
-          description: body
-        };
-      })
-    );
-
-    projects = results.filter(p => p && p.title);
+    projects = data.filter(project => project && project.title);
     render();
   } catch (error) {
     catalog.innerHTML = `
       <div class="empty">
         <strong>Não foi possível carregar o catálogo.</strong>
         ${escapeHTML(error.message)}
-        <p>Verifique se a pasta _projetos está pública e tente novamente.</p>
+        <p>Atualize a página em alguns instantes. Se o erro persistir, verifique a publicação do GitHub Pages.</p>
       </div>`;
   }
 }
