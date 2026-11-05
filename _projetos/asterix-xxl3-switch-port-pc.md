@@ -5,7 +5,7 @@ platforms:
   - Nintendo Switch
   - PC
 status: Em andamento
-version: "69"
+version: "1.0"
 date: 2026-11-05
 icon: /media/images/projetos/asterix-xxl3-switch-port-pc/icone.webp
 cover: /media/images/projetos/asterix-xxl3-switch-port-pc/capa.webp
