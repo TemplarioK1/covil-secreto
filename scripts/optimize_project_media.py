@@ -6,6 +6,7 @@ import argparse
 import re
 from pathlib import Path
 from urllib.parse import unquote
+import shutil
 
 import yaml
 from PIL import Image, ImageOps
@@ -57,6 +58,16 @@ def optimize(source: Path, destination: Path, max_size: tuple[int, int]) -> None
         if image.mode not in ("RGB", "RGBA"):
             image = image.convert("RGBA" if "transparency" in image.info else "RGB")
         image.save(destination, "WEBP", quality=84, method=6)
+
+
+def download_repo_path(public_path: str) -> Path | None:
+    value = unquote(str(public_path or "").strip()).split("?", 1)[0].split("#", 1)[0]
+    if not value.startswith("/downloads/") and not value.startswith("downloads/"):
+        return None
+    path = (ROOT / value.lstrip("/")).resolve()
+    if ROOT.resolve() not in path.parents:
+        raise ValueError(f"Caminho de download inseguro: {public_path}")
+    return path
 
 
 def is_used_elsewhere(old_public_path: str, current_project: Path) -> bool:
@@ -115,6 +126,21 @@ def process(project_file: Path) -> bool:
             updated = process_reference(old, new, (1280, 720), project_file)
             if updated != old:
                 data[field] = updated
+                changed = True
+
+    old_download = data.get("download")
+    if old_download:
+        source_zip = download_repo_path(old_download)
+        if source_zip is not None:
+            if not source_zip.is_file():
+                raise FileNotFoundError(f"Arquivo ZIP referenciado não encontrado: {source_zip}")
+            target_zip = ROOT / "downloads" / "projetos" / slug / source_zip.name
+            target_zip.parent.mkdir(parents=True, exist_ok=True)
+            if source_zip.resolve() != target_zip.resolve():
+                shutil.copy2(source_zip, target_zip)
+                if not is_used_elsewhere(old_download, project_file):
+                    source_zip.unlink(missing_ok=True)
+                data["download"] = "/" + target_zip.as_posix()
                 changed = True
 
     if changed:
