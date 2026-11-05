@@ -9,7 +9,15 @@
 *{box-sizing:border-box}
 body{margin:0;background:#101015;color:#f4efff;font-family:Arial,sans-serif}
 a{color:#c3a4ff}
-header{padding:18px 7%;border-bottom:1px solid #302a3a;display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+header{padding:18px 7%;border-bottom:1px solid #302a3a;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap}
+.logo{display:flex;align-items:center;flex:0 0 auto;text-decoration:none;line-height:0}
+.logo img{display:block;width:min(300px,38vw);height:auto;object-fit:contain;flex-shrink:0}
+nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+nav a{color:#aaa3b5;text-decoration:none;font-size:14px}
+nav a:hover{color:#ad83ff}
+nav a.admin-link{color:#d5baff;border:1px solid #57436e;border-radius:7px;padding:8px 11px}
+nav a.admin-link:hover{background:#292035;border-color:#ad83ff}
+@media(max-width:600px){header{padding:16px 20px}.logo img{width:min(230px,70vw)}nav{gap:14px}}
 .logo{display:flex;align-items:center;flex:0 0 auto;text-decoration:none;line-height:0}
 .logo img{display:block;width:min(300px,38vw);height:auto;object-fit:contain;flex-shrink:0}
 @media(max-width:600px){header{padding:16px 20px}.logo img{width:min(230px,70vw)}}
@@ -79,7 +87,16 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 </style>
 </head>
 <body>
-<header><a class="logo" href="https://templariok1.github.io/covil-secreto/" aria-label="Covil Secreto — início"><img src="{{ '/Logo gamer neon Covil Secreto.png' | relative_url }}" alt="Covil Secreto"></a></header>
+<header>
+<a class="logo" href="{{ '/' | relative_url }}" aria-label="Covil Secreto — início"><img src="{{ '/Logo gamer neon Covil Secreto.png' | relative_url }}" alt="Covil Secreto"></a>
+<nav aria-label="Navegação principal">
+<a href="{{ '/' | relative_url }}">Início</a>
+<a href="{{ '/' | relative_url }}#catalog-ports">Ports</a>
+<a href="{{ '/' | relative_url }}#catalog-traducoes">Traduções</a>
+<a href="{{ '/contato/' | relative_url }}">Contato</a>
+<a class="admin-link" href="{{ '/admin/projetos.html' | relative_url }}">Modo ADM</a>
+</nav>
+</header>
 <main>
 <a class="back" href="{{ '/' | relative_url }}">← Voltar ao catálogo</a>
 
