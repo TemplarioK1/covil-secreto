@@ -3,101 +3,120 @@
 <html lang="pt-BR">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <meta name="theme-color" content="#111116">
 <title>Covil Secreto | Traduções e Ports</title>
 <meta name="description" content="Traduções, ports e projetos independentes do Covil Secreto.">
 
 <style>
 :root {
-  --bg: #111116;
-  --panel: #191820;
-  --purple: #a77aff;
-  --text: #f4efff;
-  --muted: #aaa3b5;
-  --border: #302a3a;
+  --bg:#101015;
+  --panel:#191820;
+  --purple:#ad83ff;
+  --text:#f4efff;
+  --muted:#aaa3b5;
+  --border:#302a3a;
 }
-* { box-sizing: border-box; }
+* {box-sizing:border-box}
 body {
-  margin: 0;
-  background: var(--bg);
-  color: var(--text);
-  font-family: Arial, sans-serif;
+  margin:0;background:var(--bg);color:var(--text);
+  font-family:Arial,sans-serif;
 }
 header {
-  border-bottom: 1px solid var(--border);
-  padding: 22px 7%;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  gap: 18px;
+  padding:22px 7%;border-bottom:1px solid var(--border);
+  display:flex;justify-content:space-between;
+  align-items:center;gap:20px;flex-wrap:wrap;
 }
-.logo { font-size: 21px; font-weight: bold; letter-spacing: 2px; }
-.logo span { color: var(--purple); }
-nav { display: flex; gap: 22px; flex-wrap: wrap; }
-a { color: inherit; text-decoration: none; }
-nav a { color: var(--muted); font-size: 14px; }
-nav a:hover { color: var(--purple); }
-.hero {
-  max-width: 1100px;
-  margin: auto;
-  padding: 95px 24px 75px;
+.logo {font-size:21px;font-weight:bold;letter-spacing:2px}
+.logo span,h1 span {color:var(--purple)}
+nav {display:flex;gap:22px;flex-wrap:wrap}
+nav a {color:var(--muted);text-decoration:none;font-size:14px}
+nav a:hover {color:var(--purple)}
+.hero {max-width:1100px;margin:auto;padding:85px 24px 55px}
+.tag {color:var(--purple);font-size:12px;letter-spacing:3px}
+h1 {font-size:clamp(40px,7vw,66px);margin:18px 0}
+.hero p {color:var(--muted);line-height:1.8;max-width:570px}
+main {max-width:1100px;margin:auto;padding:15px 24px 90px}
+.section-title {margin:30px 0}
+.section-title p {color:var(--muted);font-size:14px}
+.controls {display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}
+input {
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:8px;padding:13px;color:white;outline:none;
 }
-.tag {
-  color: var(--purple);
-  font-size: 12px;
-  letter-spacing: 3px;
+#search {flex:1;min-width:200px}
+.filters {display:flex;gap:8px;flex-wrap:wrap}
+.filters button {
+  background:var(--panel);border:1px solid var(--border);
+  color:var(--muted);padding:11px 15px;
+  border-radius:8px;cursor:pointer;
 }
-h1 { font-size: clamp(38px, 7vw, 65px); margin: 18px 0; }
-h1 span { color: var(--purple); }
-.hero p { color: var(--muted); line-height: 1.8; max-width: 550px; }
-main { max-width: 1100px; margin: auto; padding: 15px 24px 90px; }
-.section-title { margin: 35px 0 25px; }
-.section-title h2 { font-size: 24px; }
-.section-title p { color: var(--muted); font-size: 14px; }
-.filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
-.filters a {
-  padding: 10px 17px;
-  border: 1px solid var(--border);
-  border-radius: 7px;
-  color: var(--muted);
-  font-size: 13px;
+.filters button.active,.filters button:hover {
+  color:var(--purple);border-color:var(--purple);
+  background:#292035;
 }
-.filters a:first-child {
-  background: #30233f;
-  color: var(--purple);
+.grid {
+  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:20px;
 }
+.card {
+  background:var(--panel);border:1px solid var(--border);
+  border-radius:12px;overflow:hidden;
+  transition:transform .2s,border-color .2s;
+}
+.card:hover {transform:translateY(-4px);border-color:var(--purple)}
+.cover {
+  width:100%;aspect-ratio:16/10;object-fit:cover;
+  background:#24202c;display:block;
+}
+.no-cover {
+  aspect-ratio:16/10;background:#24202c;
+  display:flex;align-items:center;justify-content:center;
+  color:var(--purple);font-size:35px;
+}
+.card-content {padding:17px}
+.card h3 {margin:0 0 12px;font-size:18px}
+.meta {display:flex;gap:7px;flex-wrap:wrap;margin-bottom:12px}
+.tag-small {
+  font-size:11px;background:#30253d;color:#d1b9ff;
+  padding:6px 9px;border-radius:5px;
+}
+.description {color:var(--muted);font-size:13px;line-height:1.6}
+.download {
+  display:block;text-align:center;background:#754bc0;
+  color:white;padding:12px;border-radius:7px;
+  text-decoration:none;margin-top:16px;font-size:13px;
+}
+.download:hover {background:#9166dc}
 .empty {
-  border: 1px dashed var(--border);
-  border-radius: 12px;
-  padding: 55px 20px;
-  text-align: center;
-  color: var(--muted);
+  grid-column:1/-1;text-align:center;
+  border:1px dashed var(--border);padding:50px 20px;
+  border-radius:12px;color:var(--muted);
 }
-.empty strong { display: block; color: var(--text); margin-bottom: 12px; }
+.empty strong {display:block;color:var(--text);margin-bottom:10px}
+.about {margin-top:70px}
 footer {
-  border-top: 1px solid var(--border);
-  padding: 30px 20px;
-  text-align: center;
-  color: var(--muted);
-  font-size: 12px;
+  border-top:1px solid var(--border);padding:30px;
+  text-align:center;color:var(--muted);font-size:12px;
 }
-@media(max-width:600px) {
-  header { padding: 20px; }
-  nav { gap: 14px; }
-  .hero { padding-top: 65px; }
+.loading {color:var(--muted);padding:35px 0}
+@media(max-width:800px) {
+  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:520px) {
+  .grid {grid-template-columns:1fr}
+  header {padding:20px}
+  .hero {padding-top:60px}
 }
 </style>
 </head>
-<body>
 
+<body>
 <header>
   <a class="logo" href="#">COVIL <span>SECRETO</span></a>
   <nav>
     <a href="#inicio">Início</a>
-    <a href="#projetos">Traduções</a>
-    <a href="#projetos">Ports</a>
+    <a href="#projetos">Projetos</a>
     <a href="#sobre">Sobre</a>
   </nav>
 </header>
@@ -113,37 +132,191 @@ footer {
 </section>
 
 <main>
-  <section id="projetos">
-    <div class="section-title">
-      <h2>Explorar projetos</h2>
-      <p>Conheça nossos trabalhos e acompanhe as novidades.</p>
-    </div>
+<section id="projetos">
+  <div class="section-title">
+    <h2>Explorar projetos</h2>
+    <p>Encontre traduções, ports e novidades do nosso catálogo.</p>
+  </div>
 
+  <div class="controls">
+    <input id="search" type="search" placeholder="Pesquisar jogo...">
     <div class="filters">
-      <a href="#projetos">Todos</a>
-      <a href="#projetos">Traduções</a>
-      <a href="#projetos">Ports</a>
-      <a href="#projetos">Em andamento</a>
+      <button class="active" data-filter="Todos">Todos</button>
+      <button data-filter="Tradução">Traduções</button>
+      <button data-filter="Port">Ports</button>
     </div>
+  </div>
 
-    <div class="empty">
-      <strong>Nosso catálogo está sendo preparado.</strong>
-      Em breve, novos projetos estarão disponíveis aqui.
-    </div>
-  </section>
+  <div id="catalog" class="grid">
+    <div class="loading">Carregando projetos do Covil Secreto...</div>
+  </div>
+</section>
 
-  <section id="sobre" class="section-title">
+<section id="sobre" class="about">
+  <div class="section-title">
     <h2>Sobre o Covil Secreto</h2>
     <p>
-      Um projeto independente dedicado à preservação,
-      localização e adaptação de experiências de jogos.
+      Um projeto independente dedicado à localização,
+      adaptação e preservação de experiências de jogos.
     </p>
-  </section>
+  </div>
+</section>
 </main>
 
 <footer>
   COVIL SECRETO © 2026 — Todos os direitos reservados.
 </footer>
 
+<script>
+const USER = "templariok1";
+const REPO = "covil-secreto";
+const BRANCH = "main";
+
+const catalog = document.getElementById("catalog");
+const search = document.getElementById("search");
+let projects = [];
+let activeFilter = "Todos";
+
+function getField(text, name) {
+  const match = text.match(
+    new RegExp("^" + name + ":\\\\s*(.*)$", "m")
+  );
+  if (!match) return "";
+  return match[1].trim().replace(/^["']|["']$/g, "");
+}
+
+function getBody(text) {
+  const match = text.match(/^---\s*[\s\S]*?\n---\s*([\s\S]*)$/);
+  return match ? match[1].trim() : "";
+}
+
+function resolveImage(path) {
+  if (!path) return "";
+  if (/^https?:\/\//i.test(path)) return path;
+  return new URL(path.replace(/^\/+/, ""), location.href).href;
+}
+
+function escapeHTML(value) {
+  return String(value || "").replace(/[&<>"']/g, c => ({
+    "&":"&amp;","<":"&lt;",">":"&gt;",
+    '"':"&quot;","'":"&#39;"
+  })[c]);
+}
+
+async function loadProjects() {
+  try {
+    const api = `https://api.github.com/repos/${USER}/${REPO}/contents/projetos?ref=${BRANCH}`;
+    const response = await fetch(api);
+
+    if (!response.ok) throw new Error("Não foi possível acessar os projetos.");
+
+    const files = await response.json();
+    const markdownFiles = files.filter(file =>
+      file.type === "file" && file.name.endsWith(".md")
+    );
+
+    const results = await Promise.all(
+      markdownFiles.map(async file => {
+        const res = await fetch(file.download_url);
+        if (!res.ok) return null;
+
+        const text = await res.text();
+        const body = getBody(text);
+
+        return {
+          title: getField(text, "title"),
+          category: getField(text, "category"),
+          platform: getField(text, "platform"),
+          status: getField(text, "status"),
+          version: getField(text, "version"),
+          date: getField(text, "date"),
+          cover: getField(text, "cover"),
+          download: getField(text, "download"),
+          description: body
+        };
+      })
+    );
+
+    projects = results.filter(p => p && p.title);
+    render();
+  } catch (error) {
+    catalog.innerHTML = `
+      <div class="empty">
+        <strong>Não foi possível carregar o catálogo.</strong>
+        ${escapeHTML(error.message)}
+        <p>Verifique se a pasta projetos está pública e tente novamente.</p>
+      </div>`;
+  }
+}
+
+function render() {
+  const term = search.value.toLowerCase();
+
+  const filtered = projects.filter(p => {
+    const matchesFilter = activeFilter === "Todos" ||
+      p.category.toLowerCase() === activeFilter.toLowerCase();
+
+    const matchesSearch = (
+      p.title + " " + p.platform + " " + p.category
+    ).toLowerCase().includes(term);
+
+    return matchesFilter && matchesSearch;
+  });
+
+  if (!filtered.length) {
+    catalog.innerHTML = `
+      <div class="empty">
+        <strong>Nenhum projeto encontrado.</strong>
+        Tente outra pesquisa ou categoria.
+      </div>`;
+    return;
+  }
+
+  catalog.innerHTML = filtered.map(p => {
+    const image = p.cover ? `
+      <img class="cover"
+      src="${escapeHTML(resolveImage(p.cover))}"
+      alt="${escapeHTML(p.title)}"
+      loading="lazy"
+      onerror="this.outerHTML='<div class=&quot;no-cover&quot;>🎮</div>'">
+    ` : `<div class="no-cover">🎮</div>`;
+
+    const download = p.download && /^https?:\/\//i.test(p.download)
+      ? `<a class="download" href="${escapeHTML(p.download)}" target="_blank" rel="noopener noreferrer">↓ Baixar projeto</a>`
+      : "";
+
+    return `
+      <article class="card">
+        ${image}
+        <div class="card-content">
+          <h3>${escapeHTML(p.title)}</h3>
+          <div class="meta">
+            <span class="tag-small">${escapeHTML(p.category)}</span>
+            <span class="tag-small">${escapeHTML(p.status)}</span>
+          </div>
+          <p class="description">
+            ${escapeHTML(p.platform)}
+            ${p.version ? " • Versão " + escapeHTML(p.version) : ""}
+          </p>
+          ${p.description ? `<p class="description">${escapeHTML(p.description)}</p>` : ""}
+          ${download}
+        </div>
+      </article>`;
+  }).join("");
+}
+
+document.querySelectorAll("[data-filter]").forEach(button => {
+  button.addEventListener("click", () => {
+    activeFilter = button.dataset.filter;
+    document.querySelectorAll("[data-filter]").forEach(b =>
+      b.classList.toggle("active", b === button)
+    );
+    render();
+  });
+});
+
+search.addEventListener("input", render);
+loadProjects();
+</script>
 </body>
 </html>
