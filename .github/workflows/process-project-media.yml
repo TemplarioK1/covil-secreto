@@ -1,6 +1,18 @@
 name: Processar imagens do projeto e publicar o site
 
 on:
+  push:
+    branches:
+      - main
+    paths:
+      - "_projetos/**"
+      - "media/images/**"
+      - "downloads/**"
+      - "index.html"
+      - "projetos.json"
+      - "_layouts/**"
+      - "_config.yml"
+      - ".pages.yml"
   workflow_dispatch:
     inputs:
       payload:
@@ -39,6 +51,7 @@ jobs:
 
       - name: Identificar projeto enviado pelo Pages CMS
         id: project
+        if: github.event_name == 'workflow_dispatch'
         env:
           CMS_PAYLOAD: ${{ inputs.payload }}
         run: |
@@ -49,11 +62,16 @@ jobs:
           if not path.startswith("_projetos/") or not path.endswith(".md") or "/" in path[len("_projetos/"):]:
               raise SystemExit(f"Caminho de projeto inválido recebido do CMS: {path!r}")
           with open(os.environ["GITHUB_OUTPUT"], "a", encoding="utf-8") as output:
-              output.write(f"path={path}\n")
+              output.write(f"path={path}\\n")
           PY
 
-      - name: Organizar e otimizar imagens
+      - name: Organizar imagens do projeto selecionado
+        if: github.event_name == 'workflow_dispatch'
         run: python scripts/optimize_project_media.py --project "${{ steps.project.outputs.path }}"
+
+      - name: Organizar imagens de todos os projetos
+        if: github.event_name == 'push'
+        run: python scripts/optimize_project_media.py --all
 
       - name: Salvar imagens otimizadas no GitHub
         run: |
