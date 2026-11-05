@@ -17,3 +17,6 @@ defaults:
       layout: projeto
 
 markdown: kramdown
+
+exclude:
+  - scripts
