@@ -35,16 +35,10 @@ progress_stages:
   percentage: 0
 progress_platform_groups: []
 ---
+
+
 ## Sobre o projeto
 
 Este projeto consiste no desenvolvimento de um **port para PC de Toradora!**, jogo originalmente lançado para PSP. O objetivo é adaptar a experiência para computadores, considerando os ajustes técnicos necessários para executar o jogo nessa plataforma.
 
 As informações de compatibilidade, funcionamento e eventuais limitações serão atualizadas conforme o desenvolvimento avançar.
-
-## Instruções importantes
-
-**Leia as instruções incluídas no arquivo de download antes de instalar ou executar o port.** Confira os requisitos, os procedimentos de instalação e as versões compatíveis. Faça uma cópia de segurança dos arquivos originais quando indicado.
-
-## Progresso
-
-As etapas abaixo acompanham as fases de adaptação, ajustes, testes e finalização do port. Os percentuais são valores iniciais e devem ser atualizados conforme o desenvolvimento real.
