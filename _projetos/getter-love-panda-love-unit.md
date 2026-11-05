@@ -29,7 +29,6 @@ game_synopsis: Um estudante do ensino médio e seus amigos entram em uma
   quem consegue formar um casal primeiro.
 game_multiplayer: Local
 game_players: "4"
-  ou controlados pelo jogo, no mesmo console. Não possui multiplayer online.
 ---
 
 
