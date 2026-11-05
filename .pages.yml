@@ -87,10 +87,11 @@ content:
         type: select
         options:
           values:
-            - Concluído
-            - Em andamento
-            - Cancelado
             - Em planejamento
+            - Em andamento
+            - Em testes
+            - Concluído
+            - Cancelado
       - name: version
         label: Versão
         type: string
