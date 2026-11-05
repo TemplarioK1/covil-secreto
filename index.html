@@ -267,9 +267,9 @@ function render() {
   }
 
   catalog.innerHTML = filtered.map(p => {
-    const image = p.cover ? `
+    const cardImage = p.icon || p.cover;\n    const image = cardImage ? `
       <img class="cover"
-      src="${escapeHTML(resolveImage(p.cover))}"
+      src="${escapeHTML(resolveImage(cardImage))}"
       alt="${escapeHTML(p.title)}"
       loading="lazy"
       onerror="this.outerHTML='<div class=&quot;no-cover&quot;>🎮</div>'">
