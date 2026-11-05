@@ -33,6 +33,7 @@ progress_stages:
   percentage: 0
 - name: Revisão e correções
   percentage: 0
+progress_platform_groups: []
 ---
 ## Sobre o projeto
 
