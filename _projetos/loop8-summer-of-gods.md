@@ -22,26 +22,21 @@ game_players: 1 jogador
 game_multiplayer_details: Experiência exclusivamente para um jogador.
 progress_stages:
   - name: Preparação e análise dos arquivos
-    percentage: 27
+    percentage: 100
   - name: Tradução de textos
-    percentage: 0
+    percentage: 100
   - name: Tradução de sprites
-    percentage: 0
+    percentage: 90
   - name: Testes no jogo
-    percentage: 0
+    percentage: 10
   - name: Revisão e correções
-    percentage: 0
+    percentage: 30
 youtube: https://youtu.be/crI-ztOnpAo
 screenshots:
   - /media/images/projetos/loop8-summer-of-gods/screenshot-01.webp
   - /media/images/projetos/loop8-summer-of-gods/screenshot-02.webp
   - /media/images/projetos/loop8-summer-of-gods/screenshot-03.webp
   - /media/images/projetos/loop8-summer-of-gods/screenshot-04.webp
-progress_platform_groups:
-  - platform: PC
-    stages:
-      - name: Port
-        percentage: 2
 ---
 
 ## Sobre o projeto
