@@ -265,7 +265,7 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 {% if info.game_release_year != blank %}<div class="game-fact"><span>Ano de lançamento</span><strong>{{ info.game_release_year | escape }}</strong></div>{% elsif info.game_release_date != blank %}<div class="game-fact"><span>Lançamento original</span><strong>{{ info.game_release_date | date: "%Y" }}</strong></div>{% endif %}
 {% if info.game_genre != blank %}<div class="game-fact"><span>Gênero</span><strong>{{ info.game_genre | escape }}</strong></div>{% endif %}
 {% if info.game_multiplayer != blank %}<div class="game-fact"><span>Multiplayer</span><strong>{{ info.game_multiplayer | escape }}</strong></div>{% endif %}
-{% if info.game_players != blank %}<div class="game-fact"><span>Quantidade de jogadores</span><strong>{{ info.game_players | escape }} {% if info.game_players == "1" %}jogador{% else %}jogadores{% endif %}</strong></div>{% endif %}
+{% if info.game_players != blank %}<div class="game-fact"><span>Quantidade de jogadores</span><strong>{{ info.game_players | escape }} {% assign player_count = info.game_players | plus: 0 %}{% if player_count == 1 %}jogador{% else %}jogadores{% endif %}</strong></div>{% endif %}
 </div>
 </div>
 {% endif %}
