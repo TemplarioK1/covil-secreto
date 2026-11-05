@@ -19,8 +19,10 @@ download: /downloads/projetos/asterix-xxl3-switch-port-pc/010081500ea1e000.zip
 progress_stages:
 - name: Preparação e análise dos arquivos
   percentage: 100
-- name: Tradução e adaptação
+- name: Tradução de textos
   percentage: 100
+- name: Tradução de sprites
+  percentage: 0
 - name: Testes no jogo
   percentage: 100
 - name: Revisão e correções
