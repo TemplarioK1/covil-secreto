@@ -199,6 +199,7 @@ footer {
       <button class="active" data-filter="Todos">Todos</button>
       <button data-filter="Tradução">Traduções</button>
       <button data-filter="Port">Ports</button>
+      <button data-filter="Projeto">Projetos</button>
     </div>
   </div>
 
@@ -390,6 +391,7 @@ function render() {
 
   const translations = filtered.filter(p => String(p.category || "").toLowerCase() === "tradução");
   const ports = filtered.filter(p => String(p.category || "").toLowerCase() === "port");
+  const otherProjects = filtered.filter(p => String(p.category || "").toLowerCase() === "projeto");
 
   const renderGroup = (title, items, id) => `
     <section class="catalog-group" aria-labelledby="${id}">
@@ -399,7 +401,8 @@ function render() {
 
   catalog.innerHTML =
     renderGroup("Traduções", translations, "catalog-traducoes") +
-    renderGroup("Ports", ports, "catalog-ports");
+    renderGroup("Ports", ports, "catalog-ports") +
+    renderGroup("Projetos", otherProjects, "catalog-projetos");
 }
 
 document.querySelectorAll("[data-filter]").forEach(button => {
