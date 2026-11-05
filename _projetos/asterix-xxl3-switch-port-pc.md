@@ -10,6 +10,7 @@ cover: /media/images/b.jpg
 screenshots:
   - /media/images/s1.jpg
   - /media/images/s2.jpg
+youtube: https://youtu.be/oOS3F29rIm8
 download: /downloads/010081500ea1e000.zip
 ---
 ## Sobre o projeto
