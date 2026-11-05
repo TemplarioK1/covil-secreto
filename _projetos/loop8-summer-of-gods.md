@@ -1,5 +1,5 @@
 ---
-title: Loop8: Summer of Gods
+title: "Loop8: Summer of Gods"
 category: Tradução
 platforms:
   - Nintendo Switch
