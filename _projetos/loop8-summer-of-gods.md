@@ -12,7 +12,7 @@ screenshots:
   - /media/images/projetos/loop8-summer-of-gods/screenshot-01.webp
   - /media/images/projetos/loop8-summer-of-gods/screenshot-02.webp
   - /media/images/projetos/loop8-summer-of-gods/screenshot-03.webp
-youtube: https://youtu.be/crI-ztOnpAo
+youtube: https://youtu.be/nlfubB6U_3A
 progress_stages:
   - name: Preparação e análise dos arquivos
     percentage: 100
@@ -21,7 +21,7 @@ progress_stages:
   - name: Tradução de sprites
     percentage: 90
   - name: Testes no jogo
-    percentage: 25
+    percentage: 10
   - name: Revisão e correções
     percentage: 30
 progress_platform_groups:
