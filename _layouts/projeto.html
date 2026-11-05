@@ -88,7 +88,11 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 {% endif %}
 
 {% assign info = page.game_info %}
-{% if info and (info.developer or info.publisher or info.synopsis or info.release_date or info.players or info.genre) %}
+{% assign has_game_info = false %}
+{% if info.developer or info.publisher or info.synopsis or info.release_date or info.players or info.genre %}
+{% assign has_game_info = true %}
+{% endif %}
+{% if has_game_info %}
 <h2>Sobre o jogo</h2>
 <div class="game-info">
 {% if info.synopsis %}<p class="game-synopsis">{{ info.synopsis | escape | newline_to_br }}</p>{% endif %}
