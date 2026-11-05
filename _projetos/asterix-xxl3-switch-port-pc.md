@@ -27,6 +27,7 @@ progress_stages:
   percentage: 100
 - name: Revisão e correções
   percentage: 90
+progress_platform_groups: []
 game_developer: OSome Studio
 game_publisher: Microids
 game_release_year: "2019"
