@@ -87,7 +87,7 @@ footer{text-align:center;border-top:1px solid #302a3a;padding:30px;color:#aaa3b5
 </div>
 {% endif %}
 
-{% assign info = page.game_info %}
+{% assign info = site.informacoes_jogos | where: 'project_slug', page.slug | first %}
 {% assign has_game_info = false %}
 {% if info.developer or info.publisher or info.synopsis or info.release_year or info.release_date or info.players or info.genre or info.multiplayer or info.local_multiplayer or info.online_multiplayer or info.multiplayer_details %}
 {% assign has_game_info = true %}
