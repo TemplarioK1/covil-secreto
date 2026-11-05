@@ -1,0 +1,149 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#111116">
+<title>Covil Secreto | Traduções e Ports</title>
+<meta name="description" content="Traduções, ports e projetos independentes do Covil Secreto.">
+
+<style>
+:root {
+  --bg: #111116;
+  --panel: #191820;
+  --purple: #a77aff;
+  --text: #f4efff;
+  --muted: #aaa3b5;
+  --border: #302a3a;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: Arial, sans-serif;
+}
+header {
+  border-bottom: 1px solid var(--border);
+  padding: 22px 7%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 18px;
+}
+.logo { font-size: 21px; font-weight: bold; letter-spacing: 2px; }
+.logo span { color: var(--purple); }
+nav { display: flex; gap: 22px; flex-wrap: wrap; }
+a { color: inherit; text-decoration: none; }
+nav a { color: var(--muted); font-size: 14px; }
+nav a:hover { color: var(--purple); }
+.hero {
+  max-width: 1100px;
+  margin: auto;
+  padding: 95px 24px 75px;
+}
+.tag {
+  color: var(--purple);
+  font-size: 12px;
+  letter-spacing: 3px;
+}
+h1 { font-size: clamp(38px, 7vw, 65px); margin: 18px 0; }
+h1 span { color: var(--purple); }
+.hero p { color: var(--muted); line-height: 1.8; max-width: 550px; }
+main { max-width: 1100px; margin: auto; padding: 15px 24px 90px; }
+.section-title { margin: 35px 0 25px; }
+.section-title h2 { font-size: 24px; }
+.section-title p { color: var(--muted); font-size: 14px; }
+.filters { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; }
+.filters a {
+  padding: 10px 17px;
+  border: 1px solid var(--border);
+  border-radius: 7px;
+  color: var(--muted);
+  font-size: 13px;
+}
+.filters a:first-child {
+  background: #30233f;
+  color: var(--purple);
+}
+.empty {
+  border: 1px dashed var(--border);
+  border-radius: 12px;
+  padding: 55px 20px;
+  text-align: center;
+  color: var(--muted);
+}
+.empty strong { display: block; color: var(--text); margin-bottom: 12px; }
+footer {
+  border-top: 1px solid var(--border);
+  padding: 30px 20px;
+  text-align: center;
+  color: var(--muted);
+  font-size: 12px;
+}
+@media(max-width:600px) {
+  header { padding: 20px; }
+  nav { gap: 14px; }
+  .hero { padding-top: 65px; }
+}
+</style>
+</head>
+<body>
+
+<header>
+  <a class="logo" href="#">COVIL <span>SECRETO</span></a>
+  <nav>
+    <a href="#inicio">Início</a>
+    <a href="#projetos">Traduções</a>
+    <a href="#projetos">Ports</a>
+    <a href="#sobre">Sobre</a>
+  </nav>
+</header>
+
+<section class="hero" id="inicio">
+  <div class="tag">TRADUÇÕES • PORTS • PROJETOS</div>
+  <h1>Seu jogo.<br><span>Seu idioma.</span></h1>
+  <p>
+    Bem-vindo ao Covil Secreto. Um espaço dedicado
+    a traduções de jogos, ports e projetos independentes
+    desenvolvidos com dedicação.
+  </p>
+</section>
+
+<main>
+  <section id="projetos">
+    <div class="section-title">
+      <h2>Explorar projetos</h2>
+      <p>Conheça nossos trabalhos e acompanhe as novidades.</p>
+    </div>
+
+    <div class="filters">
+      <a href="#projetos">Todos</a>
+      <a href="#projetos">Traduções</a>
+      <a href="#projetos">Ports</a>
+      <a href="#projetos">Em andamento</a>
+    </div>
+
+    <div class="empty">
+      <strong>Nosso catálogo está sendo preparado.</strong>
+      Em breve, novos projetos estarão disponíveis aqui.
+    </div>
+  </section>
+
+  <section id="sobre" class="section-title">
+    <h2>Sobre o Covil Secreto</h2>
+    <p>
+      Um projeto independente dedicado à preservação,
+      localização e adaptação de experiências de jogos.
+    </p>
+  </section>
+</main>
+
+<footer>
+  COVIL SECRETO © 2026 — Todos os direitos reservados.
+</footer>
+
+</body>
+</html>
