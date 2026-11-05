@@ -21,7 +21,29 @@ game_online_multiplayer: Não
 game_players: 1 jogador
 game_multiplayer_details: Jogo original para um jogador, lançado no PSP. O projeto
   do Covil Secreto é um port para PC.
+
+progress_stages:
+- name: Preparação e análise dos arquivos
+  percentage: 0
+- name: Tradução e adaptação
+  percentage: 0
+- name: Revisão e correções
+  percentage: 0
+- name: Testes no jogo
+  percentage: 0
+- name: Finalização e publicação
+  percentage: 0
 ---
 ## Sobre o projeto
 
-Port para PC. Mais informações sobre o projeto serão adicionadas em breve.
+Este projeto consiste no desenvolvimento de um **port para PC de Toradora!**, jogo originalmente lançado para PSP. O objetivo é adaptar a experiência para computadores, considerando os ajustes técnicos necessários para executar o jogo nessa plataforma.
+
+As informações de compatibilidade, funcionamento e eventuais limitações serão atualizadas conforme o desenvolvimento avançar.
+
+## Instruções importantes
+
+**Leia as instruções incluídas no arquivo de download antes de instalar ou executar o port.** Confira os requisitos, os procedimentos de instalação e as versões compatíveis. Faça uma cópia de segurança dos arquivos originais quando indicado.
+
+## Progresso
+
+As etapas abaixo acompanham as fases de adaptação, ajustes, testes e finalização do port. Os percentuais são valores iniciais e devem ser atualizados conforme o desenvolvimento real.
