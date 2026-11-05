@@ -20,3 +20,5 @@ markdown: kramdown
 
 exclude:
   - scripts
+
+# Publicação automatizada pelo GitHub Actions.
