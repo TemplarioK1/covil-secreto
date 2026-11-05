@@ -39,10 +39,7 @@ game_synopsis: Nini retorna à Terra e passa o verão de 1983 na cidade rural de
   escolhas influenciam as relações, os combates e os ciclos que o fazem reviver
   o mês de agosto.
 game_multiplayer: Não
-game_local_multiplayer: Não
-game_online_multiplayer: Não
-game_players: 1 jogador
-game_multiplayer_details: Experiência exclusivamente para um jogador.
+game_players: "1"
 ---
 
 
