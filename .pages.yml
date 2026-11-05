@@ -148,9 +148,9 @@ content:
           path: projetos
           extensions: [jpg, jpeg, png, webp]
       - name: game_info
-        label: Informações sobre o jogo original
+        label: Informações do jogo original (complementares)
         type: object
-        description: Dados de referência do jogo, exibidos em uma seção própria abaixo das screenshots. Preencha apenas o que souber.
+        description: Seção separada para dados do jogo original. Esses campos são opcionais e aparecem na página depois das screenshots e antes do vídeo. Preencha somente o que souber; não são informações do projeto de tradução ou port.
         fields:
           - name: developer
             label: Desenvolvedora
@@ -158,19 +158,45 @@ content:
           - name: publisher
             label: Publisher / Distribuidora
             type: string
-          - name: synopsis
-            label: Sinopse do jogo
-            type: text
-          - name: release_date
-            label: Data de lançamento original
-            type: date
-          - name: players
-            label: Quantidade de jogadores
+          - name: release_year
+            label: Ano de lançamento
             type: string
-            description: Ex.: 1 jogador, 1–4 jogadores, cooperativo para 2 jogadores.
+            description: Ex.: 2018.
           - name: genre
             label: Gênero
             type: string
+          - name: synopsis
+            label: Sinopse do jogo
+            type: text
+          - name: multiplayer
+            label: Possui multiplayer?
+            type: select
+            options:
+              values:
+                - Sim
+                - Não
+          - name: local_multiplayer
+            label: Multiplayer local?
+            type: select
+            options:
+              values:
+                - Sim
+                - Não
+          - name: online_multiplayer
+            label: Multiplayer online?
+            type: select
+            options:
+              values:
+                - Sim
+                - Não
+          - name: players
+            label: Quantidade de jogadores
+            type: string
+            description: Ex.: 1 jogador, 1–4 jogadores, até 8 online.
+          - name: multiplayer_details
+            label: Detalhes do multiplayer
+            type: text
+            description: Ex.: cooperativo, competitivo, tela dividida, jogo em equipe.
       - name: youtube
         label: Link do vídeo no YouTube
         type: string
