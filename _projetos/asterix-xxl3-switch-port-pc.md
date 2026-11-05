@@ -17,16 +17,16 @@ screenshots:
 youtube: https://youtu.be/oOS3F29rIm8
 download: /downloads/projetos/asterix-xxl3-switch-port-pc/010081500ea1e000.zip
 progress_stages:
-  - name: Preparação e análise dos arquivos
-    percentage: 100
-  - name: Tradução e adaptação
-    percentage: 100
-  - name: Revisão e correções
-    percentage: 90
-  - name: Testes no jogo
-    percentage: 100
-  - name: Finalização e publicação
-    percentage: 95
+- name: Preparação e análise dos arquivos
+  percentage: 100
+- name: Tradução e adaptação
+  percentage: 100
+- name: Testes no jogo
+  percentage: 100
+- name: Revisão e correções
+  percentage: 90
+- name: Finalização e publicação
+  percentage: 95
 game_developer: OSome Studio
 game_publisher: Microids
 game_release_year: "2019"
