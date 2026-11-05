@@ -241,8 +241,6 @@ content:
               percentage: 0
             - name: Revisão e correções
               percentage: 0
-            - name: Finalização
-              percentage: 0
           collapsible:
             collapsed: true
             summary: "{name} — {percentage}%"
