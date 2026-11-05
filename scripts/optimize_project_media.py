@@ -130,7 +130,7 @@ def process(project_file: Path) -> bool:
     for index, field in enumerate(SCREEN_FIELDS, start=1):
         old = data.get(field)
         if old:
-            new = f"{MEDIA_PREFIX}projetos/{slug}/screenshots/screenshot-{index:02d}.webp"
+            new = f"{MEDIA_PREFIX}projetos/{slug}/screenshot-{index:02d}.webp"
             updated = process_reference(old, new, (1280, 720), project_file)
             if updated != old:
                 data[field] = updated
@@ -148,6 +148,33 @@ def process(project_file: Path) -> bool:
                 shutil.copy2(source_zip, target_zip)
                 PENDING_DELETE.setdefault(source_zip.resolve(), set()).add(str(old_download).strip())
                 data["download"] = "/" + target_zip.as_posix()
+                changed = True
+
+    # Processa também os downloads complementares, mantendo o nome original.
+    extras = data.get("additional_downloads") or []
+    if isinstance(extras, list):
+        for item in extras:
+            if not isinstance(item, dict) or not item.get("file"):
+                continue
+            old_extra = item["file"]
+            source_extra = download_repo_path(old_extra)
+            if source_extra is None:
+                continue
+            if not source_extra.is_file():
+                raise FileNotFoundError(f"Download complementar não encontrado: {source_extra}")
+            target_extra = ROOT / "downloads" / "projetos" / slug / source_extra.name
+            target_extra.parent.mkdir(parents=True, exist_ok=True)
+            if source_extra.resolve() != target_extra.resolve():
+                # Evita sobrescrever silenciosamente outro arquivo com o mesmo nome.
+                if target_extra.exists() and target_extra.read_bytes() != source_extra.read_bytes():
+                    stem, suffix = target_extra.stem, target_extra.suffix
+                    counter = 2
+                    while target_extra.exists() and target_extra.read_bytes() != source_extra.read_bytes():
+                        target_extra = target_extra.with_name(f"{stem}-{counter}{suffix}")
+                        counter += 1
+                shutil.copy2(source_extra, target_extra)
+                PENDING_DELETE.setdefault(source_extra.resolve(), set()).add(str(old_extra).strip())
+                item["file"] = "/" + target_extra.as_posix()
                 changed = True
 
     if changed:
