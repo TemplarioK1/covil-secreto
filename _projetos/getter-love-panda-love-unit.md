@@ -27,21 +27,9 @@ progress_stages:
   percentage: 0
 - name: Tradução e adaptação
   percentage: 0
-- name: Revisão e correções
-  percentage: 0
 - name: Testes no jogo
   percentage: 0
-- name: Finalização e publicação
-  percentage: 0
-
-progress_stages:
-- name: Preparação e análise dos arquivos
-  percentage: 0
-- name: Tradução e adaptação
-  percentage: 0
 - name: Revisão e correções
-  percentage: 0
-- name: Testes no jogo
   percentage: 0
 - name: Finalização e publicação
   percentage: 0
