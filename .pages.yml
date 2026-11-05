@@ -222,6 +222,7 @@ content:
       - name: game_info
         label: Informações do jogo original
         type: object
+        required: true
         description: Dados complementares sobre o jogo original. Preencha apenas o que souber; esta seção é independente da descrição da tradução ou do port.
         fields:
           - name: developer
