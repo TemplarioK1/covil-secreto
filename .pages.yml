@@ -1,7 +1,17 @@
-
 media:
-  input: media
-  output: /covil-secreto/media
+  - name: images
+    label: Imagens dos projetos
+    input: media/images
+    output: /covil-secreto/media/images
+    categories: [image]
+    extensions: [jpg, jpeg, png, webp, gif]
+  - name: downloads
+    label: Arquivos para download
+    input: downloads
+    output: /covil-secreto/downloads
+    categories: [compressed]
+    extensions: [zip, 7z, rar]
+    rename: safe
 
 content:
   - name: projetos
@@ -17,12 +27,12 @@ content:
         - category
         - platform
         - status
+        - version
     fields:
       - name: title
         label: Nome do jogo
         type: string
         required: true
-
       - name: category
         label: Categoria
         type: select
@@ -30,11 +40,10 @@ content:
           values:
             - Tradução
             - Port
-
+            - Projeto
       - name: platform
         label: Plataforma
         type: string
-
       - name: status
         label: Status
         type: select
@@ -43,28 +52,44 @@ content:
             - Concluído
             - Em andamento
             - Cancelado
-
+            - Em planejamento
       - name: version
         label: Versão
         type: string
-
       - name: date
         label: Data de publicação
         type: date
-
-      - name: cover
-        label: Capa do jogo
+      - name: icon
+        label: Ícone do card na página inicial
         type: image
-
+        options:
+          media: images
+          path: projetos/icones
+          extensions: [png, jpg, jpeg, webp]
+      - name: cover
+        label: Imagem de título / capa da página
+        type: image
+        options:
+          media: images
+          path: projetos/capas
+          extensions: [jpg, jpeg, png, webp]
       - name: screenshots
-        label: Imagens do projeto
+        label: Screenshots / galeria
         type: image
         list: true
-
+        options:
+          media: images
+          path: projetos/screenshots
+          multiple:
+            max: 20
+          extensions: [jpg, jpeg, png, webp]
       - name: download
-        label: Link de download
-        type: string
-
+        label: Arquivo ZIP para download
+        type: file
+        options:
+          media: downloads
+          path: projetos
+          extensions: [zip]
       - name: body
         label: Descrição e instruções
         type: rich-text
