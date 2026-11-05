@@ -87,6 +87,20 @@ input, select {
   font-size:11px;background:#30253d;color:#d1b9ff;
   padding:6px 9px;border-radius:5px;
 }
+.progress-summary {display:flex;align-items:center;gap:8px;margin-top:11px;min-width:0}
+.progress-summary-track {height:6px;flex:1;min-width:35px;max-width:100px;background:#302a3a;border-radius:99px;overflow:hidden}
+.progress-summary-fill {display:block;height:100%;width:var(--progress);border-radius:inherit}
+.progress-summary-value {font-size:12px;font-weight:bold;white-space:nowrap;font-variant-numeric:tabular-nums}
+.progress-summary.progress-red .progress-summary-fill {background:#e05252}
+.progress-summary.progress-red .progress-summary-value {color:#ff7777}
+.progress-summary.progress-orange .progress-summary-fill {background:#ed963d}
+.progress-summary.progress-orange .progress-summary-value {color:#ffb66b}
+.progress-summary.progress-yellow .progress-summary-fill {background:#e3c342}
+.progress-summary.progress-yellow .progress-summary-value {color:#f0d96b}
+.progress-summary.progress-green .progress-summary-fill {background:#55b878}
+.progress-summary.progress-green .progress-summary-value {color:#78d99a}
+.progress-summary.progress-complete .progress-summary-fill {background:#397fd6}
+.progress-summary.progress-complete .progress-summary-value {color:#79b5ff}
 .empty {
   grid-column:1/-1;text-align:center;
   border:1px dashed var(--border);padding:50px 20px;
@@ -304,6 +318,23 @@ function render() {
 
     const projectUrl = resolveImage(p.url) || "#";
     const platforms = getProjectPlatforms(p);
+    const stages = [
+      ...(Array.isArray(p.progress_stages) ? p.progress_stages : []),
+      ...(Array.isArray(p.progress_platform_groups) ? p.progress_platform_groups.flatMap(group => group.stages || []) : [])
+    ].filter(stage => stage && stage.name !== "Finalização" && stage.name !== "Finalização e publicação");
+    const hasProgress = stages.length > 0;
+    const totalProgress = hasProgress
+      ? Math.round(stages.reduce((sum, stage) => sum + Math.max(0, Math.min(100, Number(stage.percentage) || 0)), 0) / stages.length)
+      : 0;
+    const progressClass = totalProgress >= 100 ? "progress-complete"
+      : totalProgress >= 75 ? "progress-green"
+      : totalProgress >= 50 ? "progress-yellow"
+      : totalProgress >= 25 ? "progress-orange" : "progress-red";
+    const progressSummary = hasProgress ? `
+      <div class="progress-summary ${progressClass}" aria-label="Progresso total: ${totalProgress}%">
+        <span class="progress-summary-value">${totalProgress}%</span>
+        <span class="progress-summary-track"><span class="progress-summary-fill" style="--progress:${totalProgress}%"></span></span>
+      </div>` : "";
 
     return `
       <article class="card">
@@ -314,6 +345,7 @@ function render() {
             <div class="platforms">
               ${platforms.map(platform => `<span class="tag-small">${escapeHTML(platform)}</span>`).join("")}
             </div>
+            ${progressSummary}
           </div>
         </a>
       </article>`;
