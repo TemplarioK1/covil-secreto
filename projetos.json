@@ -1,0 +1,17 @@
+---
+---
+[
+{% for project in site.projetos %}
+  {
+    "title": {{ project.title | default: "" | jsonify }},
+    "category": {{ project.category | default: "" | jsonify }},
+    "platform": {{ project.platform | default: "" | jsonify }},
+    "status": {{ project.status | default: "" | jsonify }},
+    "version": {{ project.version | default: "" | jsonify }},
+    "date": {{ project.date | default: "" | jsonify }},
+    "cover": {{ project.cover | default: "" | jsonify }},
+    "download": {{ project.download | default: "" | jsonify }},
+    "description": {{ project.content | default: "" | strip_html | strip_newlines | jsonify }}
+  }{% unless forloop.last %},{% endunless %}
+{% endfor %}
+]
