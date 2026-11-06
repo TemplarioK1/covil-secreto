@@ -83,7 +83,7 @@ header{width:100%;margin-left:0;padding:17px max(22px,calc((100% - 1360px)/2))}
 <article class="tile" data-project-card data-title="{{ project.title | downcase | escape }}" data-platforms="{{ project.platforms | join: '|' | downcase | escape }}">
 {% assign icon_path = project.icon | default: project.cover %}
 {% if icon_path %}<div class="tile-thumb"><img src="{{ icon_path | relative_url }}" alt="" loading="lazy"></div>{% else %}<div class="tile-icon">{{ project.title | slice: 0, 2 | upcase }}</div>{% endif %}
-<div><h3>{{ project.title | escape }}</h3><p>{{ project.status | default: project.category | escape }}{% if project.platforms %} · {{ project.platforms | join: ', ' | escape }}{% endif %}</p><a href="{{ project.url | relative_url }}">Ver projeto →</a></div>
+<div><h3>{{ project.title | escape }}</h3><p>{{ project.category | escape }}{% if project.status %} · {{ project.status | escape }}{% endif %}{% if project.platforms %} · {{ project.platforms | join: ', ' | escape }}{% endif %}</p><a href="{{ project.url | relative_url }}">Ver projeto →</a></div>
 </article>
 {% endfor %}
 </div></div></section>
