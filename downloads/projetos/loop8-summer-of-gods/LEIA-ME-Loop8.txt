@@ -1,0 +1,45 @@
+LOOP8: SUMMER OF GODS — INSTRUÇÕES DE INSTALAÇÃO
+
+Esta tradução foi preparada para a versão de Nintendo Switch. Na versão atual, o funcionamento foi confirmado em emuladores. A instalação em um console Nintendo Switch desbloqueado é compatível somente com a edição europeia do jogo, Title ID 0100051018E4C000.
+
+ATENÇÃO — COMPATIBILIDADE
+
+- EMULADORES: utilize os arquivos de modificação incluídos neste pacote na instalação do jogo.
+- NINTENDO SWITCH (CONSOLE): compatível somente com a versão europeia, Title ID 0100051018E4C000.
+- OUTRAS VERSÕES DE CONSOLE: não são compatíveis nesta versão da tradução. Não instale em outra edição ou Title ID.
+
+1. EMULADORES
+
+1. Abra o emulador e localize Loop8: Summer of Gods na biblioteca.
+2. Acesse a opção para abrir a pasta de mods/modificações do jogo.
+3. Copie para essa pasta o conteúdo da pasta Emuladores deste pacote, preservando a estrutura de diretórios.
+4. Ative o mod nas configurações do jogo, caso o emulador solicite.
+5. Inicie o jogo e confira se os textos aparecem em português brasileiro.
+
+Os nomes das opções e o local da pasta de mods podem variar conforme o emulador utilizado.
+
+2. NINTENDO SWITCH — ATMOSPHÈRE
+
+ATENÇÃO: este procedimento é somente para a versão europeia com Title ID 0100051018E4C000.
+
+1. Confirme que sua cópia do jogo corresponde ao Title ID indicado acima.
+2. Abra a pasta Console deste pacote.
+3. Copie a pasta atmosphere para a raiz do cartão microSD do console.
+4. Se o sistema perguntar se deseja mesclar pastas ou substituir arquivos, confirme a mesclagem.
+5. Insira o cartão no console e inicie o jogo.
+
+Não utilize os arquivos de console em versões com outro Title ID. A compatibilidade não é garantida.
+
+3. VERSÃO PARA PC
+
+Uma versão/port nativo para PC ainda não está disponível nesta build.
+
+INFORMAÇÕES
+
+- Jogo: Loop8: Summer of Gods
+- Idioma: Português Brasileiro (PT-BR)
+- Plataforma-base: Nintendo Switch
+- Emuladores: funcionamento disponível
+- Console: somente edição europeia — Title ID 0100051018E4C000
+
+Covil Secreto — Traduções e projetos de jogos.
