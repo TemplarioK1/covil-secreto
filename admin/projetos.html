@@ -112,6 +112,24 @@ details.section>summary:hover{background:#e3edef}
 @media(min-width:1250px){#editor>.section:nth-of-type(1) .inside .grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:1050px){.auth{grid-template-columns:1fr}.auth>p,.auth>.toolbar{grid-column:1;grid-row:auto}.auth>.toolbar{flex-wrap:wrap}#editor{grid-template-columns:1fr}#editor>.section{grid-column:1!important}#stages,#platform-groups{grid-template-columns:1fr}}
 @media(max-width:700px){main{padding:14px}.auth{display:block}.auth>p{margin:8px 0}.auth>.toolbar{margin-top:14px}.post-top{align-items:flex-start;flex-direction:column;padding:18px}.post-form{padding:18px}.post-meta-fields{grid-template-columns:1fr}.post-content{min-height:300px!important}}
+
+/* Ajuste fino de densidade: edição de progresso compacta, textos longos amplos */
+.field textarea{min-height:58px;padding:8px 10px;line-height:1.45}
+.field textarea.tall{min-height:250px}
+.field textarea[data-key="game_synopsis"]{min-height:170px}
+#stages .stage,#platform-groups .stage,.progress-editor-group{padding:9px 11px;margin:0;border-radius:5px}
+#stages .stage-head,#platform-groups .stage-head{gap:8px;align-items:center}
+#stages .stage-head strong,#platform-groups .stage-head strong{font-size:12px}
+#stages .stage-head button,#platform-groups .stage-head button{min-height:27px;padding:4px 8px;font-size:11px}
+#stages .stage .field,#platform-groups .stage .field{gap:3px;margin-top:5px}
+#stages .stage .field label,#platform-groups .stage .field label{font-size:11px}
+#stages .stage .field input,#platform-groups .stage .field input{min-height:31px;padding:5px 8px;font-size:12px}
+#stages .stage-controls,#platform-groups .stage-controls{grid-template-columns:64px minmax(0,1fr);gap:9px;margin-top:7px}
+#stages .stage input[type="number"],#platform-groups .stage input[type="number"]{min-height:30px;padding:5px 7px}
+#stages .stage-actions,#platform-groups .stage-actions{gap:5px;margin-top:6px}
+#stages .stage-actions button,#platform-groups .stage-actions button{min-height:28px;padding:5px 9px;font-size:11px}
+#stages .bar,#platform-groups .bar{height:5px;margin-top:7px}
+#stages,#platform-groups{gap:7px}
 </style>
 </head>
 <body>
