@@ -45,6 +45,7 @@ version_history:
     changes: >-
       Versão inicial com todos os textos e a principio os principais sprites traduzidos, relogio só funciona
       "correto" na versão europeia.
+download: /downloads/projetos/loop8-summer-of-gods/Loop8.zip
 ---
 
 # Loop8: Summer of Gods — Tradução PT-BR
