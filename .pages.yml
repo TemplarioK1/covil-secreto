@@ -52,7 +52,7 @@ content:
           values:
             - Tradução
             - Port
-            - Projeto
+            - Projetos
       - name: platforms
         label: Plataformas
         type: select
@@ -63,6 +63,7 @@ content:
             - Nintendo Switch 2
             - Nintendo Switch
             - Nintendo 64
+            - Super Nintendo
             - PC
             - PlayStation 5
             - PlayStation 4
@@ -208,6 +209,7 @@ content:
               values:
                 - Nintendo Switch 2
                 - Nintendo Switch
+                - Super Nintendo
                 - PC
                 - PlayStation 5
                 - PlayStation 4
