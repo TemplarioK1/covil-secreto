@@ -33,10 +33,26 @@
 .filter-summary{font-size:10px;color:#71818a;margin:0 0 9px}
 .search button{cursor:pointer}
 
+header{padding:18px 7%;border-bottom:1px solid #302a3a;display:flex;align-items:center;justify-content:space-between;gap:20px;flex-wrap:wrap;background:linear-gradient(110deg,#123747,#174b5b 58%,#263b57);border-bottom:4px solid #22b8c3}
+.logo{display:flex;align-items:center;flex:0 0 auto;text-decoration:none;line-height:0}
+.logo img{display:block;width:min(300px,38vw);height:auto;object-fit:contain;flex-shrink:0}
+header nav{display:flex;align-items:center;gap:20px;flex-wrap:wrap}
+header nav a{color:#d1e0e5;text-decoration:none;font-size:14px}
+header nav a:hover{color:#fff}
+header nav a.admin-link{color:#e3f6f8;border:1px solid #6b98a7;border-radius:7px;padding:8px 11px}
+header nav a.admin-link:hover{background:#ffffff12;border-color:#d1e0e5}
+@media(max-width:600px){header{padding:16px 20px}.logo img{width:min(230px,70vw)}header nav{gap:14px}}
 </style></head><body><div class="shell">
-<div class="utility"><div><a href="#sobre">Sobre o Covil</a><a href="#contato">Contato</a><a href="#creditos">Créditos</a></div><div>Comunidade&nbsp; · &nbsp;YouTube&nbsp; · &nbsp;Discord</div></div>
-<header class="masthead"><div class="brand"><a href="{{ '/' | relative_url }}"><img src="{{ '/Logo gamer neon Covil Secreto.png' | relative_url }}" alt="Covil Secreto"></a><div class="brand-copy"><strong>Seu espaço no universo gamer.</strong>Traduções, projetos independentes, jogos e cultura.</div></div><div class="header-tools"><form class="search" id="portal-search" role="search"><input id="portal-search-input" type="search" aria-label="Buscar projetos" placeholder="Buscar projetos..."><button type="submit">BUSCAR</button></form></div></header>
-<nav class="mainnav"><a class="active" href="{{ '/' | relative_url }}">Início</a><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#materias">Análises</a><a href="#comunidade">Comunidade</a><a href="{{ '/admin/projetos.html' | relative_url }}">ADM</a></nav>
+<header>
+<a class="logo" href="{{ '/' | relative_url }}" aria-label="Covil Secreto — início"><img src="{{ '/Logo gamer neon Covil Secreto.png' | relative_url }}" alt="Covil Secreto"></a>
+<nav aria-label="Navegação principal">
+<a href="{{ '/' | relative_url }}">Início</a>
+<a href="{{ '/' | relative_url }}#catalog-ports">Ports</a>
+<a href="{{ '/' | relative_url }}#catalog-traducoes">Traduções</a>
+<a href="{{ '/contato/' | relative_url }}">Contato</a>
+<a class="admin-link" href="{{ '/admin/projetos.html' | relative_url }}">Modo ADM</a>
+</nav>
+</header>
 <main class="page"><div class="welcome"><div><h1>Bem-vindo ao Covil Secreto</h1><p>Um ponto de encontro para quem gosta de jogar, descobrir e preservar jogos.</p></div><div class="breadcrumb">INÍCIO&nbsp; / &nbsp;PORTAL</div></div>
 <div class="layout">
 <div class="column home-primary">
