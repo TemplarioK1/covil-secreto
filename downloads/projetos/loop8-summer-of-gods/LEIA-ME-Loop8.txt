@@ -1,6 +1,6 @@
 LOOP8: SUMMER OF GODS — INSTRUÇÕES DE INSTALAÇÃO
 
-Esta tradução foi preparada para a versão de Nintendo Switch. Na versão atual, o funcionamento foi confirmado em emuladores. A instalação em um console Nintendo Switch desbloqueado é compatível somente com a edição europeia do jogo, Title ID 0100051018E4C000.
+Este projeto inclui a tradução e edição dos textos, além da edição de texturas e elementos gráficos de Loop8: Summer of Gods. A versão foi preparada para Nintendo Switch. Na versão atual, o funcionamento foi confirmado em emuladores. A instalação em um console Nintendo Switch desbloqueado é compatível somente com a edição europeia do jogo, Title ID 0100051018E4C000.
 
 ATENÇÃO — COMPATIBILIDADE
 
@@ -14,7 +14,7 @@ ATENÇÃO — COMPATIBILIDADE
 2. Acesse a opção para abrir a pasta de mods/modificações do jogo.
 3. Copie para essa pasta o conteúdo da pasta Emuladores deste pacote, preservando a estrutura de diretórios.
 4. Ative o mod nas configurações do jogo, caso o emulador solicite.
-5. Inicie o jogo e confira se os textos aparecem em português brasileiro.
+5. Inicie o jogo e confira se os textos e as texturas editadas aparecem corretamente.
 
 Os nomes das opções e o local da pasta de mods podem variar conforme o emulador utilizado.
 
@@ -37,6 +37,7 @@ Uma versão/port nativo para PC ainda não está disponível nesta build.
 INFORMAÇÕES
 
 - Jogo: Loop8: Summer of Gods
+- Conteúdo: tradução/edição de textos e edição de texturas
 - Idioma: Português Brasileiro (PT-BR)
 - Plataforma-base: Nintendo Switch
 - Emuladores: funcionamento disponível
