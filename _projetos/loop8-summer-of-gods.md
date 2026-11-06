@@ -45,7 +45,7 @@ game_players: "1"
 
 Está disponível a tradução de **Loop8: Summer of Gods para português brasileiro!**
 
-A tradução adapta os textos do jogo para PT-BR, permitindo acompanhar a história de Nini, os diálogos com os moradores de Ashihara e os acontecimentos que se desenrolam durante o mês de agosto.
+O projeto inclui a tradução e edição dos textos, além da edição de texturas e elementos gráficos do jogo para português brasileiro (PT-BR). O objetivo é oferecer uma experiência mais completa e consistente, adaptando tanto os diálogos e menus quanto os elementos visuais que contêm texto.
 
 ### Plataformas disponíveis
 
@@ -67,6 +67,7 @@ O port para PC permanece em desenvolvimento e ainda não está disponível.
 
 ### Informações
 
+- **Trabalho realizado:** tradução/edição de textos e edição de texturas
 - **Idioma:** Português Brasileiro (PT-BR)
 - **Plataforma-base:** Nintendo Switch
 - **Compatibilidade em emuladores:** disponível
