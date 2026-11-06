@@ -1,427 +1,67 @@
-
-<!DOCTYPE html>
+<!doctype html>
 <html lang="pt-BR">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#111116">
-<title>Covil Secreto | Traduções e Ports</title>
-<meta name="description" content="Traduções, ports e projetos independentes do Covil Secreto.">
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#102d3b">
+<title>{{ site.title }} — Portal gamer</title>
+<meta name="description" content="Traduções, projetos independentes, matérias e cultura gamer do Covil Secreto.">
 <style>
-:root {
-  --bg:#101015;
-  --panel:#191820;
-  --purple:#ad83ff;
-  --text:#f4efff;
-  --muted:#aaa3b5;
-  --border:#302a3a;
-}
-* {box-sizing:border-box}
-body {
-  margin:0;background:var(--bg);color:var(--text);
-  font-family:Arial,sans-serif;
-}
-header {
-  padding:22px 7%;border-bottom:1px solid var(--border);
-  display:flex;justify-content:space-between;
-  align-items:center;gap:20px;flex-wrap:wrap;
-}
-.logo {display:flex;align-items:center;flex:0 0 auto;text-decoration:none;line-height:0}
-.logo img {display:block;width:min(300px,38vw);height:auto;max-height:none;object-fit:contain;flex-shrink:0}
-h1 span {color:var(--purple)}
-nav {display:flex;gap:22px;flex-wrap:wrap;align-items:center}
-nav a {color:var(--muted);text-decoration:none;font-size:14px}
-nav a:hover {color:var(--purple)}
-nav a.admin-link {color:#d5baff;border:1px solid #57436e;border-radius:7px;padding:8px 11px}
-nav a.admin-link:hover {background:#292035;border-color:var(--purple)}
-.contact {margin-top:70px;padding:28px;background:var(--panel);border:1px solid var(--border);border-radius:12px}
-.contact p {color:var(--muted);line-height:1.7}
-.hero {max-width:1100px;margin:auto;padding:85px 24px 55px}
-.tag {color:var(--purple);font-size:12px;letter-spacing:3px}
-h1 {font-size:clamp(40px,7vw,66px);margin:18px 0}
-.hero p {color:var(--muted);line-height:1.8;max-width:570px}
-main {max-width:1100px;margin:auto;padding:15px 24px 90px}
-.section-title {margin:30px 0}
-.section-title p {color:var(--muted);font-size:14px}
-.controls {display:flex;gap:12px;flex-wrap:wrap;margin:25px 0}
-input, select {
-  background:var(--panel);border:1px solid var(--border);
-  border-radius:8px;padding:13px;color:white;outline:none;
-}
-#search {flex:1;min-width:200px}
-#platform-filter {min-width:190px;cursor:pointer}
-.filters {display:flex;gap:8px;flex-wrap:wrap}
-.filters button {
-  background:var(--panel);border:1px solid var(--border);
-  color:var(--muted);padding:11px 15px;
-  border-radius:8px;cursor:pointer;
-}
-.filters button.active,.filters button:hover {
-  color:var(--purple);border-color:var(--purple);
-  background:#292035;
-}
-.grid {
-  display:grid;grid-template-columns:repeat(3,minmax(0,1fr));
-  gap:20px;
-}
-.card {
-  background:var(--panel);border:1px solid var(--border);
-  border-radius:12px;overflow:hidden;
-  transition:transform .2s,border-color .2s;
-}
-.card:hover {transform:translateY(-4px);border-color:var(--purple)}
-.card-link {
-  min-height:172px;padding:18px;display:grid;
-  grid-template-columns:104px minmax(0,1fr);
-  grid-template-rows:auto auto;column-gap:18px;row-gap:9px;
-  align-content:start;color:inherit;text-decoration:none;
-}
-.card-media {
-  grid-column:1;grid-row:1;min-width:0;
-  display:flex;flex-direction:column;align-items:stretch;
-}
-.project-icon {
-  width:104px;height:104px;flex:0 0 104px;object-fit:contain;
-  border-radius:9px;background:#24202c;display:block;
-}
-.no-cover {
-  width:104px;height:104px;flex:0 0 104px;background:#24202c;
-  display:flex;align-items:center;justify-content:center;
-  color:var(--purple);font-size:35px;border-radius:9px;
-}
-.card-content {grid-column:2;grid-row:1;min-width:0;min-height:104px;display:flex;align-items:flex-start}
-.card-meta {min-width:0;width:100%;display:flex;flex-direction:column;align-items:stretch}
-.card h3 {
-  margin:0;font-size:18px;line-height:1.35;overflow-wrap:anywhere;
-}
-.card-details {
-  grid-column:1 / -1;grid-row:2;
-  display:flex;align-items:center;gap:12px;min-width:0;
-}
-.platforms {
-  display:flex;gap:7px;flex:1;min-width:0;flex-wrap:wrap;
-  align-content:flex-start;max-height:42px;overflow:hidden;
-}
-.tag-small {
-  font-size:11px;background:#30253d;color:#d1b9ff;
-  padding:6px 9px;border-radius:5px;line-height:14px;
-}
-.progress-summary {
-  display:flex;align-items:center;justify-content:center;gap:5px;
-  margin:0;width:104px;flex:0 0 104px;min-width:0;height:18px;
-}
-.progress-summary-track {
-  height:6px;flex:1;min-width:0;max-width:none;
-  background:#302a3a;border-radius:99px;overflow:hidden;
-}
-.progress-summary-fill {display:block;height:100%;width:var(--progress);border-radius:inherit}
-.progress-summary-value {font-size:12px;font-weight:bold;white-space:nowrap;font-variant-numeric:tabular-nums}
-.progress-summary.progress-red .progress-summary-fill {background:#e05252}
-.progress-summary.progress-red .progress-summary-value {color:#ff7777}
-.progress-summary.progress-orange .progress-summary-fill {background:#ed963d}
-.progress-summary.progress-orange .progress-summary-value {color:#ffb66b}
-.progress-summary.progress-yellow .progress-summary-fill {background:#e3c342}
-.progress-summary.progress-yellow .progress-summary-value {color:#f0d96b}
-.progress-summary.progress-green .progress-summary-fill {background:#55b878}
-.progress-summary.progress-green .progress-summary-value {color:#78d99a}
-.progress-summary.progress-complete .progress-summary-fill {background:#397fd6}
-.progress-summary.progress-complete .progress-summary-value {color:#79b5ff}
-.empty {
-  grid-column:1/-1;text-align:center;
-  border:1px dashed var(--border);padding:50px 20px;
-  border-radius:12px;color:var(--muted);
-}
-.empty strong {display:block;color:var(--text);margin-bottom:10px}
-.about {margin-top:70px}
-footer {
-  border-top:1px solid var(--border);padding:30px;
-  text-align:center;color:var(--muted);font-size:12px;
-}
-.loading {color:var(--muted);padding:35px 0}
-@media(max-width:800px) {
-  .grid {grid-template-columns:repeat(2,minmax(0,1fr))}
-}
-@media(max-width:520px) {
-  .grid {grid-template-columns:1fr}
-  header {padding:16px 20px;gap:14px}
-  .logo img {width:min(230px,70vw);height:auto;max-height:none}
-  nav {gap:14px}
-  .hero {padding-top:60px}
-  .card-link {
-    min-height:142px;padding:14px;
-    grid-template-columns:88px minmax(0,1fr);column-gap:14px;row-gap:8px;
-  }
-  .project-icon,.no-cover {width:88px;height:88px;flex-basis:88px}
-  .card-content {min-height:88px}
-  .progress-summary {width:88px;flex-basis:88px}
-  .card-details {gap:9px}
-  .card h3 {font-size:17px}
-}
-</style>
-</head>
-
-<body>
-<header id="topo">
-  <a class="logo" href="https://templariok1.github.io/covil-secreto/" aria-label="Covil Secreto — início"><img src="/covil-secreto/Logo%20gamer%20neon%20Covil%20Secreto.png" alt="Covil Secreto"></a>
-  <nav aria-label="Navegação principal">
-    <a href="/covil-secreto/">Início</a>
-    <a href="/covil-secreto/#catalog-ports">Ports</a>
-    <a href="/covil-secreto/#catalog-traducoes">Traduções</a>
-    <a href="/covil-secreto/contato/">Contato</a>
-    <a class="admin-link" href="/covil-secreto/admin/projetos.html">Modo ADM</a>
-  </nav>
-</header>
-
-<section class="hero" id="inicio">
-  <div class="tag">TRADUÇÕES • PORTS • PROJETOS</div>
-  <h1>Seu jogo.<br><span>Seu idioma.</span></h1>
-  <p>
-    Bem-vindo ao Covil Secreto. Um espaço dedicado
-    a traduções de jogos, ports e projetos independentes
-    desenvolvidos com dedicação.
-  </p>
-</section>
-
-<main>
-<section id="projetos">
-  <div class="section-title">
-    <h2>Explorar projetos</h2>
-    <p>Encontre traduções, ports e novidades do nosso catálogo.</p>
-  </div>
-
-  <div class="controls">
-    <input id="search" type="search" placeholder="Pesquisar jogo...">
-    <select id="platform-filter" aria-label="Filtrar por plataforma">
-      <option value="Todas">Todas as plataformas</option>
-    </select>
-    <div class="filters">
-      <button class="active" data-filter="Todos">Todos</button>
-      <button data-filter="Tradução">Traduções</button>
-      <button data-filter="Port">Ports</button>
-      <button data-filter="Projeto">Projetos</button>
-    </div>
-  </div>
-
-  <div id="catalog">
-    <div class="loading">Carregando projetos do Covil Secreto...</div>
-  </div>
-</section>
-
-<section id="sobre" class="about">
-  <div class="section-title">
-    <h2>Sobre o Covil Secreto</h2>
-    <p>
-      Um projeto independente dedicado à localização,
-      adaptação e preservação de experiências de jogos.
-    </p>
-  </div>
-</section>
-</main>
-
-<footer>
-  COVIL SECRETO © 2026 — Todos os direitos reservados.
-</footer>
-
-<script>
-const USER = "templariok1";
-const REPO = "covil-secreto";
-const BRANCH = "main";
-const PROJECTS_PATH = "_projetos";
-
-const catalog = document.getElementById("catalog");
-const search = document.getElementById("search");
-let projects = [];
-let activeFilter = "Todos";
-let activePlatform = "Todas";
-const platformFilter = document.getElementById("platform-filter");
-
-function getProjectPlatforms(project) {
-  const value = project.platforms || project.platform || [];
-  if (Array.isArray(value)) return value.map(item => String(item).trim()).filter(Boolean);
-  return String(value).split(/[,;]+/).map(item => item.trim()).filter(Boolean);
-}
-
-function populatePlatformFilter() {
-  const allPlatforms = [...new Set(projects.flatMap(getProjectPlatforms))]
-    .sort((a, b) => a.localeCompare(b, "pt-BR"));
-  platformFilter.innerHTML = '<option value="Todas">Todas as plataformas</option>' +
-    allPlatforms.map(platform =>
-      '<option value="' + escapeHTML(platform) + '">' + escapeHTML(platform) + '</option>'
-    ).join("");
-  platformFilter.value = activePlatform;
-}
-
-function getField(text, name) {
-  const match = text.match(
-    new RegExp("^" + name + ":\\s*(.*)$", "m")
-  );
-  if (!match) return "";
-  return match[1].trim().replace(/^["']|["']$/g, "");
-}
-
-
-function getBody(text) {
-  const match = text.match(/^---\s*[\s\S]*?\n---\s*([\s\S]*)$/);
-  return match ? match[1].trim() : "";
-}
-
-function resolveImage(path) {
-  if (!path) return "";
-  const value = path.trim();
-
-  if (/^(https?:)?\/\//i.test(value) || value.startsWith("data:")) {
-    return value;
-  }
-
-  const normalized = value.replace(/^\/+/, "");
-  const siteBase = "/covil-secreto/";
-  const sitePath = normalized.startsWith("covil-secreto/")
-    ? "/" + normalized
-    : siteBase + normalized;
-
-  return new URL(sitePath, location.origin).href;
-}
-
-function escapeHTML(value) {
-  return String(value || "").replace(/[&<>"']/g, c => ({
-    "&":"&amp;","<":"&lt;",">":"&gt;",
-    '"':"&quot;","'":"&#39;"
-  })[c]);
-}
-
-async function loadProjects() {
-  try {
-    const response = await fetch("/covil-secreto/projetos.json", {
-      cache: "no-store",
-      headers: { "Accept": "application/json" }
-    });
-
-    if (!response.ok) {
-      throw new Error(`Não foi possível carregar o catálogo (HTTP ${response.status}).`);
-    }
-
-    const data = await response.json();
-    if (!Array.isArray(data)) {
-      throw new Error("O arquivo de catálogo não contém uma lista válida.");
-    }
-
-    projects = data.filter(project => project && project.title);
-    populatePlatformFilter();
-    render();
-  } catch (error) {
-    catalog.innerHTML = `
-      <div class="empty">
-        <strong>Não foi possível carregar o catálogo.</strong>
-        ${escapeHTML(error.message)}
-        <p>Atualize a página em alguns instantes. Se o erro persistir, verifique a publicação do GitHub Pages.</p>
-      </div>`;
-  }
-}
-
-function render() {
-  const term = search.value.toLowerCase();
-
-  const filtered = projects.filter(p => {
-    const platforms = getProjectPlatforms(p);
-    const matchesFilter = activeFilter === "Todos" ||
-      String(p.category || "").toLowerCase() === activeFilter.toLowerCase();
-    const matchesPlatform = activePlatform === "Todas" || platforms.includes(activePlatform);
-    const matchesSearch = (
-      String(p.title || "") + " " + platforms.join(" ") + " " + String(p.category || "")
-    ).toLowerCase().includes(term);
-
-    return matchesFilter && matchesPlatform && matchesSearch;
-  });
-
-  if (!filtered.length) {
-    catalog.innerHTML = `
-      <div class="empty">
-        <strong>Nenhum projeto encontrado.</strong>
-        Tente outra pesquisa ou categoria.
-      </div>`;
-    return;
-  }
-
-  const renderCard = p => {
-    const image = p.icon ? `
-      <img class="project-icon"
-      src="${escapeHTML(resolveImage(p.icon))}"
-      alt=""
-      loading="lazy"
-      onerror="this.outerHTML='<div class=&quot;no-cover&quot;>🎮</div>'">
-    ` : `<div class="no-cover">🎮</div>`;
-
-    const projectUrl = resolveImage(p.url) || "#";
-    const platforms = getProjectPlatforms(p);
-    const stages = [
-      ...(Array.isArray(p.progress_stages) ? p.progress_stages : []),
-      ...(Array.isArray(p.progress_platform_groups) ? p.progress_platform_groups.flatMap(group => group.stages || []) : [])
-    ].filter(stage => stage && stage.name !== "Finalização" && stage.name !== "Finalização e publicação");
-    const hasProgress = stages.length > 0;
-    const totalProgress = hasProgress
-      ? Math.round(stages.reduce((sum, stage) => sum + Math.max(0, Math.min(100, Number(stage.percentage) || 0)), 0) / stages.length)
-      : 0;
-    const progressClass = totalProgress >= 100 ? "progress-complete"
-      : totalProgress >= 75 ? "progress-green"
-      : totalProgress >= 50 ? "progress-yellow"
-      : totalProgress >= 25 ? "progress-orange" : "progress-red";
-    const progressSummary = hasProgress ? `
-      <div class="progress-summary ${progressClass}" aria-label="Progresso total: ${totalProgress}%">
-        <span class="progress-summary-value">${totalProgress}%</span>
-        <span class="progress-summary-track"><span class="progress-summary-fill" style="--progress:${totalProgress}%"></span></span>
-      </div>` : "";
-
-    return `
-      <article class="card">
-        <a class="card-link" href="${escapeHTML(projectUrl)}">
-          <div class="card-media">${image}</div>
-          <div class="card-content">
-            <div class="card-meta"><h3>${escapeHTML(p.title)}</h3></div>
-          </div>
-          <div class="card-details">
-            ${progressSummary}
-            <div class="platforms">
-              ${platforms.map(platform => `<span class="tag-small">${escapeHTML(platform)}</span>`).join("")}
-            </div>
-          </div>
-        </a>
-      </article>`;
-  };
-
-  const translations = filtered.filter(p => String(p.category || "").toLowerCase() === "tradução");
-  const ports = filtered.filter(p => String(p.category || "").toLowerCase() === "port");
-  const otherProjects = filtered.filter(p => String(p.category || "").toLowerCase() === "projeto");
-
-  const renderGroup = (title, items, id) => `
-    <section class="catalog-group" aria-labelledby="${id}">
-      <h2 class="catalog-group-title" id="${id}">${title}</h2>
-      <div class="grid">${items.length ? items.map(renderCard).join("") : '<div class="empty">Nenhum projeto nesta categoria com os filtros atuais.</div>'}</div>
-    </section>`;
-
-  catalog.innerHTML =
-    renderGroup("Traduções", translations, "catalog-traducoes") +
-    renderGroup("Ports", ports, "catalog-ports") +
-    renderGroup("Projetos", otherProjects, "catalog-projetos");
-}
-
-document.querySelectorAll("[data-filter]").forEach(button => {
-  button.addEventListener("click", () => {
-    activeFilter = button.dataset.filter;
-    document.querySelectorAll("[data-filter]").forEach(b =>
-      b.classList.toggle("active", b === button)
-    );
-    render();
-  });
-});
-
-platformFilter.addEventListener("change", () => {
-  activePlatform = platformFilter.value;
-  render();
-});
-
-search.addEventListener("input", render);
-loadProjects();
-</script>
-</body>
-</html>
+:root{--navy:#102d3b;--navy2:#173e50;--teal:#087f89;--cyan:#22b8c3;--purple:#7253a5;--paper:#f1f4f5;--white:#fff;--ink:#203744;--muted:#657984;--line:#d3dde1}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#e7edef;color:var(--ink);font:14px/1.5 "Segoe UI",Arial,sans-serif}a{color:inherit;text-decoration:none}
+.shell{max-width:1440px;margin:auto;background:var(--paper);min-height:100vh;box-shadow:0 0 35px #102d3b18}
+.utility{height:29px;background:#0c2632;color:#b9cbd2;padding:0 max(22px,calc((100% - 1360px)/2));display:flex;align-items:center;justify-content:space-between;font-size:11px}.utility a{margin-right:17px}.utility a:hover{color:#fff}
+.masthead{min-height:116px;padding:17px max(22px,calc((100% - 1360px)/2));display:flex;align-items:center;justify-content:space-between;gap:24px;background:linear-gradient(110deg,#123747,#174b5b 58%,#263b57);color:#fff;border-bottom:4px solid var(--cyan)}
+.brand{display:flex;align-items:center;gap:20px;min-width:0}.brand img{width:285px;max-height:78px;object-fit:contain;object-position:left center}.brand-copy{border-left:1px solid #ffffff45;padding-left:18px;color:#c8d9df;font-size:12px;max-width:240px;line-height:1.45}.brand-copy strong{display:block;color:#fff;font-size:16px;font-weight:650}
+.header-tools{display:flex;align-items:center;gap:10px}.search{display:flex;border:1px solid #6b98a7;background:#0d2d3a;border-radius:4px;overflow:hidden}.search input{width:190px;background:transparent;border:0;padding:10px;color:white;outline:0}.search button{border:0;background:#087f89;color:white;padding:0 13px;font-weight:700}
+.mainnav{background:#f9fbfc;border-bottom:1px solid #b9c9d0;box-shadow:0 3px 8px #102d3b0c;padding:0 max(22px,calc((100% - 1360px)/2));display:flex;align-items:stretch;min-height:48px;gap:3px}.mainnav a{padding:13px 18px;font-size:13px;font-weight:700;color:#3e5865;border-bottom:3px solid transparent}.mainnav a:hover,.mainnav a.active{color:var(--teal);border-color:var(--cyan);background:#edf5f6}
+.page{padding:20px 22px 30px;max-width:1404px;margin:auto}.welcome{display:flex;justify-content:space-between;align-items:center;gap:20px;margin:0 0 15px;padding:0 2px}.welcome h1{font-size:20px;margin:0;color:#173c4b;font-weight:700}.welcome p{margin:2px 0 0;color:var(--muted);font-size:12px}.breadcrumb{font-size:10px;color:#7c8d95;letter-spacing:.08em}
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr) 270px;gap:15px;align-items:start}.column{display:grid;gap:14px;min-width:0}.box{background:#fff;border:1px solid var(--line);border-radius:4px;box-shadow:0 2px 5px #183b4b0a;overflow:hidden}.boxhead{min-height:39px;padding:9px 12px;background:#eaf0f2;border-bottom:1px solid #d4dfe3;display:flex;align-items:center;justify-content:space-between;gap:10px}.boxhead h2{margin:0;font-size:13px;color:#1c4352;font-weight:750}.boxhead a{font-size:10px;color:var(--teal);font-weight:700}.boxbody{padding:12px}
+.kicker{font-size:9px;font-weight:800;letter-spacing:.13em;color:var(--teal);text-transform:uppercase}.project-feature{background:#fff;border:1px solid #b9cbd1;border-radius:4px;overflow:hidden;display:grid;grid-template-columns:minmax(0,1.35fr) minmax(220px,.8fr);min-height:252px}
+.feature-art{position:relative;min-height:252px;background:linear-gradient(135deg,#173c4c,#0c6671 52%,#4c4777);overflow:hidden}.feature-art:before{content:"";position:absolute;width:340px;height:340px;border-radius:50%;border:1px solid #ffffff35;right:-45px;top:-145px;box-shadow:0 0 0 24px #ffffff0b,0 0 0 48px #ffffff08}.art-mark{position:absolute;left:28px;top:28px;color:#dffcff;font-size:10px;letter-spacing:.2em;font-weight:800}.art-title{position:absolute;left:28px;right:24px;bottom:25px;color:white}.art-title strong{display:block;font-size:clamp(24px,3vw,38px);line-height:1.02;max-width:460px}.art-title span{display:block;margin-top:8px;color:#d7e8ed;font-size:13px}
+.feature-copy{padding:20px 19px;display:flex;flex-direction:column;justify-content:center}.feature-copy h2{font-size:22px;line-height:1.15;margin:6px 0 8px;color:#183d4c}.feature-copy p{font-size:12px;color:#607580;line-height:1.6;margin:0 0 13px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:13px}.tag{font-size:9px;padding:4px 7px;background:#edf4f5;border:1px solid #d2e1e4;color:#42616d;border-radius:3px;font-weight:700}.action{align-self:flex-start;background:#173e50;color:#fff;padding:8px 13px;border-radius:3px;font-size:11px;font-weight:700}.action:hover{background:var(--teal)}
+.tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{border:1px solid #d7e0e4;border-radius:3px;background:#fbfcfc;padding:11px;display:grid;grid-template-columns:68px minmax(0,1fr);gap:10px;align-items:center}.tile img,.tile-icon{width:68px;height:68px;object-fit:cover;border-radius:3px;background:#e5ecef;display:grid;place-items:center;color:#315a6b;font-weight:800}.tile:nth-child(2n) .tile-icon{background:#eeeaf4;color:#655184}.tile h3{font-size:12px;margin:0 0 3px;color:#214453}.tile p{font-size:10px;line-height:1.4;color:#71818a;margin:0 0 4px}.tile a{font-size:10px;color:var(--teal);font-weight:750}
+.project-row{padding:9px 0;border-bottom:1px solid #e1e8eb}.project-row:last-child{border:0;padding-bottom:0}.project-top{display:flex;justify-content:space-between;gap:8px;font-size:11px}.project-top b{color:#244654}.project-top strong{color:var(--teal)}.meter{height:6px;background:#e3eaed;border-radius:6px;margin-top:6px;overflow:hidden}.meter i{display:block;height:100%;background:#15969b;border-radius:6px}.project-row small{font-size:9px;color:#819098}
+.side-links{display:grid;grid-template-columns:1fr 1fr;gap:6px}.side-links a{padding:8px;background:#f1f5f6;border:1px solid #dce5e8;border-radius:3px;font-size:10px;color:#45616c;font-weight:700;text-align:center}.side-links a:hover{border-color:#8bbec2;color:var(--teal)}.notice{font-size:11px;color:#647984;line-height:1.55}.notice strong{color:#244654}.statusline{padding:9px 10px;border-left:3px solid var(--purple);background:#f3f0f8;font-size:10px;color:#625479;margin-top:8px}
+.footer{background:#102d3b;color:#b9cbd2;padding:22px max(22px,calc((100% - 1360px)/2));display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;border-top:4px solid #087f89}.footer h3{font-size:12px;color:white;margin:0 0 8px}.footer p,.footer a{font-size:10px;color:#b9cbd2;line-height:1.7}.footer-links{display:flex;flex-wrap:wrap;gap:7px 15px}.copyright{grid-column:1/-1;border-top:1px solid #ffffff20;padding-top:12px;font-size:9px;color:#8faab4}
+@media(max-width:1050px){.layout{grid-template-columns:210px minmax(0,1fr)}.layout>.column:last-child{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}.brand-copy{display:none}.mainnav a{padding:12px 13px}}
+@media(max-width:720px){.utility{padding:0 14px}.masthead{padding:14px;align-items:flex-start;flex-direction:column}.brand img{width:225px}.header-tools,.search{width:100%}.search input{flex:1}.mainnav{overflow-x:auto;padding:0 8px}.mainnav a{white-space:nowrap;padding:12px 11px}.page{padding:14px}.welcome{align-items:flex-start;flex-direction:column}.layout{grid-template-columns:1fr}.layout>.column:last-child{grid-column:auto;grid-template-columns:1fr}.project-feature{grid-template-columns:1fr}.feature-art{min-height:210px}.footer{grid-template-columns:1fr 1fr;padding:20px}.footer>div:first-child{grid-column:1/-1}}
+@media(max-width:460px){.tiles{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.footer>div:first-child{grid-column:auto}}
+</style></head><body><div class="shell">
+<div class="utility"><div><a href="#sobre">Sobre o Covil</a><a href="#contato">Contato</a><a href="#creditos">Créditos</a></div><div>Comunidade&nbsp; · &nbsp;YouTube&nbsp; · &nbsp;Discord</div></div>
+<header class="masthead"><div class="brand"><a href="{{ '/' | relative_url }}"><img src="{{ '/Logo gamer neon Covil Secreto.png' | relative_url }}" alt="Covil Secreto"></a><div class="brand-copy"><strong>Seu espaço no universo gamer.</strong>Traduções, projetos independentes, jogos e cultura.</div></div><div class="header-tools"><form class="search" action="{{ '/' | relative_url }}"><input aria-label="Buscar" name="q" placeholder="Buscar no Covil..."><button type="submit">BUSCAR</button></form></div></header>
+<nav class="mainnav"><a class="active" href="{{ '/' | relative_url }}">Início</a><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#analises">Análises</a><a href="#comunidade">Comunidade</a><a href="{{ '/admin/projetos.html' | relative_url }}">ADM</a></nav>
+<main class="page"><div class="welcome"><div><h1>Bem-vindo ao Covil Secreto</h1><p>Um ponto de encontro para quem gosta de jogar, descobrir e preservar jogos.</p></div><div class="breadcrumb">INÍCIO&nbsp; / &nbsp;PORTAL</div></div>
+<div class="layout">
+<aside class="column">
+<section class="box"><div class="boxhead"><h2>Explore o Covil</h2></div><div class="boxbody"><div class="side-links"><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#analises">Análises</a><a href="#comunidade">Comunidade</a></div></div></section>
+<section class="box" id="projetos"><div class="boxhead"><h2>Projetos em andamento</h2><a href="#todos-projetos">Ver todos</a></div><div class="boxbody">
+{% assign active_projects = site.projetos | where_exp: "project", "project.status != 'Concluído' and project.status != 'ConcluÃ­do'" %}
+{% for project in active_projects limit:5 %}
+{% assign total = 0 %}{% assign count = 0 %}{% for stage in project.progress_stages %}{% unless stage.name == 'Finalização' or stage.name == 'Finalização e publicação' %}{% assign total = total | plus: stage.percentage %}{% assign count = count | plus: 1 %}{% endunless %}{% endfor %}
+{% assign pct = 0 %}{% if count > 0 %}{% assign pct = total | divided_by: count %}{% endif %}
+<div class="project-row"><div class="project-top"><b>{{ project.title | escape }}</b><strong>{{ pct }}%</strong></div><div class="meter"><i style="width:{{ pct }}%"></i></div><small>{{ project.status | default: 'Em andamento' | escape }}</small></div>
+{% endfor %}
+</div></section>
+<section class="box" id="traducoes"><div class="boxhead"><h2>Plataformas</h2></div><div class="boxbody"><div class="side-links"><a href="#todos-projetos">PC</a><a href="#todos-projetos">Switch</a><a href="#todos-projetos">PlayStation</a><a href="#todos-projetos">Xbox</a><a href="#todos-projetos">Emulação</a><a href="#todos-projetos">Outras</a></div></div></section>
+</aside>
+<div class="column">
+<section class="project-feature"><div class="feature-art"><div class="art-mark">COVIL SECRETO · PROJETOS E CULTURA</div><div class="art-title"><strong>O universo dos jogos não tem fronteiras.</strong><span>Conheça projetos, traduções e histórias que merecem ser descobertas.</span></div></div><div class="feature-copy"><div class="kicker">PORTAL GAMER INDEPENDENTE</div><h2>Mais do que jogar. Fazer parte.</h2><p>Um espaço dedicado a projetos de tradução, adaptações, conteúdos especiais e à paixão por videogames.</p><div class="tags"><span class="tag">TRADUÇÕES</span><span class="tag">PROJETOS</span><span class="tag">CULTURA GAMER</span></div><a class="action" href="#sobre">Conheça o Covil</a></div></section>
+<section class="box" id="todos-projetos"><div class="boxhead"><h2>Projetos do Covil</h2><a href="#projetos">Acompanhar andamento</a></div><div class="boxbody"><div class="tiles">
+{% assign sorted_projects = site.projetos | sort_natural: 'title' %}
+{% for project in sorted_projects %}
+<article class="tile">
+{% assign icon_path = project.icon | default: project.cover %}
+{% if icon_path %}<img src="{{ icon_path | relative_url }}" alt="" loading="lazy">{% else %}<div class="tile-icon">{{ project.title | slice: 0, 2 | upcase }}</div>{% endif %}
+<div><h3>{{ project.title | escape }}</h3><p>{{ project.status | default: project.category | escape }}{% if project.platforms %} · {{ project.platforms | join: ', ' | escape }}{% endif %}</p><a href="{{ project.url | relative_url }}">Ver projeto →</a></div>
+</article>
+{% endfor %}
+</div></div></section>
+<section class="box" id="materias"><div class="boxhead"><h2>Conteúdo do Covil</h2><a href="#guias">Explorar temas</a></div><div class="boxbody"><div class="notice"><strong>Jogos, tradução e preservação</strong><br>Além dos projetos, este espaço pode reunir matérias, análises, guias, opiniões e bastidores do trabalho de localização e adaptação de jogos.</div><div class="statusline">Novas publicações serão organizadas aqui conforme forem produzidas.</div></div></section>
+</div>
+<aside class="column">
+<section class="box"><div class="boxhead"><h2>Últimas do Covil</h2></div><div class="boxbody"><div class="notice"><strong>Acompanhe os projetos</strong><br>Consulte as páginas individuais para ver progresso, plataformas, versões, compatibilidade e arquivos disponíveis.</div><div class="statusline">Os dados desta área são atualizados a partir dos projetos cadastrados.</div></div></section>
+<section class="box" id="comunidade"><div class="boxhead"><h2>Participe</h2></div><div class="boxbody"><p class="notice">O Covil também é feito por quem acompanha, testa, compartilha e ajuda os projetos a crescer.</p><a class="action" href="{{ '/contato/' | relative_url }}">Entre em contato</a></div></section>
+<section class="box" id="guias"><div class="boxhead"><h2>Acesso rápido</h2></div><div class="boxbody"><div class="side-links"><a href="#todos-projetos">Downloads</a><a href="#todos-projetos">Compatibilidade</a><a href="#materias">Tutoriais</a><a href="{{ '/contato/' | relative_url }}">Suporte</a></div></div></section>
+</aside></div></main>
+<footer class="footer"><div id="sobre"><h3>Covil Secreto</h3><p>Um espaço independente dedicado a traduções, projetos e conteúdos sobre videogames. Jogue, descubra e compartilhe.</p></div><div><h3>Navegação</h3><div class="footer-links"><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#analises">Análises</a></div></div><div id="contato"><h3>Contato e comunidade</h3><p>Acompanhe os projetos e envie sugestões, correções ou dúvidas.</p><a href="{{ '/contato/' | relative_url }}">Fale com o Covil</a></div><div class="copyright" id="creditos">Covil Secreto · Portal independente de jogos</div></footer>
+</div></body></html>
