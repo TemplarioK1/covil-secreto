@@ -130,6 +130,36 @@ details.section>summary:hover{background:#e3edef}
 #stages .stage-actions button,#platform-groups .stage-actions button{min-height:28px;padding:5px 9px;font-size:11px}
 #stages .bar,#platform-groups .bar{height:5px;margin-top:7px}
 #stages,#platform-groups{gap:7px}
+
+/* Progresso em até três colunas: os indicadores ficam compactos sem apertar os textos longos */
+#stages{display:block}
+#main-stage-list,
+#platform-groups [data-group-stages]{
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:7px;
+  align-items:start;
+}
+#platform-groups{grid-template-columns:repeat(3,minmax(0,1fr))}
+#stages .progress-editor-group{padding:9px 10px}
+#stages .progress-editor-group h4{margin:0 0 8px}
+#main-stage-list .stage,
+#platform-groups [data-group-stages] .stage{min-width:0;padding:8px}
+#main-stage-list .stage-head,
+#platform-groups [data-group-stages] .stage-head{align-items:flex-start;flex-wrap:wrap}
+#main-stage-list .stage-controls,
+#platform-groups [data-group-stages] .stage-controls{grid-template-columns:54px minmax(0,1fr);gap:6px}
+@media(max-width:1249px){
+  #main-stage-list,
+  #platform-groups [data-group-stages],
+  #platform-groups{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media(max-width:700px){
+  #main-stage-list,
+  #platform-groups [data-group-stages],
+  #platform-groups{grid-template-columns:1fr}
+}
+
 </style>
 </head>
 <body>
