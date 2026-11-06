@@ -21,7 +21,7 @@ progress_stages:
   - name: Tradução de sprites
     percentage: 90
   - name: Testes no jogo
-    percentage: 10
+    percentage: 35
   - name: Revisão e correções
     percentage: 30
 progress_platform_groups:
@@ -76,4 +76,3 @@ O port para PC permanece em desenvolvimento e ainda não está disponível.
 - **Versão para PC:** ainda não disponível
 
 Boa jornada por Ashihara!
-
