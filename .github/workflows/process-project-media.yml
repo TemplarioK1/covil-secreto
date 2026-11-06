@@ -12,6 +12,7 @@ on:
       - "downloads/**"
       - "admin/**"
       - "index.html"
+      - "teste-layout.html"
       - "projetos.json"
       - "_layouts/**"
       - "_config.yml"
