@@ -1,12 +1,12 @@
 LOOP8: SUMMER OF GODS — INSTRUÇÕES DE INSTALAÇÃO
 
-Este projeto inclui a tradução e edição dos textos, além da edição de texturas e elementos gráficos de Loop8: Summer of Gods. A versão foi preparada para Nintendo Switch. Na versão atual, o funcionamento foi confirmado em emuladores. A instalação em um console Nintendo Switch desbloqueado é compatível somente com a edição europeia do jogo, Title ID 0100051018E4C000.
+Este projeto inclui a tradução e edição dos textos, além da edição de texturas e elementos gráficos de Loop8: Summer of Gods. A versão foi preparada para Nintendo Switch. Na versão atual, o funcionamento foi confirmado em emuladores. A edição europeia do Nintendo Switch, Title ID 0100051018E4C000, é a versão de referência recomendada para instalação em console. A tradução também funciona em outras versões, mas apresenta uma limitação no relógio dos saves.
 
 ATENÇÃO — COMPATIBILIDADE
 
 - EMULADORES: utilize os arquivos de modificação incluídos neste pacote na instalação do jogo.
-- NINTENDO SWITCH (CONSOLE): compatível somente com a versão europeia, Title ID 0100051018E4C000.
-- OUTRAS VERSÕES DE CONSOLE: não são compatíveis nesta versão da tradução. Não instale em outra edição ou Title ID.
+- NINTENDO SWITCH (CONSOLE): versão de referência/recomendada — edição europeia, Title ID 0100051018E4C000.
+- OUTROS TITLE IDs: a tradução também funciona, mas o relógio exibido nos saves ficará invertido. É uma limitação visual conhecida; os demais recursos da tradução continuam funcionando.
 
 1. EMULADORES
 
@@ -20,7 +20,7 @@ Os nomes das opções e o local da pasta de mods podem variar conforme o emulado
 
 2. NINTENDO SWITCH — ATMOSPHÈRE
 
-ATENÇÃO: este procedimento é somente para a versão europeia com Title ID 0100051018E4C000.
+ATENÇÃO: a instalação foi preparada e testada como referência na versão europeia com Title ID 0100051018E4C000. Em outros Title IDs, a tradução também pode ser instalada e funciona, mas o relógio dos saves ficará invertido.
 
 1. Confirme que sua cópia do jogo corresponde ao Title ID indicado acima.
 2. Abra a pasta Console deste pacote.
@@ -28,7 +28,7 @@ ATENÇÃO: este procedimento é somente para a versão europeia com Title ID 010
 4. Se o sistema perguntar se deseja mesclar pastas ou substituir arquivos, confirme a mesclagem.
 5. Insira o cartão no console e inicie o jogo.
 
-Não utilize os arquivos de console em versões com outro Title ID. A compatibilidade não é garantida.
+Se utilizar outro Title ID, esteja ciente da inversão do relógio nos saves. A tradução continua funcionando, mas a versão europeia é recomendada para evitar essa limitação.
 
 3. VERSÃO PARA PC
 
@@ -41,6 +41,7 @@ INFORMAÇÕES
 - Idioma: Português Brasileiro (PT-BR)
 - Plataforma-base: Nintendo Switch
 - Emuladores: funcionamento disponível
-- Console: somente edição europeia — Title ID 0100051018E4C000
+- Console — versão de referência recomendada: edição europeia — Title ID 0100051018E4C000
+- Outros Title IDs: tradução funcional, com relógio dos saves invertido
 
 Covil Secreto — Traduções e projetos de jogos.
