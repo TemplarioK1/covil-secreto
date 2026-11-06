@@ -298,7 +298,7 @@ function createProject(){
  const path="_projetos/"+slug+".md";
  if(files.some(f=>f.path===path)){status("Já existe um projeto com esse endereço. Escolha outro nome.","error");return}
  current={path,sha:null,isNew:true};model={title};stages=[];platformGroups=[];platformOrder=[];history=[];downloads=[];uploads={};
- $("[data-key]").forEach(el=>{el.value=""});
+ $("[data-key]").forEach(el=>{el.value=""});const titleField=$('[data-key="title"]');if(titleField)titleField.value=title;
  $("[data-path-list]").forEach(el=>{el.value=""});
  $("[data-upload]").forEach(el=>{el.value=""});
  [...$("#platforms").options].forEach(o=>o.selected=false);
