@@ -193,7 +193,7 @@ details.section>summary:hover{background:#e3edef}
 </section>
 <section class="toolbar">
 <div class="field" style="flex:1;min-width:240px"><label for="project">Projeto</label><select id="project" disabled><option>Conecte ao GitHub para carregar os projetos</option></select></div>
-<button id="reload" disabled>Atualizar lista</button>
+<button id="new-project" class="primary" disabled>＋ Novo projeto</button><button id="reload" disabled>Atualizar lista</button>
 
 </section>
 
@@ -285,8 +285,31 @@ function renderPlatformGroups(){
  root.querySelectorAll('[data-remove-group]').forEach(b=>b.onclick=()=>{platformGroups.splice(Number(b.dataset.removeGroup),1);renderPlatformGroups();updateFinalStage()});
 }
 async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){let e=await r.json().catch(()=>({message:r.statusText}));throw Error(e.message||"Erro HTTP "+r.status)}return r.status===204?null:r.json()}
-async function connect(){token=$("#token").value.trim();if(!token)return connection("Informe o token para conectar.","error");try{await api(API+"/repos/"+OWNER+"/"+REPO);$("#disconnect").disabled=false;$("#project").disabled=false;$("#reload").disabled=false;connection("Conectado ao repositório "+OWNER+"/"+REPO+".","ok");await loadList()}catch(e){token="";connection("Falha na conexão: "+e.message,"error")}}
+async function connect(){token=$("#token").value.trim();if(!token)return connection("Informe o token para conectar.","error");try{await api(API+"/repos/"+OWNER+"/"+REPO);$("#disconnect").disabled=false;$("#project").disabled=false;$("#reload").disabled=false;$("#new-project").disabled=false;connection("Conectado ao repositório "+OWNER+"/"+REPO+".","ok");await loadList()}catch(e){token="";connection("Falha na conexão: "+e.message,"error")}}
 async function loadList(){try{const data=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/_projetos?ref="+BRANCH);files=data.filter(x=>x.type==="file"&&x.name.endsWith(".md"));$("#project").innerHTML='<option value="">Selecione um projeto…</option>'+files.map(f=>'<option value="'+f.path+'">'+f.name.replace(/\.md$/,"")+'</option>').join("");}catch(e){connection("Não foi possível listar projetos: "+e.message,"error")}}
+
+function createProject(){
+ const name=prompt("Nome do novo projeto:");
+ if(name===null)return;
+ const title=name.trim();
+ if(!title){status("Informe um nome para o projeto.","error");return}
+ const slug=title.normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90);
+ if(!slug){status("Não foi possível gerar o nome do arquivo.","error");return}
+ const path="_projetos/"+slug+".md";
+ if(files.some(f=>f.path===path)){status("Já existe um projeto com esse endereço. Escolha outro nome.","error");return}
+ current={path,sha:null,isNew:true};model={title};stages=[];platformGroups=[];platformOrder=[];history=[];downloads=[];uploads={};
+ $("[data-key]").forEach(el=>{el.value=""});
+ $("[data-path-list]").forEach(el=>{el.value=""});
+ $("[data-upload]").forEach(el=>{el.value=""});
+ [...$("#platforms").options].forEach(o=>o.selected=false);
+ renderPlatformOrder();renderStages();renderPlatformGroups();renderHistory();renderDownloads();
+ ["icon","cover","screenshots","download"].forEach(k=>{const el=$('[data-current="'+k+'"]');if(el)el.textContent="Nenhum arquivo selecionado"});
+ $("#project").value="";
+ $("#editor").classList.remove("hidden");
+ $("details.section").forEach(d=>d.open=true);
+ status("Novo projeto: "+title+". Preencha as informações e salve para criar o arquivo no GitHub.","ok");
+ $("#editor").scrollIntoView({behavior:"smooth",block:"start"});
+}
 async function loadProject(path){if(!path){$("#editor").classList.add("hidden");return}try{status("Carregando projeto…");const f=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+path+"?ref="+BRANCH);current={path,sha:f.sha};const parsed=splitMarkdown(b64decode(f.content));model=parsed.data;model.body=parsed.body;
 const legacyLocal=String(model.game_local_multiplayer||"").trim().toLowerCase()==="sim";
 const legacyOnline=String(model.game_online_multiplayer||"").trim().toLowerCase()==="sim";
@@ -312,9 +335,9 @@ function syncForm(){
  if(history.length)model.version_history=history;else delete model.version_history;
  $$("[data-path-list]").forEach(el=>{const values=el.value.split(/\r?\n/).map(x=>x.trim()).filter(Boolean);if(values.length>4)throw Error("Informe no máximo quatro screenshots.");if(values.length)model[el.dataset.pathList]=values;else delete model[el.dataset.pathList]});if(downloads.length)model.additional_downloads=downloads;else delete model.additional_downloads;
 }
-async function saveProjectWithRetry(raw){const url=API+"/repos/"+OWNER+"/"+REPO+"/contents/"+current.path;for(let attempt=0;attempt<2;attempt++){try{return await api(url,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Atualiza projeto pelo painel administrativo",content:b64encode(raw),sha:current.sha,branch:BRANCH})})}catch(e){if(attempt===0&&/does not match|sha.*match|409|422/i.test(e.message)){const latest=await api(url+"?ref="+BRANCH);current.sha=latest.sha;continue}throw e}}}
-async function save(){if(!current)return;const btn=$("#save");btn.disabled=true;try{status("Enviando arquivos selecionados…");syncForm();await processUploads();syncForm();const body=String(model.body||"").replace(/^\n+/,"");delete model.body;const yaml=jsyaml.dump(model,{lineWidth:110,noRefs:true,quotingType:'"',forceQuotes:false,sortKeys:false});const raw="---\n"+yaml+"---\n\n"+body.trim()+"\n";const latest=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+current.path+"?ref="+BRANCH);current.sha=latest.sha;const finalYaml=jsyaml.dump(model,{lineWidth:110,noRefs:true,quotingType:'"',forceQuotes:false,sortKeys:false});const finalRaw="---\n"+finalYaml+"---\n\n"+body.trim()+"\n";await saveProjectWithRetry(finalRaw);status("Alterações salvas no GitHub. Aguarde o GitHub Actions e a publicação do Pages.","ok");await loadProject(current.path)}catch(e){status("Não foi possível salvar: "+e.message,"error")}finally{btn.disabled=false}}
-$("#connect").onclick=connect;$("#disconnect").onclick=()=>{token="";$("#token").value="";$("#project").disabled=true;$("#reload").disabled=true;$("#disconnect").disabled=true;$("#editor").classList.add("hidden");$("#post-editor").classList.add("hidden");connection("Desconectado.")};$("#reload").onclick=loadList;$("#project").onchange=e=>loadProject(e.target.value);$("#save").onclick=save;$("#add-stage").onclick=()=>{stages.push({name:"Nova etapa",percentage:0});renderStages();};$("#add-platform-group").onclick=()=>{
+async function saveProjectWithRetry(raw){const url=API+"/repos/"+OWNER+"/"+REPO+"/contents/"+current.path;for(let attempt=0;attempt<2;attempt++){try{const payload={message:(current.isNew?"Cria projeto pelo painel administrativo":"Atualiza projeto pelo painel administrativo"),content:b64encode(raw),branch:BRANCH};if(!current.isNew)payload.sha=current.sha;return await api(url,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)})}catch(e){if(!current.isNew&&attempt===0&&/does not match|sha.*match|409|422/i.test(e.message)){const latest=await api(url+"?ref="+BRANCH);current.sha=latest.sha;continue}throw e}}}
+async function save(){if(!current)return;const btn=$("#save");btn.disabled=true;try{status("Enviando arquivos selecionados…");syncForm();await processUploads();syncForm();const body=String(model.body||"").replace(/^\\n+/,"");delete model.body;if(!current.isNew){const latest=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+current.path+"?ref="+BRANCH);current.sha=latest.sha}const yaml=jsyaml.dump(model,{lineWidth:110,noRefs:true,quotingType:'"',forceQuotes:false,sortKeys:false});const raw="---\\n"+yaml+"---\\n\\n"+body.trim()+"\\n";await saveProjectWithRetry(raw);current.isNew=false;status("Alterações salvas no GitHub. Aguarde o GitHub Actions e a publicação do Pages.","ok");await loadList();$("#project").value=current.path;await loadProject(current.path)}catch(e){status("Não foi possível salvar: "+e.message,"error")}finally{btn.disabled=false}}
+$("#connect").onclick=connect;$("#new-project").onclick=createProject;$("#disconnect").onclick=()=>{token="";$("#token").value="";$("#project").disabled=true;$("#reload").disabled=true;$("#new-project").disabled=true;$("#disconnect").disabled=true;$("#editor").classList.add("hidden");$("#post-editor").classList.add("hidden");connection("Desconectado.")};$("#reload").onclick=loadList;$("#project").onchange=e=>loadProject(e.target.value);$("#save").onclick=save;$("#add-stage").onclick=()=>{stages.push({name:"Nova etapa",percentage:0});renderStages();};$("#add-platform-group").onclick=()=>{
  const used=platformGroups.map(g=>g.platform).filter(Boolean);
  let available=getPlatformOptions().filter(p=>!used.includes(p));
  if(!available.length){
