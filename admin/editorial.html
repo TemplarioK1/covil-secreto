@@ -71,7 +71,7 @@ function message(msg,type=""){$("#post-message").textContent=msg;$("#post-messag
 function b64decode(s){const bytes=Uint8Array.from(atob(s.replace(/\s/g,"")),c=>c.charCodeAt(0));return new TextDecoder().decode(bytes)}
 function b64encode(s){const bytes=new TextEncoder().encode(s);let bin="";bytes.forEach(b=>bin+=String.fromCharCode(b));return btoa(bin)}
 async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){const e=await r.json().catch(()=>({message:r.statusText}));throw Error(e.message||"Erro HTTP "+r.status)}return r.status===204?null:r.json()}
-function postSlug(value){return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90)}
+function dateForInput(value){if(!value)return "";if(value instanceof Date&&!Number.isNaN(value.getTime()))return value.toISOString().slice(0,10);const m=String(value).match(/^(\\d{4}-\\d{2}-\\d{2})/);return m?m[1]:""}\nfunction postSlug(value){return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90)}
 function resetForm(){editing=null;$("#form-title").textContent="Nova publicação";$("#save-post").textContent="Publicar no GitHub";$("#post-title").value="";$("#post-category").value="post";$("#post-date").value=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);$("#post-date").readOnly=false;$("#post-excerpt").value="";$("#post-body").value="";$("#cancel-edit").classList.add("hidden");message("Preencha o título e o texto para criar uma publicação.")}
 async function loadPosts(){
  $("#posts").innerHTML='<p class="muted">Carregando publicações…</p>';
