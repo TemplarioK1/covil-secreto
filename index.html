@@ -59,7 +59,7 @@
 
 <section class="box"><div class="boxhead"><h2>Explore o Covil</h2></div><div class="boxbody"><div class="side-links"><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#materias">Análises</a><a href="#comunidade">Comunidade</a></div></div></section>
 <section class="box" id="projetos"><div class="boxhead"><h2>Projetos em andamento</h2><a href="#todos-projetos">Ver todos</a></div><div class="boxbody">
-{% assign active_projects = site.projetos | where_exp: "project", "project.status != 'Concluído' and project.status != 'Concluído'" %}
+{% assign active_projects = site.projetos | where_exp: "project", "project.status != 'Concluído'" %}
 {% for project in active_projects limit:5 %}
 {% assign total = 0 %}{% assign count = 0 %}{% for stage in project.progress_stages %}{% unless stage.name == 'Finalização' or stage.name == 'Finalização e publicação' %}{% assign total = total | plus: stage.percentage %}{% assign count = count | plus: 1 %}{% endunless %}{% endfor %}
 {% assign pct = 0 %}{% if count > 0 %}{% assign pct = total | divided_by: count %}{% endif %}
