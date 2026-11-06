@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Central administrativa | Covil Secreto</title>
+<style>
+:root{color-scheme:light;--bg:#e8eef0;--ink:#203744;--muted:#657984;--line:#d3dde1}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:15px/1.5 "Segoe UI",Arial,sans-serif}
+header{padding:14px max(28px,calc((100% - 1280px)/2));background:linear-gradient(110deg,#123747,#174b5b 58%,#263b57);border-bottom:4px solid #22b8c3}
+header img{display:block;width:min(280px,70vw);max-height:72px;object-fit:contain}
+main{max-width:1280px;margin:48px auto;padding:0 28px 60px}
+.eyebrow{font-size:11px;font-weight:800;letter-spacing:.16em;color:#087f89}
+h1{font-size:clamp(30px,4vw,44px);line-height:1.1;color:#173e50;margin:8px 0 12px}
+.lead{max-width:700px;color:#657984;font-size:16px;margin:0 0 30px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:22px}
+.card{display:flex;flex-direction:column;min-height:310px;padding:28px;background:#fff;border:1px solid var(--line);border-radius:7px;box-shadow:0 4px 16px #183b4b0b;text-decoration:none;color:inherit;transition:transform .16s,box-shadow .16s,border-color .16s}
+.card:hover{transform:translateY(-3px);box-shadow:0 10px 26px #183b4b16;border-color:#8bbec2}
+.icon{width:52px;height:52px;display:grid;place-items:center;margin-bottom:20px;border-radius:12px;background:#e8f2f3;color:#087f89;font-size:27px}
+.card.editorial .icon{background:#f0edfa;color:#7052a5}
+.card h2{font-size:25px;color:#173e50;margin:0 0 8px}.card p{color:#657984;margin:0 0 18px}
+.card ul{padding-left:19px;margin:0 0 22px;color:#405966;line-height:1.9}
+.enter{margin-top:auto;padding-top:14px;border-top:1px solid #e3eaed;color:#087f89;font-weight:800;font-size:13px}
+footer{text-align:center;color:#82919a;font-size:11px;letter-spacing:.12em;margin-top:34px}
+@media(max-width:760px){main{margin:28px auto;padding:0 16px 40px}.cards{grid-template-columns:1fr}.card{min-height:0;padding:22px}}
+</style>
+</head>
+<body>
+<header><a href="../" aria-label="Covil Secreto — início"><img src="../Logo%20gamer%20neon%20Covil%20Secreto.png" alt="Covil Secreto"></a></header>
+<main>
+<div class="eyebrow">PAINEL DE CONTROLE</div>
+<h1>Central de Administração</h1>
+<p class="lead">Escolha a área que deseja administrar. Cada ferramenta tem seu próprio espaço, mantendo projetos e conteúdo editorial organizados.</p>
+<section class="cards">
+<a class="card projects" href="projetos.html">
+<div class="icon" aria-hidden="true">🎮</div><h2>Projetos</h2>
+<p>Gerencie jogos, traduções e demais projetos publicados no Covil Secreto.</p>
+<ul><li>Cadastro e informações dos projetos</li><li>Plataformas e indicadores de progresso</li><li>Capas, ícones, mídias e downloads</li><li>Histórico e detalhes técnicos</li></ul>
+<div class="enter">ABRIR GERENCIAMENTO DE PROJETOS →</div>
+</a>
+<a class="card editorial" href="editorial.html">
+<div class="icon" aria-hidden="true">✎</div><h2>Editorial</h2>
+<p>Crie e mantenha as publicações que compõem o conteúdo editorial do site.</p>
+<ul><li>Criar publicações em Markdown</li><li>Editar publicações existentes</li><li>Organizar categorias e datas</li><li>Revisar a lista de conteúdos publicados</li></ul>
+<div class="enter">ABRIR ÁREA EDITORIAL →</div>
+</a>
+</section>
+<footer>COVIL SECRETO · ADMINISTRAÇÃO</footer>
+</main>
+</body></html>
