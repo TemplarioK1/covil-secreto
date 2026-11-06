@@ -21,15 +21,20 @@
 .feature-copy{padding:20px 19px;display:flex;flex-direction:column;justify-content:center}.feature-copy h2{font-size:22px;line-height:1.15;margin:6px 0 8px;color:#183d4c}.feature-copy p{font-size:12px;color:#607580;line-height:1.6;margin:0 0 13px}.tags{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:13px}.tag{font-size:9px;padding:4px 7px;background:#edf4f5;border:1px solid #d2e1e4;color:#42616d;border-radius:3px;font-weight:700}.action{align-self:flex-start;background:#173e50;color:#fff;padding:8px 13px;border-radius:3px;font-size:11px;font-weight:700}.action:hover{background:var(--teal)}
 .tiles{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.tile{border:1px solid #d7e0e4;border-radius:3px;background:#fbfcfc;padding:11px;display:grid;grid-template-columns:68px minmax(0,1fr);gap:10px;align-items:center}.tile img,.tile-icon{width:68px;height:68px;object-fit:cover;border-radius:3px;background:#e5ecef;display:grid;place-items:center;color:#315a6b;font-weight:800}.tile:nth-child(2n) .tile-icon{background:#eeeaf4;color:#655184}.tile h3{font-size:12px;margin:0 0 3px;color:#214453}.tile p{font-size:10px;line-height:1.4;color:#71818a;margin:0 0 4px}.tile a{font-size:10px;color:var(--teal);font-weight:750}
 .project-row{padding:9px 0;border-bottom:1px solid #e1e8eb}.project-row:last-child{border:0;padding-bottom:0}.project-top{display:flex;justify-content:space-between;gap:8px;font-size:11px}.project-top b{color:#244654}.project-top strong{color:var(--teal)}.meter{height:6px;background:#e3eaed;border-radius:6px;margin-top:6px;overflow:hidden}.meter i{display:block;height:100%;background:#15969b;border-radius:6px}.project-row small{font-size:9px;color:#819098}
-.side-links{display:grid;grid-template-columns:1fr 1fr;gap:6px}.side-links a{padding:8px;background:#f1f5f6;border:1px solid #dce5e8;border-radius:3px;font-size:10px;color:#45616c;font-weight:700;text-align:center}.side-links a:hover{border-color:#8bbec2;color:var(--teal)}.notice{font-size:11px;color:#647984;line-height:1.55}.notice strong{color:#244654}.statusline{padding:9px 10px;border-left:3px solid var(--purple);background:#f3f0f8;font-size:10px;color:#625479;margin-top:8px}
+.side-links{display:grid;grid-template-columns:1fr 1fr;gap:6px}.side-links a,.side-links button{padding:8px;background:#f1f5f6;border:1px solid #dce5e8;border-radius:3px;font-size:10px;color:#45616c;font-weight:700;text-align:center;cursor:pointer;font-family:inherit}.side-links a:hover,.side-links button:hover,.side-links button.filter-active{border-color:#8bbec2;color:var(--teal);background:#e7f2f3}.notice{font-size:11px;color:#647984;line-height:1.55}.notice strong{color:#244654}.statusline{padding:9px 10px;border-left:3px solid var(--purple);background:#f3f0f8;font-size:10px;color:#625479;margin-top:8px}
 .footer{background:#102d3b;color:#b9cbd2;padding:22px max(22px,calc((100% - 1360px)/2));display:grid;grid-template-columns:1.2fr 1fr 1fr;gap:24px;border-top:4px solid #087f89}.footer h3{font-size:12px;color:white;margin:0 0 8px}.footer p,.footer a{font-size:10px;color:#b9cbd2;line-height:1.7}.footer-links{display:flex;flex-wrap:wrap;gap:7px 15px}.copyright{grid-column:1/-1;border-top:1px solid #ffffff20;padding-top:12px;font-size:9px;color:#8faab4}
 @media(max-width:1050px){.layout{grid-template-columns:210px minmax(0,1fr)}.layout>.column:last-child{grid-column:1/-1;grid-template-columns:repeat(3,minmax(0,1fr))}.brand-copy{display:none}.mainnav a{padding:12px 13px}}
 @media(max-width:720px){.utility{padding:0 14px}.masthead{padding:14px;align-items:flex-start;flex-direction:column}.brand img{width:225px}.header-tools,.search{width:100%}.search input{flex:1}.mainnav{overflow-x:auto;padding:0 8px}.mainnav a{white-space:nowrap;padding:12px 11px}.page{padding:14px}.welcome{align-items:flex-start;flex-direction:column}.layout{grid-template-columns:1fr}.layout>.column:last-child{grid-column:auto;grid-template-columns:1fr}.project-feature{grid-template-columns:1fr}.feature-art{min-height:210px}.footer{grid-template-columns:1fr 1fr;padding:20px}.footer>div:first-child{grid-column:1/-1}}
 @media(max-width:460px){.tiles{grid-template-columns:1fr}.footer{grid-template-columns:1fr}.footer>div:first-child{grid-column:auto}}
+
+.tile[hidden]{display:none!important}
+.filter-summary{font-size:10px;color:#71818a;margin:0 0 9px}
+.search button{cursor:pointer}
+
 </style></head><body><div class="shell">
 <div class="utility"><div><a href="#sobre">Sobre o Covil</a><a href="#contato">Contato</a><a href="#creditos">Créditos</a></div><div>Comunidade&nbsp; · &nbsp;YouTube&nbsp; · &nbsp;Discord</div></div>
-<header class="masthead"><div class="brand"><a href="{{ '/' | relative_url }}"><img src="{{ '/Logo gamer neon Covil Secreto.png' | relative_url }}" alt="Covil Secreto"></a><div class="brand-copy"><strong>Seu espaço no universo gamer.</strong>Traduções, projetos independentes, jogos e cultura.</div></div><div class="header-tools"><form class="search" action="{{ '/' | relative_url }}"><input aria-label="Buscar" name="q" placeholder="Buscar no Covil..."><button type="submit">BUSCAR</button></form></div></header>
-<nav class="mainnav"><a class="active" href="{{ '/' | relative_url }}">Início</a><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#analises">Análises</a><a href="#comunidade">Comunidade</a><a href="{{ '/admin/projetos.html' | relative_url }}">ADM</a></nav>
+<header class="masthead"><div class="brand"><a href="{{ '/' | relative_url }}"><img src="{{ '/Logo gamer neon Covil Secreto.png' | relative_url }}" alt="Covil Secreto"></a><div class="brand-copy"><strong>Seu espaço no universo gamer.</strong>Traduções, projetos independentes, jogos e cultura.</div></div><div class="header-tools"><form class="search" id="portal-search" role="search"><input id="portal-search-input" type="search" aria-label="Buscar projetos" placeholder="Buscar projetos..."><button type="submit">BUSCAR</button></form></div></header>
+<nav class="mainnav"><a class="active" href="{{ '/' | relative_url }}">Início</a><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#materias">Análises</a><a href="#comunidade">Comunidade</a><a href="{{ '/admin/projetos.html' | relative_url }}">ADM</a></nav>
 <main class="page"><div class="welcome"><div><h1>Bem-vindo ao Covil Secreto</h1><p>Um ponto de encontro para quem gosta de jogar, descobrir e preservar jogos.</p></div><div class="breadcrumb">INÍCIO&nbsp; / &nbsp;PORTAL</div></div>
 <div class="layout">
 <aside class="column">
@@ -42,14 +47,14 @@
 <div class="project-row"><div class="project-top"><b>{{ project.title | escape }}</b><strong>{{ pct }}%</strong></div><div class="meter"><i style="width:{{ pct }}%"></i></div><small>{{ project.status | default: 'Em andamento' | escape }}</small></div>
 {% endfor %}
 </div></section>
-<section class="box" id="traducoes"><div class="boxhead"><h2>Plataformas</h2></div><div class="boxbody"><div class="side-links"><a href="#todos-projetos">PC</a><a href="#todos-projetos">Switch</a><a href="#todos-projetos">PlayStation</a><a href="#todos-projetos">Xbox</a><a href="#todos-projetos">Emulação</a><a href="#todos-projetos">Outras</a></div></div></section>
+<section class="box" id="traducoes"><div class="boxhead"><h2>Plataformas</h2></div><div class="boxbody"><div class="side-links"><button type="button" data-platform-filter="all" class="filter-active">Todas</button><button type="button" data-platform-filter="pc">PC</button><button type="button" data-platform-filter="switch">Switch</button><button type="button" data-platform-filter="playstation">PlayStation</button><button type="button" data-platform-filter="xbox">Xbox</button></div></div></section>
 </aside>
 <div class="column">
 <section class="project-feature"><div class="feature-art"><div class="art-mark">COVIL SECRETO · PROJETOS E CULTURA</div><div class="art-title"><strong>O universo dos jogos não tem fronteiras.</strong><span>Conheça projetos, traduções e histórias que merecem ser descobertas.</span></div></div><div class="feature-copy"><div class="kicker">PORTAL GAMER INDEPENDENTE</div><h2>Mais do que jogar. Fazer parte.</h2><p>Um espaço dedicado a projetos de tradução, adaptações, conteúdos especiais e à paixão por videogames.</p><div class="tags"><span class="tag">TRADUÇÕES</span><span class="tag">PROJETOS</span><span class="tag">CULTURA GAMER</span></div><a class="action" href="#sobre">Conheça o Covil</a></div></section>
-<section class="box" id="todos-projetos"><div class="boxhead"><h2>Projetos do Covil</h2><a href="#projetos">Acompanhar andamento</a></div><div class="boxbody"><div class="tiles">
+<section class="box" id="todos-projetos"><div class="boxhead"><h2>Projetos do Covil</h2><a href="#projetos">Acompanhar andamento</a></div><div class="boxbody"><p class="filter-summary" id="filter-summary" aria-live="polite">Exibindo todos os projetos.</p><div class="tiles">
 {% assign sorted_projects = site.projetos | sort_natural: 'title' %}
 {% for project in sorted_projects %}
-<article class="tile">
+<article class="tile" data-project-card data-title="{{ project.title | downcase | escape }}" data-platforms="{{ project.platforms | join: '|' | downcase | escape }}">
 {% assign icon_path = project.icon | default: project.cover %}
 {% if icon_path %}<img src="{{ icon_path | relative_url }}" alt="" loading="lazy">{% else %}<div class="tile-icon">{{ project.title | slice: 0, 2 | upcase }}</div>{% endif %}
 <div><h3>{{ project.title | escape }}</h3><p>{{ project.status | default: project.category | escape }}{% if project.platforms %} · {{ project.platforms | join: ', ' | escape }}{% endif %}</p><a href="{{ project.url | relative_url }}">Ver projeto →</a></div>
@@ -63,5 +68,41 @@
 <section class="box" id="comunidade"><div class="boxhead"><h2>Participe</h2></div><div class="boxbody"><p class="notice">O Covil também é feito por quem acompanha, testa, compartilha e ajuda os projetos a crescer.</p><a class="action" href="{{ '/contato/' | relative_url }}">Entre em contato</a></div></section>
 <section class="box" id="guias"><div class="boxhead"><h2>Acesso rápido</h2></div><div class="boxbody"><div class="side-links"><a href="#todos-projetos">Downloads</a><a href="#todos-projetos">Compatibilidade</a><a href="#materias">Tutoriais</a><a href="{{ '/contato/' | relative_url }}">Suporte</a></div></div></section>
 </aside></div></main>
-<footer class="footer"><div id="sobre"><h3>Covil Secreto</h3><p>Um espaço independente dedicado a traduções, projetos e conteúdos sobre videogames. Jogue, descubra e compartilhe.</p></div><div><h3>Navegação</h3><div class="footer-links"><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#analises">Análises</a></div></div><div id="contato"><h3>Contato e comunidade</h3><p>Acompanhe os projetos e envie sugestões, correções ou dúvidas.</p><a href="{{ '/contato/' | relative_url }}">Fale com o Covil</a></div><div class="copyright" id="creditos">Covil Secreto · Portal independente de jogos</div></footer>
-</div></body></html>
+<footer class="footer"><div id="sobre"><h3>Covil Secreto</h3><p>Um espaço independente dedicado a traduções, projetos e conteúdos sobre videogames. Jogue, descubra e compartilhe.</p></div><div><h3>Navegação</h3><div class="footer-links"><a href="#projetos">Projetos</a><a href="#traducoes">Traduções</a><a href="#materias">Matérias</a><a href="#guias">Guias</a><a href="#materias">Análises</a></div></div><div id="contato"><h3>Contato e comunidade</h3><p>Acompanhe os projetos e envie sugestões, correções ou dúvidas.</p><a href="{{ '/contato/' | relative_url }}">Fale com o Covil</a></div><div class="copyright" id="creditos">Covil Secreto · Portal independente de jogos</div></footer>
+</div>
+<script>
+(function(){
+ const form=document.getElementById('portal-search');
+ const input=document.getElementById('portal-search-input');
+ const cards=Array.from(document.querySelectorAll('[data-project-card]'));
+ const filters=Array.from(document.querySelectorAll('[data-platform-filter]'));
+ const summary=document.getElementById('filter-summary');
+ if(!cards.length)return;
+ let platform='all';
+ function apply(){
+  const term=(input?.value||'').trim().toLocaleLowerCase('pt-BR');
+  let visible=0;
+  cards.forEach(card=>{
+   const title=card.dataset.title||'';
+   const platforms=card.dataset.platforms||'';
+   const text=card.textContent.toLocaleLowerCase('pt-BR');
+   const matchesText=!term||title.includes(term)||text.includes(term);
+   const matchesPlatform=platform==='all'||platforms.includes(platform);
+   const show=matchesText&&matchesPlatform;
+   card.hidden=!show;
+   if(show)visible++;
+  });
+  if(summary)summary.textContent=visible+' de '+cards.length+' projetos exibidos.';
+ }
+ form?.addEventListener('submit',event=>{event.preventDefault();apply();document.getElementById('todos-projetos')?.scrollIntoView({behavior:'smooth'});});
+ input?.addEventListener('input',apply);
+ filters.forEach(button=>button.addEventListener('click',()=>{
+  platform=button.dataset.platformFilter||'all';
+  filters.forEach(item=>item.classList.toggle('filter-active',item===button));
+  apply();
+  document.getElementById('todos-projetos')?.scrollIntoView({behavior:'smooth',block:'start'});
+ }));
+ apply();
+})();
+</script>
+</body></html>
