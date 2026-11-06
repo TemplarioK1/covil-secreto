@@ -109,6 +109,27 @@ h3{color:#244654}
 footer{background:#102d3b;border-top:4px solid #087f89;color:#b9cbd2}
 @media(min-width:1000px){main{padding-left:30px;padding-right:30px}.description{max-width:1100px}.game-facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
+
+/* Estrutura real em duas colunas para páginas de projeto */
+.project-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.85fr);gap:24px;align-items:start}
+.project-primary{min-width:0}
+.project-sidebar{min-width:0;position:sticky;top:18px}
+.project-sidebar h2:first-child{margin-top:0}
+.project-sidebar .progress-list{grid-template-columns:1fr}
+.project-sidebar .progress-platform-title{font-size:15px;margin-top:18px}
+.project-sidebar .progress-final-item{grid-column:auto}
+.project-sidebar .progress-warning{font-size:13px;margin-top:16px}
+.project-sidebar .download-list{grid-template-columns:1fr}
+.project-secondary{grid-column:1}
+@media(max-width:900px){
+ .project-layout{grid-template-columns:minmax(0,1fr) minmax(270px,.85fr);gap:16px}
+}
+@media(max-width:700px){
+ .project-layout{grid-template-columns:1fr}
+ .project-sidebar{position:static;grid-row:2}
+ .project-secondary{grid-column:1}
+}
+
 </style>
 </head>
 <body>
@@ -123,6 +144,8 @@ footer{background:#102d3b;border-top:4px solid #087f89;color:#b9cbd2}
 </nav>
 </header>
 <main>
+<div class="project-layout">
+<section class="project-primary">
 <a class="back" href="{{ '/' | relative_url }}">← Voltar ao catálogo</a>
 
 {% if page.cover %}
@@ -143,6 +166,8 @@ footer{background:#102d3b;border-top:4px solid #087f89;color:#b9cbd2}
 
 {% if content != "" %}<section class="description">{{ content }}</section>{% endif %}
 
+</section>
+<aside class="project-sidebar">
 {% assign progress_group_count = page.progress_platform_groups | size %}
 {% assign progress_main_count = page.progress_stages | size %}
 {% assign progress_has_any = false %}
@@ -265,6 +290,8 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 <p class="description">Download ainda não disponível.</p>
 {% endunless %}
 
+</aside>
+<section class="project-primary project-secondary">
 {% assign new_screenshots = page.screenshot_1 | append: '|' | append: page.screenshot_2 | append: '|' | append: page.screenshot_3 | append: '|' | append: page.screenshot_4 | split: '|' %}
 {% if page.screenshots or page.screenshot_1 or page.screenshot_2 or page.screenshot_3 or page.screenshot_4 or page.youtube %}
 <h2>Galeria</h2>
@@ -324,6 +351,8 @@ Leia as instruções incluídas no arquivo de download antes de instalar ou util
 {% endfor %}
 </div>
 {% endif %}
+</section>
+</div>
 </main>
 <div class="lightbox" id="screenshot-lightbox" role="dialog" aria-modal="true" aria-label="Galeria de screenshots">
 <button class="lightbox-close" type="button" aria-label="Fechar">×</button>
