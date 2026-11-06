@@ -293,7 +293,7 @@ function createProject(){
  if(name===null)return;
  const title=name.trim();
  if(!title){status("Informe um nome para o projeto.","error");return}
- const slug=title.normalize("NFD").replace(/[\\u0300-\\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90);
+ const slug=title.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90);
  if(!slug){status("Não foi possível gerar o nome do arquivo.","error");return}
  const path="_projetos/"+slug+".md";
  if(files.some(f=>f.path===path)){status("Já existe um projeto com esse endereço. Escolha outro nome.","error");return}
