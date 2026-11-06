@@ -110,6 +110,17 @@ footer{background:#102d3b;border-top:4px solid #087f89;color:#b9cbd2}
 @media(min-width:1000px){main{padding-left:30px;padding-right:30px}.description{max-width:1100px}.game-facts{grid-template-columns:repeat(3,minmax(0,1fr))}}
 
 
+
+/* Indicadores agrupados em uma única janela por conjunto de plataformas */
+.progress-panel{margin-top:14px;padding:14px;background:#fff;border:1px solid #d3dde1;border-radius:4px;box-shadow:0 2px 5px #183b4b0a}
+.progress-panel .progress-list{margin-top:10px}
+.progress-panel .progress-item{background:#f8fafb;box-shadow:none}
+.progress-panel .progress-platform-title{margin:16px 0 0;padding-top:12px;border-top:1px solid #e1e8eb;font-size:14px}
+.progress-panel .progress-platform-title:first-child{margin-top:0;padding-top:0;border-top:0}
+.progress-final-panel{margin-top:12px;padding:12px;background:#fff;border:1px solid #d3dde1;border-radius:4px;box-shadow:0 2px 5px #183b4b0a}
+.progress-final-panel .progress-list{margin:0}
+.progress-final-panel .progress-item{background:#f8fafb;box-shadow:none}
+
 /* Estrutura real em duas colunas para páginas de projeto */
 .project-layout{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(320px,.85fr);gap:24px;align-items:start}
 .project-primary{min-width:0}
@@ -197,6 +208,7 @@ footer{background:#102d3b;border-top:4px solid #087f89;color:#b9cbd2}
   {% assign active_group_size = group.stages | size %}
   {% if active_group_size > 0 %}{% assign show_platform_titles = true %}{% endif %}
 {% endfor %}
+<div class="progress-panel">
 {% if page.progress_stages.size > 0 %}
 {% if show_platform_titles %}<h3 class="progress-platform-title">{{ page.platforms.first | default: page.platform }} / Geral</h3>{% endif %}
 <div class="progress-list">
@@ -240,6 +252,8 @@ footer{background:#102d3b;border-top:4px solid #087f89;color:#b9cbd2}
 </div>
 {% endif %}
 {% endfor %}
+</div>
+<div class="progress-final-panel">
 <div class="progress-list progress-final-list">
 {% assign progress_value = final_average %}
 {% assign progress_class = 'progress-red' %}
@@ -250,6 +264,7 @@ footer{background:#102d3b;border-top:4px solid #087f89;color:#b9cbd2}
 <div class="progress-item {{ progress_class }} progress-final-item">
 <div class="progress-heading"><strong>Finalização</strong><span class="progress-value">{{ progress_value }}%</span></div>
 <div class="progress-track" role="progressbar" aria-label="Finalização" aria-valuemin="0" aria-valuemax="100" aria-valuenow="{{ progress_value }}"><span class="progress-fill" style="--progress: {{ progress_value | divided_by: 100.0 }};"></span></div>
+</div>
 </div>
 </div>
 <div class="progress-warning">
