@@ -4,7 +4,7 @@ category: Tradução
 platforms:
   - Nintendo Switch
   - PC
-status: Em andamento
+status: Em testes
 date: "2026-11-05"
 icon: /media/images/projetos/loop8-summer-of-gods/icone.webp
 cover: /media/images/projetos/loop8-summer-of-gods/capa.webp
@@ -19,16 +19,16 @@ progress_stages:
   - name: Tradução de textos
     percentage: 100
   - name: Tradução de sprites
-    percentage: 90
+    percentage: 95
   - name: Testes no jogo
     percentage: 35
   - name: Revisão e correções
-    percentage: 30
+    percentage: 45
 progress_platform_groups:
   - platform: PC
     stages:
       - name: Port
-        percentage: 0
+        percentage: 50
 game_developer: Marvelous / SIEG Games
 game_publisher: XSEED Games (América do Norte) / Marvelous (Europa)
 game_release_year: "2023"
@@ -39,6 +39,8 @@ game_synopsis: >-
   cidade. Suas escolhas influenciam as relações, os combates e os ciclos que o fazem reviver o mês de agosto.
 game_multiplayer: Não
 game_players: "1"
+version: "1.0"
+download: /downloads/projetos/loop8-summer-of-gods/Loop8.zip
 ---
 
 # Loop8: Summer of Gods — Tradução PT-BR
