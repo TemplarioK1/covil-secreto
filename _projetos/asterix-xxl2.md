@@ -47,8 +47,6 @@ screenshots:
   - /media/images/projetos/asterix-xxl2/screenshot-03.webp
 ---
 
-# Asterix & Obelix XXL 2 Tradução PT-BR | Build 1.0
-
 Está disponível a tradução de **Asterix & Obelix XXL 2 para português brasileiro!**
 
 A Build 1.0 traz os textos do jogo traduzidos para PT-BR, com versões para **PC e Nintendo Switch**, permitindo jogar tanto no console quanto em emuladores compatíveis.
