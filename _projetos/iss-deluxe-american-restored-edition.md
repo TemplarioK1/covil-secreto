@@ -40,4 +40,3 @@ Cada diferença será analisada antes de qualquer transferência. Nem todo recur
 
 A fase atual é de levantamento e comparação técnica das ROMs. O escopo está concentrado exclusivamente na **American Restored Edition**; expansões de conteúdo e reformulações visuais ficam fora desta etapa.
 
-[Leia a matéria de apresentação e entenda a proposta completa do projeto](/covil-secreto/iss-deluxe-american-restored-edition/).
