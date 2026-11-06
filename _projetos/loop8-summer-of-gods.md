@@ -50,10 +50,10 @@ O projeto inclui a tradução e edição dos textos, além da edição de textur
 ### Plataformas disponíveis
 
 - **Emuladores:** funcionamento disponível em emuladores compatíveis com Nintendo Switch.
-- **Nintendo Switch:** instalação no console disponível somente para a edição europeia indicada abaixo.
+- **Nintendo Switch:** a edição europeia indicada abaixo é a versão de referência/testada. A tradução também pode funcionar em outras versões, mas há uma limitação no relógio dos saves.
 - **PC:** uma versão/port nativo para computador ainda não está disponível.
 
-> **Atenção à versão do Nintendo Switch:** a instalação em console é compatível somente com a edição europeia do jogo, identificada pelo Title ID `0100051018E4C000`. Não instale os arquivos de console em outras versões ou regiões. A compatibilidade com outros Title IDs não é garantida.
+> **Atenção — outras versões do Nintendo Switch:** a versão europeia `0100051018E4C000` é a edição de referência. Em outros Title IDs, a tradução também funciona, porém o relógio exibido nos saves ficará invertido. Se quiser evitar esse problema visual, utilize a edição europeia.
 
 ### Instruções de instalação
 
@@ -61,7 +61,7 @@ O arquivo `LEIA-ME-Loop8.txt` contém as instruções para instalação em emula
 
 ### Sobre esta versão
 
-A versão atual está direcionada ao Nintendo Switch e pode ser utilizada em emuladores compatíveis. Para uso em um console, é obrigatório possuir a edição europeia com Title ID `0100051018E4C000`.
+A versão atual está direcionada ao Nintendo Switch e pode ser utilizada em emuladores compatíveis. No console, a edição europeia com Title ID `0100051018E4C000` é a versão recomendada para evitar a inversão do relógio nos saves. Em outras edições, a tradução pode ser utilizada com essa limitação.
 
 O port para PC permanece em desenvolvimento e ainda não está disponível.
 
@@ -71,7 +71,8 @@ O port para PC permanece em desenvolvimento e ainda não está disponível.
 - **Idioma:** Português Brasileiro (PT-BR)
 - **Plataforma-base:** Nintendo Switch
 - **Compatibilidade em emuladores:** disponível
-- **Compatibilidade em console:** somente versão europeia — Title ID `0100051018E4C000`
+- **Console — versão recomendada:** europeia — Title ID `0100051018E4C000`
+- **Outros Title IDs:** tradução funcional, mas com o relógio dos saves invertido
 - **Versão para PC:** ainda não disponível
 
 Boa jornada por Ashihara!
