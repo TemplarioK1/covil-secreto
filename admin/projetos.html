@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Painel de projetos | Covil Secreto</title>
+<title>Projetos | Administração Covil Secreto</title>
 <style>
 :root{color-scheme:dark;--bg:#101015;--panel:#191820;--panel2:#211e29;--text:#f4efff;--muted:#aaa3b5;--line:#393142;--accent:#ad83ff}
 *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:15px Arial,sans-serif}header{padding:24px max(20px,calc((100% - 1080px)/2));border-bottom:1px solid var(--line);display:flex;justify-content:space-between;gap:16px;align-items:center;flex-wrap:wrap}.admin-brand{display:flex;align-items:center;min-width:0;text-decoration:none;line-height:0}.admin-brand img{display:block;width:min(280px,42vw);height:auto;max-height:82px;object-fit:contain;object-position:left center}h1{font-size:22px;margin:0}h1 span{color:var(--accent)}main{max-width:1080px;margin:30px auto;padding:0 20px}.auth,.toolbar,.section{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:18px;margin-bottom:16px}.auth p,.hint{color:var(--muted);line-height:1.5;font-size:13px}.toolbar{display:flex;gap:12px;align-items:end;flex-wrap:wrap}.field{display:flex;flex-direction:column;gap:7px;min-width:0}.field label{font-size:13px;color:#d8cfea}.field input,.field select,.field textarea,.toolbar select,.auth input{width:100%;background:#111017;color:var(--text);border:1px solid var(--line);border-radius:7px;padding:11px;font:inherit}.field textarea{min-height:110px;resize:vertical;line-height:1.5}.field textarea.tall{min-height:220px}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.wide{grid-column:1/-1}details.section{padding:0;overflow:hidden}details.section>summary{list-style:none;cursor:pointer;padding:19px 20px;font-weight:bold;display:flex;justify-content:space-between;align-items:center}details.section>summary::-webkit-details-marker{display:none}details.section>summary:after{content:"＋";color:var(--accent);font-size:19px}details[open].section>summary:after{content:"−"}.inside{padding:0 20px 20px}.actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}button{border:1px solid var(--line);background:#30253d;color:var(--text);padding:11px 16px;border-radius:8px;cursor:pointer;font-weight:bold}button.primary{background:var(--accent);color:#17111f;border-color:var(--accent)}button.danger{background:#48262d}button:disabled{opacity:.5;cursor:wait}.stage,.repeat,.progress-editor-group{background:var(--panel2);border:1px solid var(--line);border-radius:9px;padding:14px;margin:12px 0}.progress-editor-group h4{margin:0 0 12px}.platform-order{display:grid;gap:7px;margin-top:10px}.platform-order-item{display:flex;align-items:center;justify-content:space-between;gap:10px;background:#211e29;padding:8px 10px;border-radius:7px}.platform-order-item button{padding:5px 9px}.stage-actions{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px}.stage-head{display:flex;justify-content:space-between;gap:12px;align-items:center}.stage-head strong{font-size:14px}.stage-controls{display:grid;grid-template-columns:100px 1fr;gap:16px;align-items:center;margin-top:12px}.stage input[type=number]{width:100%;background:#111017;color:var(--text);border:1px solid var(--line);padding:9px;border-radius:7px}.stage input[type=range]{width:100%;accent-color:var(--stage-color)}.bar{height:7px;background:#38323f;border-radius:10px;overflow:hidden;margin-top:10px}.bar i{display:block;height:100%;width:0;background:var(--stage-color)}.repeat-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}.status{padding:10px 12px;border-radius:7px;background:#211e29;color:var(--muted);margin:12px 0}.status.error{color:#ff9b9b}.status.ok{color:#8de0a9}.hidden{display:none!important}.fileline{display:flex;gap:8px;align-items:center;flex-wrap:wrap}.fileline input{flex:1}.muted{color:var(--muted);font-size:12px}
@@ -183,7 +183,7 @@ details.section>summary:hover{background:#e3edef}
 </style>
 </head>
 <body>
-<header><a class="admin-brand" href="../" aria-label="Covil Secreto — início"><img src="../Logo%20gamer%20neon%20Covil%20Secreto.png" alt="Covil Secreto"></a><a href="../" style="color:var(--accent)">← Voltar ao site</a></header>
+<header><a class="admin-brand" href="../" aria-label="Covil Secreto — início"><img src="../Logo%20gamer%20neon%20Covil%20Secreto.png" alt="Covil Secreto"></a><nav style="display:flex;gap:18px;flex-wrap:wrap"><a href="./" style="color:#e3f6f8;font-weight:700">← Central administrativa</a><a href="../" style="color:#e3f6f8;font-weight:700">Voltar ao site</a></nav></header>
 <main>
 <section class="auth">
 <strong>Conexão segura com o GitHub</strong>
@@ -194,21 +194,9 @@ details.section>summary:hover{background:#e3edef}
 <section class="toolbar">
 <div class="field" style="flex:1;min-width:240px"><label for="project">Projeto</label><select id="project" disabled><option>Conecte ao GitHub para carregar os projetos</option></select></div>
 <button id="reload" disabled>Atualizar lista</button>
-<button id="new-post" disabled>Novo post</button>
+
 </section>
-<section id="post-editor" class="post-editor hidden">
-<div class="post-top"><div><span class="eyebrow">PUBLICAÇÃO EDITORIAL</span><h2>Novo conteúdo</h2><p>Crie textos no formato de blog. Eles não serão adicionados à página inicial.</p></div><button type="button" id="cancel-post">Voltar ao painel de projetos</button></div>
-<div class="post-form">
-<div class="field"><label for="post-title">Título</label><input id="post-title" maxlength="150" placeholder="Título da publicação"></div>
-<div class="post-meta-fields">
-<div class="field"><label for="post-category">Categoria</label><select id="post-category"><option value="post">Post</option><option value="materias">Matérias</option><option value="noticias">Notícias</option></select></div>
-<div class="field"><label for="post-date">Data de publicação</label><input id="post-date" type="date"></div>
-</div>
-<div class="field"><label for="post-excerpt">Resumo (opcional)</label><textarea id="post-excerpt" rows="2" placeholder="Uma breve apresentação que pode ser usada em futuras listagens."></textarea></div>
-<div class="field"><label for="post-body">Texto</label><textarea id="post-body" class="post-content" placeholder="Escreva sua publicação aqui. Você pode usar Markdown: ## subtítulos, **negrito**, listas e links."></textarea><span class="muted">O conteúdo aceita Markdown, como em um blog.</span></div>
-<div class="actions"><button type="button" class="primary" id="save-post">Publicar no GitHub</button><span class="muted">A publicação ficará disponível em sua própria página, sem aparecer na home.</span></div>
-<div id="post-message" class="status">Preencha o título e o texto para criar uma publicação.</div>
-</div></section>
+
 <div id="editor" class="hidden">
 <details class="section">
 <summary>1. Informações do jogo original</summary><div class="inside grid">
@@ -297,7 +285,7 @@ function renderPlatformGroups(){
  root.querySelectorAll('[data-remove-group]').forEach(b=>b.onclick=()=>{platformGroups.splice(Number(b.dataset.removeGroup),1);renderPlatformGroups();updateFinalStage()});
 }
 async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){let e=await r.json().catch(()=>({message:r.statusText}));throw Error(e.message||"Erro HTTP "+r.status)}return r.status===204?null:r.json()}
-async function connect(){token=$("#token").value.trim();if(!token)return connection("Informe o token para conectar.","error");try{await api(API+"/repos/"+OWNER+"/"+REPO);$("#disconnect").disabled=false;$("#project").disabled=false;$("#reload").disabled=false;$("#new-post").disabled=false;connection("Conectado ao repositório "+OWNER+"/"+REPO+".","ok");await loadList()}catch(e){token="";connection("Falha na conexão: "+e.message,"error")}}
+async function connect(){token=$("#token").value.trim();if(!token)return connection("Informe o token para conectar.","error");try{await api(API+"/repos/"+OWNER+"/"+REPO);$("#disconnect").disabled=false;$("#project").disabled=false;$("#reload").disabled=false;connection("Conectado ao repositório "+OWNER+"/"+REPO+".","ok");await loadList()}catch(e){token="";connection("Falha na conexão: "+e.message,"error")}}
 async function loadList(){try{const data=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/_projetos?ref="+BRANCH);files=data.filter(x=>x.type==="file"&&x.name.endsWith(".md"));$("#project").innerHTML='<option value="">Selecione um projeto…</option>'+files.map(f=>'<option value="'+f.path+'">'+f.name.replace(/\.md$/,"")+'</option>').join("");}catch(e){connection("Não foi possível listar projetos: "+e.message,"error")}}
 async function loadProject(path){if(!path){$("#editor").classList.add("hidden");return}try{status("Carregando projeto…");const f=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+path+"?ref="+BRANCH);current={path,sha:f.sha};const parsed=splitMarkdown(b64decode(f.content));model=parsed.data;model.body=parsed.body;
 const legacyLocal=String(model.game_local_multiplayer||"").trim().toLowerCase()==="sim";
@@ -326,7 +314,7 @@ function syncForm(){
 }
 async function saveProjectWithRetry(raw){const url=API+"/repos/"+OWNER+"/"+REPO+"/contents/"+current.path;for(let attempt=0;attempt<2;attempt++){try{return await api(url,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Atualiza projeto pelo painel administrativo",content:b64encode(raw),sha:current.sha,branch:BRANCH})})}catch(e){if(attempt===0&&/does not match|sha.*match|409|422/i.test(e.message)){const latest=await api(url+"?ref="+BRANCH);current.sha=latest.sha;continue}throw e}}}
 async function save(){if(!current)return;const btn=$("#save");btn.disabled=true;try{status("Enviando arquivos selecionados…");syncForm();await processUploads();syncForm();const body=String(model.body||"").replace(/^\n+/,"");delete model.body;const yaml=jsyaml.dump(model,{lineWidth:110,noRefs:true,quotingType:'"',forceQuotes:false,sortKeys:false});const raw="---\n"+yaml+"---\n\n"+body.trim()+"\n";const latest=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+current.path+"?ref="+BRANCH);current.sha=latest.sha;const finalYaml=jsyaml.dump(model,{lineWidth:110,noRefs:true,quotingType:'"',forceQuotes:false,sortKeys:false});const finalRaw="---\n"+finalYaml+"---\n\n"+body.trim()+"\n";await saveProjectWithRetry(finalRaw);status("Alterações salvas no GitHub. Aguarde o GitHub Actions e a publicação do Pages.","ok");await loadProject(current.path)}catch(e){status("Não foi possível salvar: "+e.message,"error")}finally{btn.disabled=false}}
-$("#connect").onclick=connect;$("#disconnect").onclick=()=>{token="";$("#token").value="";$("#project").disabled=true;$("#reload").disabled=true;$("#disconnect").disabled=true;$("#new-post").disabled=true;$("#editor").classList.add("hidden");$("#post-editor").classList.add("hidden");connection("Desconectado.")};$("#reload").onclick=loadList;$("#project").onchange=e=>loadProject(e.target.value);$("#save").onclick=save;$("#add-stage").onclick=()=>{stages.push({name:"Nova etapa",percentage:0});renderStages();};$("#add-platform-group").onclick=()=>{
+$("#connect").onclick=connect;$("#disconnect").onclick=()=>{token="";$("#token").value="";$("#project").disabled=true;$("#reload").disabled=true;$("#disconnect").disabled=true;$("#editor").classList.add("hidden");$("#post-editor").classList.add("hidden");connection("Desconectado.")};$("#reload").onclick=loadList;$("#project").onchange=e=>loadProject(e.target.value);$("#save").onclick=save;$("#add-stage").onclick=()=>{stages.push({name:"Nova etapa",percentage:0});renderStages();};$("#add-platform-group").onclick=()=>{
  const used=platformGroups.map(g=>g.platform).filter(Boolean);
  let available=getPlatformOptions().filter(p=>!used.includes(p));
  if(!available.length){
@@ -345,25 +333,6 @@ $("#connect").onclick=connect;$("#disconnect").onclick=()=>{token="";$("#token")
  renderPlatformGroups();
  status("Grupo adicional criado para "+available[0]+".","ok");
 };$("#platforms").addEventListener("change",()=>{renderPlatformOrder();renderStages();renderPlatformGroups();});$("#add-history").onclick=()=>{history.push({version:"",date:"",changes:""});renderHistory()};$("#add-download").onclick=()=>{downloads.push({file:"",platform:"",note:""});renderDownloads()};$$("[data-upload]").forEach(el=>el.addEventListener("change",()=>{uploads[el.dataset.upload]=[...el.files];const out=$('[data-current="'+el.dataset.upload+'"]');if(out)out.textContent=el.files.length?[...el.files].map(f=>f.name).join(", "):"Nenhum arquivo selecionado"}));
-function showPostEditor(){if(!token){connection("Conecte ao GitHub antes de criar uma publicação.","error");return}$("#editor").classList.add("hidden");$("#post-editor").classList.remove("hidden");$("#post-title").focus();if(!$("#post-date").value)$("#post-date").value=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);status("Modo de criação de publicação.");}
-function hidePostEditor(){$("#post-editor").classList.add("hidden");$("#editor").classList.add("hidden");$("#project").value="";status("Selecione um projeto ou crie uma nova publicação.");}
-function postSlug(value){return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90)}
-async function savePost(){
- const btn=$("#save-post"),title=$("#post-title").value.trim(),body=$("#post-body").value.trim(),category=$("#post-category").value,date=$("#post-date").value||new Date().toISOString().slice(0,10),excerpt=$("#post-excerpt").value.trim();
- if(!title||!body){$("#post-message").textContent="Informe o título e o texto da publicação.";$("#post-message").className="status error";return}
- const slug=postSlug(title);if(!slug){$("#post-message").textContent="Não foi possível gerar um endereço a partir do título.";$("#post-message").className="status error";return}
- const path="_posts/"+date+"-"+slug+".md";
- btn.disabled=true;$("#post-message").textContent="Criando publicação no GitHub…";$("#post-message").className="status";
- try{
-  const front={layout:"post",title, date, categories:[category]};if(excerpt)front.excerpt=excerpt;
-  const raw="---\n"+jsyaml.dump(front,{lineWidth:110,noRefs:true,quotingType:'"',forceQuotes:false,sortKeys:false})+"---\n\n"+body+"\n";
-  await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify({message:"Cria publicação: "+title,content:b64encode(raw),branch:BRANCH})});
-  $("#post-message").textContent="Publicação criada com sucesso. Aguarde o GitHub Pages concluir a publicação.";$("#post-message").className="status ok";
-  $("#post-title").value="";$("#post-excerpt").value="";$("#post-body").value="";
- }catch(e){$("#post-message").textContent="Não foi possível criar a publicação: "+e.message;$("#post-message").className="status error"}
- finally{btn.disabled=false}
-}
-$("#new-post").onclick=showPostEditor;$("#cancel-post").onclick=hidePostEditor;$("#save-post").onclick=savePost;
 window.addEventListener("pagehide",()=>{token="";$("#token").value=""});
 </script>
 </body></html>
