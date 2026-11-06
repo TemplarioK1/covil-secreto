@@ -18,6 +18,47 @@ a{color:inherit;text-decoration:none}.top{height:76px;background:#f9fbfc;border-
 @media(max-width:1000px){.hero{grid-template-columns:minmax(0,1fr) 260px}.columns{grid-template-columns:minmax(0,1.2fr) minmax(300px,.9fr)}.wrap{padding:14px 16px}.top{padding:8px 18px}}
 @media(max-width:760px){.top{height:auto;min-height:70px;flex-wrap:wrap}.logo{width:175px}.nav{gap:2px}.nav a{padding:7px;font-size:10px}.hero,.columns,.admin-layout,.cms-layout{grid-template-columns:1fr}.cover{max-height:220px}.cover img{max-height:220px}.side{display:flex;flex-wrap:wrap;gap:4px}.side h3,.side small{width:100%}.side a{display:inline-block}.formgrid,.cmsgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:520px){.wrap{padding:12px}.top{padding:10px 12px}.nav{width:100%;justify-content:space-between}.hero{padding:12px}.hero h1{font-size:27px}.progress-grid,.facts,.gallery,.formgrid,.cmsgrid{grid-template-columns:1fr}.progress.full,.span2,.span3{grid-column:auto}.history{grid-template-columns:65px 75px 1fr}.stage-row{grid-template-columns:1fr 42px}.mini-track{grid-column:1/-1}.screenhead{align-items:flex-start;gap:8px;flex-direction:column}}
+
+/* Refinamento visual: mais cor e arte de jogo em destaque */
+:root{--cyan:#087f91;--purple:#7544b8;--gold:#d08a22;--ink:#173746}
+.top{background:linear-gradient(105deg,#f8fbfc 0%,#e9f2f5 55%,#eee8f8 100%);border-bottom-color:#087f91}
+.switcher .tab:nth-of-type(2){border-color:#8cc9c9}
+.switcher .tab:nth-of-type(3){border-color:#c8b5e3}
+.hero{grid-template-columns:minmax(0,1fr) minmax(390px,43%);padding:20px;background:linear-gradient(115deg,#ffffff 0%,#eef8f8 48%,#eee8f8 100%);border-color:#9bbbc4}
+.hero:after{content:"";position:absolute;right:34%;top:-85px;width:240px;height:240px;border-radius:50%;background:#11a4ad12;pointer-events:none}
+.hero h1{color:#143746;text-shadow:0 2px 0 #d8e8eb}
+.cover{min-height:300px;border:4px solid #fff;outline:2px solid #7954b5;box-shadow:8px 8px 0 #0a849533,0 12px 28px #183b4b25;background:linear-gradient(135deg,#087f91,#6542a4)}
+.cover img{min-height:300px;filter:saturate(1.13) contrast(1.04)}
+.cover:before{content:"";position:absolute;inset:0;background:linear-gradient(90deg,#102f3b10,#102f3b00 45%,#102f3b55);z-index:1;pointer-events:none}
+.cover:after{z-index:2;background:linear-gradient(90deg,#123e50ed,#7044a9e8);letter-spacing:.14em}
+.panel{box-shadow:0 3px 0 #d4dfe3,0 10px 24px #19374616}
+.panel-inner .heading{border-bottom:2px solid #dce7e9}
+.panel-inner .heading h2{position:relative}
+.panel-inner .heading small{padding:5px 8px;background:#e4f2f2;border:1px solid #c2e0df;border-radius:4px;color:#087d87}
+.stack>.panel:nth-child(2) .heading small{background:#eee8f7;border-color:#d9cbea;color:#7049a7}
+.stack>.panel:nth-child(3) .heading small{background:#fff1d9;border-color:#ead4a5;color:#94651b}
+.columns>.stack:first-child>.panel:nth-child(1){background:linear-gradient(125deg,#fff 0%,#f3f8fa 75%,#e8f3f5 100%)}
+.columns>.stack:first-child>.panel:nth-child(2){background:linear-gradient(125deg,#fff 0%,#f7f3fb 100%)}
+.columns>.stack:first-child>.panel:nth-child(3){background:linear-gradient(125deg,#fff 0%,#f1f8f7 100%)}
+.progress{background:linear-gradient(135deg,#f4f7f8,#eaf1f3);border-color:#c5d5db}
+.progress:nth-child(4n+2){background:linear-gradient(135deg,#f5f1fb,#eee8f7);border-color:#d6c8e8}
+.group-title{color:#7049a7;border-color:#cbbbe0}
+.download{background:linear-gradient(110deg,#dff3ee,#dceef5);border-color:#91c9bf}
+.download a{background:linear-gradient(110deg,#087f91,#6745a8)}
+.callout{background:linear-gradient(100deg,#fff1d7,#f9e9f5);border-left-color:#c18a2b;color:#74501c}
+.fact:nth-child(3n+2){background:#f0ebf8;border-color:#d9cbea}
+.fact:nth-child(3n){background:#e8f4f2;border-color:#c0ded9}
+.gallery img{outline-color:#8bbec2;box-shadow:0 3px 0 #dce7e9}
+.side{background:linear-gradient(160deg,#173b4b,#234b67 60%,#503c79)}
+.side a.sel{background:linear-gradient(90deg,#e3f5f2,#eee8f8);border-left-color:#13aeb8}
+.formtitle{background:linear-gradient(100deg,#e5f1f3,#eee8f7)}
+.cmscard:nth-child(2){background:linear-gradient(135deg,#fff,#f6f1fb)}
+.cmscard:nth-child(3){background:linear-gradient(135deg,#fff,#eef8f6)}
+.tab.active{background:linear-gradient(110deg,#173b4b,#65439a);border-color:#65439a}
+@media(max-width:1000px){.hero{grid-template-columns:minmax(0,1fr) minmax(320px,40%)}.cover,.cover img{min-height:260px}}
+@media(max-width:760px){.hero{grid-template-columns:1fr}.cover{min-height:240px}.cover img{min-height:240px}}
+@media(max-width:520px){.cover,.cover img{min-height:200px}}
+
 </style>
 </head>
 <body>
