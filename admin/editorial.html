@@ -1,0 +1,125 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Editorial | Administração Covil Secreto</title>
+<script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"><\/script>
+<style>
+:root{color-scheme:light;--bg:#e8eef0;--panel:#fff;--panel2:#f1f5f6;--text:#203744;--muted:#657984;--line:#d3dde1;--accent:#087f89}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--text);font:14px/1.5 "Segoe UI",Arial,sans-serif}
+header{min-height:82px;padding:12px max(30px,calc((100% - 1480px)/2));display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;background:linear-gradient(110deg,#123747,#174b5b 58%,#263b57);border-bottom:4px solid #22b8c3;box-shadow:0 3px 14px #102d3b18}
+.admin-brand img{display:block;width:250px;max-height:66px;object-fit:contain}
+header nav{display:flex;gap:18px;flex-wrap:wrap}header a{color:#e3f6f8;font-weight:700;text-decoration:none}
+main{max-width:1320px;margin:26px auto;padding:0 30px 56px}
+h1,h2,h3{color:#1c4352;margin-top:0}.intro{margin-bottom:20px}.intro p,.hint{color:#526873}
+.panel{background:#fff;border:1px solid var(--line);border-radius:5px;box-shadow:0 2px 8px #183b4b0b;padding:20px;margin-bottom:16px}
+.auth{display:grid;grid-template-columns:minmax(280px,1fr) minmax(520px,1.5fr);gap:8px 24px;align-items:center}
+.auth>strong{font-size:16px;color:#1c4352}.auth>p{grid-column:1;grid-row:2;margin:0;max-width:560px;color:#526873;font-size:13px}
+.auth-tools{grid-column:2;grid-row:1/3;display:flex;gap:10px;align-items:end;flex-wrap:wrap}
+.field{display:flex;flex-direction:column;gap:6px;min-width:0}.field label{font-size:12px;font-weight:700;color:#405966}
+input,select,textarea{width:100%;min-height:39px;padding:9px 11px;border:1px solid #cbd8dd;border-radius:4px;background:#fff;color:#203744;font:inherit}
+textarea{min-height:100px;resize:vertical;line-height:1.6}.content{min-height:420px!important;font:14px/1.7 Consolas,"SFMono-Regular",monospace!important}
+button{min-height:36px;padding:9px 15px;border:1px solid #cbd8dd;border-radius:3px;background:#edf3f5;color:#31515e;font-size:12px;font-weight:700;cursor:pointer}
+button:hover{background:#e1edef;border-color:#8bbec2}button.primary{background:#173e50;color:#fff;border-color:#173e50}button.primary:hover{background:#087f89}button:disabled{opacity:.45;cursor:wait}
+.toolbar{display:flex;justify-content:space-between;align-items:end;gap:14px;flex-wrap:wrap}.toolbar .field{flex:1;min-width:220px}
+.status{padding:11px 14px;margin-top:12px;background:#edf3f5;color:#526873;border:1px solid #d3dde1;border-radius:4px;font-size:13px}
+.status.ok{background:#edf8f0;color:#287746;border-color:#c9e5d1}.status.error{background:#fff0f0;color:#b83f3f;border-color:#efcaca}
+.editor-head{display:flex;justify-content:space-between;align-items:center;gap:14px;flex-wrap:wrap;padding-bottom:16px;margin-bottom:18px;border-bottom:1px solid var(--line)}
+.editor-head p{margin:4px 0 0;color:#657984;font-size:13px}.form{display:grid;gap:17px;max-width:1040px}
+.meta{display:grid;grid-template-columns:1fr 1fr;gap:16px}.actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap}
+.posts-list{display:grid;gap:9px}.post-item{display:flex;justify-content:space-between;align-items:center;gap:16px;padding:13px 15px;background:#f8fafb;border:1px solid #d3dde1;border-radius:4px}
+.post-item strong{display:block;color:#244654}.post-item small{color:#71818a}.post-item button{flex-shrink:0}
+.hidden{display:none!important}.muted{color:#71818a;font-size:12px}
+@media(max-width:1050px){.auth{grid-template-columns:1fr}.auth>p,.auth-tools{grid-column:1;grid-row:auto}.auth-tools{margin-top:12px}}
+@media(max-width:700px){header{padding:14px 18px}.admin-brand img{width:min(240px,70vw)}main{padding:14px}.panel{padding:15px}.meta{grid-template-columns:1fr}.post-item{align-items:flex-start;flex-direction:column}.content{min-height:300px!important}}
+</style>
+</head>
+<body>
+<header><a class="admin-brand" href="../" aria-label="Covil Secreto — início"><img src="../Logo%20gamer%20neon%20Covil%20Secreto.png" alt="Covil Secreto"></a><nav><a href="./">← Central administrativa</a><a href="../">Voltar ao site</a></nav></header>
+<main>
+<section class="intro"><h1>Área editorial</h1><p>Crie e edite publicações do Covil Secreto. As categorias são usadas nos metadados das publicações e não criam novas seções na navegação pública.</p></section>
+<section class="panel auth">
+<strong>Conexão segura com o GitHub</strong>
+<p>Use um Personal Access Token fine-grained com acesso somente ao repositório <b>TemplarioK1/covil-secreto</b> e permissão <b>Contents: Read and write</b>. O token fica apenas na memória desta página e não é salvo no navegador. Ao terminar, desconecte ou feche a página.</p>
+<div class="auth-tools"><div class="field" style="flex:1"><label for="token">Token do GitHub</label><input id="token" type="password" autocomplete="off" placeholder="github_pat…"></div><button class="primary" id="connect">Conectar</button><button id="disconnect" disabled>Desconectar</button></div>
+<div id="connection" class="status" style="grid-column:1/-1">Não conectado.</div>
+</section>
+<section class="panel toolbar"><div><h2 style="margin:0">Publicações</h2><p class="muted" style="margin:4px 0 0">Arquivos da coleção <code>_posts</code>.</p></div><button id="reload" disabled>Atualizar lista</button></section>
+<section class="panel"><div id="posts" class="posts-list"><p class="muted">Conecte ao GitHub para carregar as publicações.</p></div></section>
+<section class="panel" id="editor">
+<div class="editor-head"><div><h2 id="form-title" style="margin:0">Nova publicação</h2><p>O texto aceita Markdown. A publicação terá sua própria página.</p></div><button id="cancel-edit" type="button" class="hidden">Cancelar edição</button></div>
+<div class="form">
+<div class="field"><label for="post-title">Título</label><input id="post-title" maxlength="150" placeholder="Título da publicação"></div>
+<div class="meta">
+<div class="field"><label for="post-category">Categoria</label><select id="post-category"><option value="post">Post</option><option value="materias">Matérias</option><option value="noticias">Notícias</option></select></div>
+<div class="field"><label for="post-date">Data de publicação</label><input id="post-date" type="date"></div>
+</div>
+<div class="field"><label for="post-excerpt">Resumo (opcional)</label><textarea id="post-excerpt" rows="2" placeholder="Uma breve apresentação da publicação."></textarea></div>
+<div class="field"><label for="post-body">Texto</label><textarea id="post-body" class="content" placeholder="Escreva sua publicação aqui. Markdown: ## subtítulos, **negrito**, listas e links."></textarea><span class="muted">Você pode usar Markdown para formatar o conteúdo.</span></div>
+<div class="actions"><button type="button" class="primary" id="save-post" disabled>Publicar no GitHub</button><span class="muted">As publicações não serão adicionadas à página inicial.</span></div>
+<div id="post-message" class="status">Conecte ao GitHub para começar.</div>
+</div>
+</section>
+</main>
+<script>
+const OWNER="TemplarioK1",REPO="covil-secreto",BRANCH="main",API="https://api.github.com";
+let token="",editing=null;
+const $=s=>document.querySelector(s);
+const headers=()=>({"Authorization":"Bearer "+token,"Accept":"application/vnd.github+json","X-GitHub-Api-Version":"2022-11-28"});
+function connection(msg,type=""){$("#connection").textContent=msg;$("#connection").className="status "+type}
+function message(msg,type=""){$("#post-message").textContent=msg;$("#post-message").className="status "+type}
+function b64decode(s){const bytes=Uint8Array.from(atob(s.replace(/\s/g,"")),c=>c.charCodeAt(0));return new TextDecoder().decode(bytes)}
+function b64encode(s){const bytes=new TextEncoder().encode(s);let bin="";bytes.forEach(b=>bin+=String.fromCharCode(b));return btoa(bin)}
+async function api(url,opts={}){const r=await fetch(url,{...opts,headers:{...headers(),...(opts.headers||{})}});if(!r.ok){const e=await r.json().catch(()=>({message:r.statusText}));throw Error(e.message||"Erro HTTP "+r.status)}return r.status===204?null:r.json()}
+function postSlug(value){return value.normalize("NFD").replace(/[\u0300-\u036f]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"").slice(0,90)}
+function resetForm(){editing=null;$("#form-title").textContent="Nova publicação";$("#save-post").textContent="Publicar no GitHub";$("#post-title").value="";$("#post-category").value="post";$("#post-date").value=new Date(Date.now()-new Date().getTimezoneOffset()*60000).toISOString().slice(0,10);$("#post-date").readOnly=false;$("#post-excerpt").value="";$("#post-body").value="";$("#cancel-edit").classList.add("hidden");message("Preencha o título e o texto para criar uma publicação.")}
+async function loadPosts(){
+ $("#posts").innerHTML='<p class="muted">Carregando publicações…</p>';
+ try{
+  const entries=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/_posts?ref="+BRANCH);
+  const files=entries.filter(x=>x.type==="file"&&x.name.endsWith(".md")).sort((a,b)=>b.name.localeCompare(a.name));
+  if(!files.length){$("#posts").innerHTML='<p class="muted">Ainda não há publicações em _posts.</p>';return}
+  const rows=await Promise.all(files.map(async f=>{try{const full=await api(f.url);const raw=b64decode(full.content);const m=raw.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n)?([\s\S]*)$/);const meta=m?jsyaml.load(m[1])||{}:{};return {path:f.path,sha:full.sha,title:meta.title||f.name,date:meta.date||f.name.slice(0,10)}}catch(e){return {path:f.path,sha:f.sha,title:f.name,date:f.name.slice(0,10)}}}));
+  $("#posts").innerHTML="";
+  rows.forEach(item=>{const row=document.createElement("div");row.className="post-item";const info=document.createElement("div");const title=document.createElement("strong");title.textContent=item.title;const date=document.createElement("small");date.textContent=String(item.date);info.append(title,date);const btn=document.createElement("button");btn.textContent="Editar";btn.onclick=()=>editPost(item.path);row.append(info,btn);$("#posts").append(row)});
+ }catch(e){$("#posts").innerHTML='<p class="muted">Não foi possível carregar publicações. '+e.message+'</p>'}
+}
+async function editPost(path){
+ try{
+  message("Carregando publicação…");
+  const f=await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+path+"?ref="+BRANCH);
+  const raw=b64decode(f.content),m=raw.match(/^---\s*\r?\n([\s\S]*?)\r?\n---\s*(?:\r?\n)?([\s\S]*)$/);
+  if(!m)throw Error("Frontmatter YAML não encontrado.");
+  const meta=jsyaml.load(m[1])||{},cats=Array.isArray(meta.categories)?meta.categories:[meta.categories].filter(Boolean);
+  editing={path,sha:f.sha};$("#form-title").textContent="Editar publicação";$("#save-post").textContent="Salvar alterações";
+  $("#post-title").value=meta.title||"";$("#post-category").value=cats[0]||"post";$("#post-date").value=String(meta.date||path.match(/\d{4}-\d{2}-\d{2}/)?.[0]||"").slice(0,10);$("#post-date").readOnly=true;
+  $("#post-excerpt").value=meta.excerpt||"";$("#post-body").value=m[2]||"";$("#cancel-edit").classList.remove("hidden");message("Publicação carregada. A data fica bloqueada durante a edição para preservar o endereço do arquivo.");window.scrollTo({top:document.querySelector("#editor").offsetTop-20,behavior:"smooth"});
+ }catch(e){message("Não foi possível abrir a publicação: "+e.message,"error")}
+}
+async function connect(){
+ token=$("#token").value.trim();if(!token)return connection("Informe o token para conectar.","error");
+ try{await api(API+"/repos/"+OWNER+"/"+REPO);$("#disconnect").disabled=false;$("#reload").disabled=false;$("#save-post").disabled=false;connection("Conectado ao repositório "+OWNER+"/"+REPO+".","ok");await loadPosts();resetForm()}
+ catch(e){token="";connection("Falha na conexão: "+e.message,"error")}
+}
+async function savePost(){
+ const btn=$("#save-post"),title=$("#post-title").value.trim(),body=$("#post-body").value.trim(),category=$("#post-category").value,date=$("#post-date").value||new Date().toISOString().slice(0,10),excerpt=$("#post-excerpt").value.trim();
+ if(!title||!body){message("Informe o título e o texto da publicação.","error");return}
+ const slug=postSlug(title);if(!slug){message("Não foi possível gerar um endereço a partir do título.","error");return}
+ const path=editing?editing.path:"_posts/"+date+"-"+slug+".md";
+ btn.disabled=true;message(editing?"Salvando alterações no GitHub…":"Criando publicação no GitHub…");
+ try{
+  const front={layout:"post",title,date,categories:[category]};if(excerpt)front.excerpt=excerpt;
+  const raw="---\n"+jsyaml.dump(front,{lineWidth:110,noRefs:true,quotingType:'"',forceQuotes:false,sortKeys:false})+"---\n\n"+body+"\n";
+  const payload={message:(editing?"Atualiza publicação: ":"Cria publicação: ")+title,content:b64encode(raw),branch:BRANCH,...(editing?{sha:editing.sha}:{})};
+  await api(API+"/repos/"+OWNER+"/"+REPO+"/contents/"+path,{method:"PUT",headers:{"Content-Type":"application/json"},body:JSON.stringify(payload)});
+  message(editing?"Publicação atualizada com sucesso. Aguarde o GitHub Pages concluir a publicação.":"Publicação criada com sucesso. Aguarde o GitHub Pages concluir a publicação.","ok");
+  resetForm();await loadPosts();
+ }catch(e){message("Não foi possível salvar: "+e.message,"error")}
+ finally{btn.disabled=false}
+}
+$("#connect").onclick=connect;
+$("#disconnect").onclick=()=>{token="";$("#token").value="";$("#disconnect").disabled=true;$("#reload").disabled=true;$("#save-post").disabled=true;resetForm();$("#posts").innerHTML='<p class="muted">Conecte ao GitHub para carregar as publicações.</p>';connection("Desconectado.")};
+$("#reload").onclick=loadPosts;$("#save-post").onclick=savePost;$("#cancel-edit").onclick=resetForm;
+window.addEventListener("pagehide",()=>{token="";$("#token").value=""});
+</script>
+</body></html>
